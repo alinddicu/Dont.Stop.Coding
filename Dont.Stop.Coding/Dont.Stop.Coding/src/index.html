@@ -1,0 +1,244 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="description" content="Sorting algorithms simulation">
+	<meta name="keywords" content="sorting, algoritms">
+	<meta name="author" content="Alin Dicu">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Sorting algorithms</title>
+
+	<script src="scripts/Sorting/Algorithms/SortBase.js"></script>
+	<script src="scripts/Sorting/Algorithms/BubbleSort.js"></script>
+	<script src="scripts/Sorting/Algorithms/InsertionSort.js"></script>
+	<script src="scripts/Sorting/Algorithms/HeapSort.js"></script>
+	<script src="scripts/Sorting/Algorithms/MergeSort.js"></script>
+	<script src="scripts/Sorting/Algorithms/QuickSort.js"></script>
+	<script src="scripts/Sorting/Algorithms/SelectionSort.js"></script>
+	<script src="scripts/Sorting/Drawing/SingleCanvasDrawer.js"></script>
+	<script src="scripts/Sorting/Drawing/MultiCanvasDrawer.js"></script>
+	<script src="scripts/Sorting/Tools/RandomArrayGenerator.js"></script>
+	<script src="scripts/Sorting/Tools/RankingSystem.js"></script>
+	<script src="scripts/Sorting/Tools/OrdinalHelper.js"></script>
+	<script src="scripts/Sorting/sorting-app.js"></script>
+
+	<link rel="stylesheet" href="styles/sorting.css" />
+	<link rel="icon" type="image/png" href="images/favicon-sorting.ico" />
+
+	<title>Game of life</title>
+
+	<script src="lib/linq.min.js"></script>
+	<script src="lib/knockout-latest.js"></script>
+
+	<script src="scripts/GoL/Logic/CellState.js"></script>
+	<script src="scripts/GoL/Logic/Cell.js"></script>
+	<script src="scripts/GoL/Logic/RectangularInfinite2DGrid.js"></script>
+	<script src="scripts/GoL/Logic/Cycle.js"></script>
+
+	<script src="scripts/GoL/Drawing/IGoLOptions.js"></script>
+	<script src="scripts/GoL/Drawing/CellButton.js"></script>
+	<script src="scripts/GoL/Drawing/Board.js"></script>
+	<script src="scripts/GoL/Drawing/BoardLine.js"></script>
+	<script src="scripts/GoL/Drawing/ParamsForm.js"></script>
+
+	<script src="scripts/GoL/game-of-life-tests.js"></script>
+	<!--<script src="scripts/GoL/game-of-life-app.js"></script>-->
+
+	<link rel="stylesheet" href="styles/game-of-life.css" type="text/css" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<link rel="icon" type="image/png" href="images/favicon-game-of-life.ico" />
+
+</head>
+<!-- <body onload="sort();"> -->
+<body>
+	<script type="text/html" id="sorting">
+		<div id="params">
+			<h2 id="sorting-param-title">Sorting parameters</h2>
+			<div class="form-line">
+				<label for="arraySize">Array size</label>
+				<input id="arraySize" type="number" placeholder="array size" value="32" min="10" max="800" onkeypress="onSubmitKeyPress();" />
+			</div>
+			<div class="form-line">
+				<label for="startValue">Start value</label>
+				<input id="startValue" type="number" placeholder="start value" value="1" min="1" max="1000" onkeypress="onSubmitKeyPress();" />
+			</div>
+			<div class="form-line">
+				<label for="step">X drawing step</label>
+				<input id="step" type="number" placeholder="step" value="10" min="1" max="20" onkeypress="onSubmitKeyPress();" />
+			</div>
+			<div class="form-line">
+				<label for="delay">Delay (ms)</label>
+				<input id="delay" type="number" placeholder="delay" value="50" min="0" max="10000" onkeypress="onSubmitKeyPress();" />
+			</div>
+			<div class="form-line">
+				<label for="penColor">Pen color</label>
+				<input id="penColor" type="text" placeholder="pen color" value="#edf5e1" onkeypress="onSubmitKeyPress();" />
+			</div>
+			<div class="form-line">
+				<label for="backgroundColor">Background color</label>
+				<input id="backgroundColor" type="text" placeholder="background color" value="#379683" onkeypress="onSubmitKeyPress();" />
+			</div>
+			<div class="form-line">
+				<label for="fontSize">Font size</label>
+				<input id="fontSize" type="number" placeholder="font size" value="16" min="5" max="40" onkeypress="onSubmitKeyPress();" />
+			</div>
+			<div class="form-line sort-button">
+				<button id="sortButton" onclick="sort();">Sort</button>
+			</div>
+		</div>
+		<div id="showHideParams-container">
+			<input id="showHideParams" alt="Show/Hide Parameters" title="Show/Hide Parameters" type="checkbox" onclick="showHideParams();">
+		</div>
+		<div id="canvas-container">
+			<div id="bubblesort" class="canvas-container"></div>
+			<div id="insertionsort" class="canvas-container"></div>
+			<div id="heapsort" class="canvas-container"></div>
+			<div id="mergesort" class="canvas-container"></div>
+			<div id="quicksort" class="canvas-container"></div>
+			<div id="selectionsort" class="canvas-container"></div>
+		</div>
+		<div id="copyright">
+			<a href="https://github.com/alinddicu" target="_blank" title="Contact me for projects">© Alin Dicu</a>
+		</div>
+	</script>
+	<script type="text/html" id="game-of-life">
+
+		<div id="main-over-container">
+			<div id="main-container">
+				<div id="controls-over-container">
+					<div id="controls-container">
+						<button class="control-button" onclick="showParams();" title="Parameters" data-bind="enable: !board().isPlaying() && !board().isPausing()">
+							<i class="material-icons custom-color">settings</i>
+						</button>
+						<button class="control-button"><i class="material-icons custom-color spacer"></i></button>
+						<button class="control-button" onclick="board.fastRewind();" title="Fast rewind" data-bind="enable: !board().isPlaying()">
+							<i class="material-icons custom-color">fast_rewind</i>
+						</button>
+						<button class="control-button" onclick="board.skipToPrevious();" title="Skip to previous" data-bind="enable: !board().isPlaying()">
+							<i class="material-icons custom-color">skip_previous</i>
+						</button>
+						<button class="control-button" onclick="board.play();" title="Play">
+							<!-- ko if: !board().isPlaying() || board().isPausing() --><i class="material-icons custom-color">play_circle_filled</i><!--/ko-->
+							<!-- ko if: board().isPlaying() && !board().isPausing() --><i class="material-icons custom-color">play_circle_outline</i><!--/ko-->
+						</button>
+						<button class="control-button" onclick="board.pause();" title="Pause">
+							<!-- ko if: !board().isPausing() || board().isPlaying() --><i class="material-icons custom-color">pause_circle_filled</i><!--/ko-->
+							<!-- ko if: board().isPausing() && !board().isPlaying() --><i class="material-icons custom-color">pause_circle_outline</i><!--/ko-->
+						</button>
+						<button class="control-button" onclick="board.skipToNext();" title="Skip to next" data-bind="enable: !board().isPlaying()">
+							<i class="material-icons custom-color">skip_next</i>
+						</button>
+						<button class="control-button" onclick="board.fastForward();" title="Fast forward" data-bind="enable: !board().isPlaying()">
+							<i class="material-icons custom-color">fast_forward</i>
+						</button>
+						<button class="control-button" onclick="board.reset();" title="Reset">
+							<i class="material-icons custom-color">stop</i>
+						</button>
+						<button class="control-button"><i class="material-icons custom-color spacer"></i></button>
+						<button class="control-button" onclick="exportAliveCells();" title="Export alive cells" data-bind="enable: !board().isPlaying() && !board().isPausing()">
+							<i class="material-icons custom-color">publish</i>
+						</button>
+						<button class="control-button" onclick="showImportAliveCells();" title="Import alive cells" data-bind="enable: !board().isPlaying() && !board().isPausing()">
+							<i class="material-icons custom-color">save_alt</i>
+						</button>
+					</div>
+					<!--ko if: isExportVisible() -->
+					<div id="export-container">
+						<div class="form-line">
+							<textarea id="exportTextArea" rows="5" cols="25" disabled></textarea>
+						</div>
+					</div>
+					<!--/ko-->
+					<!--ko if: isImportVisible() -->
+					<div id="import-container">
+						<div class="form-line">
+							<textarea id="importTextArea" rows="5" cols="25"></textarea>
+						</div>
+						<div class="form-line import-button-container">
+							<button id="import-button" onclick="importAliveCells();"><i class="material-icons custom-color">done_outline</i></button>
+						</div>
+					</div>
+					<!--/ko-->
+					<!--ko if: isParamsVisible() -->
+					<div id="params-container">
+						<h2 id="gol-params-title">Game of life parameters</h2>
+						<div class="form-line">
+							<label for="cellsPerRow">Cells per row</label>
+							<input id="cellsPerRow" type="number" value="7" min="5" max="100" />
+						</div>
+						<div class="form-line">
+							<label for="cellSize">Cell size (px)</label>
+							<input id="cellSize" type="number" value="50" min="10" max="100" />
+						</div>
+						<div class="form-line">
+							<label for="normalMutationDelay">Normal mutation delay (ms)</label>
+							<input id="normalMutationDelay" type="number" value="100" min="0" />
+						</div>
+						<div class="form-line">
+							<label for="rapidMutationDelay">Rapid mutation delay (ms)</label>
+							<input id="rapidMutationDelay" type="number" value="10" min="0" />
+						</div>
+						<div class="form-line">
+							<label for="aliveCellColor">Alive cell color</label>
+							<input id="aliveCellColor" type="text" value="#374785" />
+						</div>
+						<div class="form-line">
+							<label for="deadCellColor">Dead cell color</label>
+							<input id="deadCellColor" type="text" value="#a8d0e6" />
+						</div>
+						<div class="form-line">
+							<label for="isShowCellsCoordinates">Show cells coordinates</label>
+							<input id="isShowCellsCoordinates" type="checkbox" />
+						</div>
+						<div class="form-line init-button-container">
+							<button id="init-button" onclick="init();"><i class="material-icons custom-color">done_outline</i></button>
+						</div>
+					</div>
+					<!--/ko-->
+				</div>
+				<div id="board-container">
+					<div data-bind="css: { 'board-disabled': !board().isEnabled(), 'board-enabled': board().isEnabled()}">
+						<table id="cells-table">
+							<tbody data-bind="foreach: board().boardLines">
+								<tr>
+									<!-- ko foreach: buttonCells -->
+									<td>
+										<button class="cell-button"
+												data-bind="style: { width: width + 'px', height: height + 'px', 'background-color': backColor() }, click: cellButtonClick">
+											<!-- ko text: text --><!--/ko-->
+										</button>
+									</td>
+									<!-- /ko -->
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</script>
+</body>
+</html>
+<script>
+	function showHideParams() {
+		var div = document.getElementById("params");
+		var showParams = document.getElementById("showHideParams").checked;
+		if (showParams)
+		{
+			div.style.display = 'inline-block';
+		}
+		else
+		{
+			div.style.display = 'none';
+		}
+	}
+
+	function onSubmitKeyPress() {
+		if (event.keyCode === 13)
+		{
+			document.getElementById("sortButton").click();
+		}
+	}
+</script>

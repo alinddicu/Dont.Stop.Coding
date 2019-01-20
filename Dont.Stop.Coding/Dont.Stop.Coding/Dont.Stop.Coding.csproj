@@ -25,6 +25,7 @@
     <Content Include="src\images\favicon-sorting.ico" />
     <Content Include="src\images\favicon-game-of-life.ico" />
     <Content Include="src\index-game-of-life.html" />
+    <Content Include="src\index.html" />
     <Content Include="src\lib\knockout-latest.js" />
     <Content Include="src\lib\linq.min.js" />
     <Content Include="src\scripts\GoL\Drawing\Board.js" />
