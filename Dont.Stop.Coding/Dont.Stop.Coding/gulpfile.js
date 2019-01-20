@@ -33,6 +33,8 @@ function moveAll() {
 	gulp.src(paths.pages).pipe(gulp.dest('dist/dev'));
 	gulp.src(paths.styles).pipe(gulp.dest('dist/dev/styles'));
 	gulp.src(paths.images).pipe(gulp.dest('dist/dev/images'));
+	// for disabling index.html warnings, only
+	gulp.src(paths.libs).pipe(gulp.dest('src/lib'));
 }
 
 gulp.task('dev-bundle', function () {

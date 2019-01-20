@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Game of life</title>
+
+	<script src="lib/linq.min.js"></script>
+	<script src="lib/knockout-latest.js"></script>
+
+	<script src="scripts/GoL/Logic/CellState.js"></script>
+	<script src="scripts/GoL/Logic/Cell.js"></script>
+	<script src="scripts/GoL/Logic/RectangularInfinite2DGrid.js"></script>
+	<script src="scripts/GoL/Logic/Cycle.js"></script>
+
+	<script src="scripts/GoL/Drawing/IGoLOptions.js"></script>
+	<script src="scripts/GoL/Drawing/CellButton.js"></script>
+	<script src="scripts/GoL/Drawing/Board.js"></script>
+	<script src="scripts/GoL/Drawing/BoardLine.js"></script>
+	<script src="scripts/GoL/Drawing/ParamsForm.js"></script>
+
+	<script src="scripts/GoL/game-of-life-tests.js"></script>
+	<!--<script src="scripts/GoL/game-of-life-app.js"></script>-->
+
+	<link rel="stylesheet" href="styles/game-of-life.css" type="text/css" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<link rel="icon" type="image/png" href="images/favicon-game-of-life.ico" />
+
+</head>
+<body>
+	<div id="main-over-container">
+		<div id="main-container">
+			<div id="controls-over-container">
+				<div id="controls-container">
+					<button class="control-button" onclick="showParams();" title="Parameters" data-bind="enable: !board().isPlaying() && !board().isPausing()">
+						<i class="material-icons custom-color">settings</i>
+					</button>
+					<button class="control-button"><i class="material-icons custom-color spacer"></i></button>
+					<button class="control-button" onclick="board.fastRewind();" title="Fast rewind" data-bind="enable: !board().isPlaying()">
+						<i class="material-icons custom-color">fast_rewind</i>
+					</button>
+					<button class="control-button" onclick="board.skipToPrevious();" title="Skip to previous" data-bind="enable: !board().isPlaying()">
+						<i class="material-icons custom-color">skip_previous</i>
+					</button>
+					<button class="control-button" onclick="board.play();" title="Play">
+						<!-- ko if: !board().isPlaying() || board().isPausing() --><i class="material-icons custom-color">play_circle_filled</i><!--/ko-->
+						<!-- ko if: board().isPlaying() && !board().isPausing() --><i class="material-icons custom-color">play_circle_outline</i><!--/ko-->
+					</button>
+					<button class="control-button" onclick="board.pause();" title="Pause">
+						<!-- ko if: !board().isPausing() || board().isPlaying() --><i class="material-icons custom-color">pause_circle_filled</i><!--/ko-->
+						<!-- ko if: board().isPausing() && !board().isPlaying() --><i class="material-icons custom-color">pause_circle_outline</i><!--/ko-->
+					</button>
+					<button class="control-button" onclick="board.skipToNext();" title="Skip to next" data-bind="enable: !board().isPlaying()">
+						<i class="material-icons custom-color">skip_next</i>
+					</button>
+					<button class="control-button" onclick="board.fastForward();" title="Fast forward" data-bind="enable: !board().isPlaying()">
+						<i class="material-icons custom-color">fast_forward</i>
+					</button>
+					<button class="control-button" onclick="board.reset();" title="Reset">
+						<i class="material-icons custom-color">stop</i>
+					</button>
+					<button class="control-button"><i class="material-icons custom-color spacer"></i></button>
+					<button class="control-button" onclick="exportAliveCells();" title="Export alive cells" data-bind="enable: !board().isPlaying() && !board().isPausing()">
+						<i class="material-icons custom-color">publish</i>
+					</button>
+					<button class="control-button" onclick="showImportAliveCells();" title="Import alive cells" data-bind="enable: !board().isPlaying() && !board().isPausing()">
+						<i class="material-icons custom-color">save_alt</i>
+					</button>
+				</div>
+				<!--ko if: isExportVisible() -->
+				<div id="export-container">
+					<div class="form-line">
+						<textarea id="exportTextArea" rows="5" cols="25" disabled></textarea>
+					</div>
+				</div>
+				<!--/ko-->
+				<!--ko if: isImportVisible() -->
+				<div id="import-container">
+					<div class="form-line">
+						<textarea id="importTextArea" rows="5" cols="25"></textarea>
+					</div>
+					<div class="form-line import-button-container">
+						<button id="import-button" onclick="importAliveCells();"><i class="material-icons custom-color">done_outline</i></button>
+					</div>
+				</div>
+				<!--/ko-->
+				<!--ko if: isParamsVisible() -->
+				<div id="params-container">
+					<h2 id="gol-params-title">Game of life parameters</h2>
+					<div class="form-line">
+						<label for="cellsPerRow">Cells per row</label>
+						<input id="cellsPerRow" type="number" value="7" min="5" max="100" />
+					</div>
+					<div class="form-line">
+						<label for="cellSize">Cell size (px)</label>
+						<input id="cellSize" type="number" value="50" min="10" max="100" />
+					</div>
+					<div class="form-line">
+						<label for="normalMutationDelay">Normal mutation delay (ms)</label>
+						<input id="normalMutationDelay" type="number" value="100" min="0" />
+					</div>
+					<div class="form-line">
+						<label for="rapidMutationDelay">Rapid mutation delay (ms)</label>
+						<input id="rapidMutationDelay" type="number" value="10" min="0" />
+					</div>
+					<div class="form-line">
+						<label for="aliveCellColor">Alive cell color</label>
+						<input id="aliveCellColor" type="text" value="#374785" />
+					</div>
+					<div class="form-line">
+						<label for="deadCellColor">Dead cell color</label>
+						<input id="deadCellColor" type="text" value="#a8d0e6" />
+					</div>
+					<div class="form-line">
+						<label for="isShowCellsCoordinates">Show cells coordinates</label>
+						<input id="isShowCellsCoordinates" type="checkbox" />
+					</div>
+					<div class="form-line init-button-container">
+						<button id="init-button" onclick="init();"><i class="material-icons custom-color">done_outline</i></button>
+					</div>
+				</div>
+				<!--/ko-->
+			</div>
+			<div id="board-container">
+				<div data-bind="css: { 'board-disabled': !board().isEnabled(), 'board-enabled': board().isEnabled()}">
+					<table id="cells-table">
+						<tbody data-bind="foreach: board().boardLines">
+							<tr>
+								<!-- ko foreach: buttonCells -->
+								<td>
+									<button class="cell-button"
+											data-bind="style: { width: width + 'px', height: height + 'px', 'background-color': backColor() }, click: cellButtonClick">
+										<!-- ko text: text --><!--/ko-->
+									</button>
+								</td>
+								<!-- /ko -->
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+<script src="scripts/GoL/game-of-life-app.js"></script>

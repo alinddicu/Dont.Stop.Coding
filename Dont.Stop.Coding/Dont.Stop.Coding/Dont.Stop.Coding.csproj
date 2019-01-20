@@ -23,11 +23,38 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="src\images\favicon-sorting.ico" />
+    <Content Include="src\images\favicon-game-of-life.ico" />
+    <Content Include="src\index-game-of-life.html" />
+    <Content Include="src\lib\knockout-latest.js" />
+    <Content Include="src\lib\linq.min.js" />
+    <Content Include="src\scripts\GoL\Drawing\Board.js" />
+    <Content Include="src\scripts\GoL\Drawing\BoardLine.js" />
+    <Content Include="src\scripts\GoL\Drawing\CellButton.js" />
+    <Content Include="src\scripts\GoL\Drawing\IGoLOptions.js" />
+    <Content Include="src\scripts\GoL\Drawing\ParamsForm.js" />
+    <Content Include="src\scripts\GoL\game-of-life-app.js" />
+    <Content Include="src\scripts\GoL\game-of-life-tests.js" />
+    <Content Include="src\scripts\GoL\Logic\Cell.js" />
+    <Content Include="src\scripts\GoL\Logic\CellState.js" />
+    <Content Include="src\scripts\GoL\Logic\Cycle.js" />
+    <Content Include="src\scripts\GoL\Logic\RectangularInfinite2DGrid.js" />
+    <Content Include="src\styles\game-of-life.css" />
     <Content Include="src\styles\sorting.css" />
     <Content Include="gulpfile.js" />
     <Content Include="src\index-sorting.html" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="src\scripts\GoL\Drawing\Board.ts" />
+    <TypeScriptCompile Include="src\scripts\GoL\Drawing\BoardLine.ts" />
+    <TypeScriptCompile Include="src\scripts\GoL\Drawing\CellButton.ts" />
+    <TypeScriptCompile Include="src\scripts\GoL\Drawing\IGoLOptions.ts" />
+    <TypeScriptCompile Include="src\scripts\GoL\Drawing\ParamsForm.ts" />
+    <TypeScriptCompile Include="src\scripts\GoL\game-of-life-app.ts" />
+    <TypeScriptCompile Include="src\scripts\GoL\game-of-life-tests.ts" />
+    <TypeScriptCompile Include="src\scripts\GoL\Logic\Cell.ts" />
+    <TypeScriptCompile Include="src\scripts\GoL\Logic\CellState.ts" />
+    <TypeScriptCompile Include="src\scripts\GoL\Logic\Cycle.ts" />
+    <TypeScriptCompile Include="src\scripts\GoL\Logic\RectangularInfinite2DGrid.ts" />
     <TypeScriptCompile Include="src\scripts\Sorting\Algorithms\BubbleSort.ts" />
     <TypeScriptCompile Include="src\scripts\Sorting\Algorithms\HeapSort.ts" />
     <TypeScriptCompile Include="src\scripts\Sorting\Algorithms\InsertionSort.ts" />
@@ -41,6 +68,8 @@
     <TypeScriptCompile Include="src\scripts\Sorting\Drawing\SingleCanvasDrawer.ts" />
     <TypeScriptCompile Include="src\scripts\Sorting\Tools\RandomArrayGenerator.ts" />
     <TypeScriptCompile Include="src\scripts\Sorting\Tools\RankingSystem.ts" />
+    <TypeScriptCompile Include="typings\knockout.d.ts" />
+    <TypeScriptCompile Include="typings\linq.d.ts" />
     <TypeScriptCompile Include="webpack.config.ts" />
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +83,19 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="src\scripts\Sorting\Tools\OrdinalHelper.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\scripts\GoL\Drawing\Board.js.map" />
+    <Content Include="src\scripts\GoL\Drawing\BoardLine.js.map" />
+    <Content Include="src\scripts\GoL\Drawing\CellButton.js.map" />
+    <Content Include="src\scripts\GoL\Drawing\IGoLOptions.js.map" />
+    <Content Include="src\scripts\GoL\Drawing\ParamsForm.js.map" />
+    <Content Include="src\scripts\GoL\game-of-life-app.js.map" />
+    <Content Include="src\scripts\GoL\game-of-life-tests.js.map" />
+    <Content Include="src\scripts\GoL\Logic\Cell.js.map" />
+    <Content Include="src\scripts\GoL\Logic\CellState.js.map" />
+    <Content Include="src\scripts\GoL\Logic\Cycle.js.map" />
+    <Content Include="src\scripts\GoL\Logic\RectangularInfinite2DGrid.js.map" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
