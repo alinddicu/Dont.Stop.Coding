@@ -22,10 +22,10 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\images\favicon.ico" />
+    <Content Include="src\images\favicon-sorting.ico" />
     <Content Include="src\styles\sorting.css" />
     <Content Include="gulpfile.js" />
-    <Content Include="src\index.html" />
+    <Content Include="src\index-sorting.html" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="src\scripts\Sorting\Algorithms\BubbleSort.ts" />
