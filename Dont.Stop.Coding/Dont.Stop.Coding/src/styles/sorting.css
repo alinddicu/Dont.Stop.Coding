@@ -1,0 +1,98 @@
+﻿body {
+	background-color: #8ee4ae;
+}
+
+h2#sorting-param-title {
+	padding: 0 0 0 5px;
+	margin: 0;
+}
+
+.canvas-container {
+	border-style: solid;
+	border-width: 1px;
+	border-color: #05386b;
+	border-radius: 5px;
+	padding: 3px 3px 0 3px;
+	display: inline-block;
+	margin: 1px;
+}
+
+input[type=number], input[type=text], button[id=sortButton] {
+	width: 75px;
+	margin: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	border: 1px dotted;
+	border-color: #05386b;
+	border-radius: 5px;
+	-webkit-appearance: none;
+	text-align: center;
+}
+
+input[type=number], input[type=text] {
+	color: #05386b;
+}
+
+button[id=sortButton] {
+	color: #edf5e1;
+	background-color: #379683;
+}
+
+div#params {
+	display: none;
+	z-index: 1;
+	opacity: 1;
+	background-color: #8ee4ae;
+	padding: 5px 15px 10px 20px;
+	position: absolute;
+	color: #05386b;
+	border-color: #05386b;
+	border: 1px solid;
+	border-radius: 5px;
+	margin: 0;
+	left: 8px;
+	top: 9px;
+}
+
+div#showHideParams-container {
+	display: inline-block;
+	z-index: 2;
+	opacity: 1;
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	left: 6px;
+	top: 8px;
+}
+
+label {
+	font-weight: bold;
+	float: left;
+	display: block;
+	width: 130px;
+}
+
+.form-line, div#copyright a {
+	padding: 5px;
+}
+
+div#canvas-container {
+	text-align: center;
+	position: relative;
+}
+
+div.sort-button {
+	text-align: right;
+}
+
+div#copyright {
+	text-align: right;
+	padding: 0 10px 5px 0;
+}
+
+div#copyright a, div#copyright a:visited, div#copyright a:hover, div#copyright a:active {
+	text-decoration: none;
+	color: #05386b;
+	font-weight: bold;
+}

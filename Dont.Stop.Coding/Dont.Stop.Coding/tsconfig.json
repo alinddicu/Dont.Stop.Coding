@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"noImplicitAny": true,
+		"noEmitOnError": true,
+		"inlineSourceMap": true,
+		"inlineSources": true,
+		"target": "es6",
+		"types": [],
+		"typeRoots": []
+	},
+	"include": [
+		"./src/scripts/**/*.ts"
+	],
+	"compileOnSave": true
+}
