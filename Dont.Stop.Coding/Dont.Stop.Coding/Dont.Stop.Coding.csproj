@@ -28,17 +28,6 @@
     <Content Include="src\index.html" />
     <Content Include="src\lib\knockout-latest.js" />
     <Content Include="src\lib\linq.min.js" />
-    <Content Include="src\scripts\GoL\Drawing\Board.js" />
-    <Content Include="src\scripts\GoL\Drawing\BoardLine.js" />
-    <Content Include="src\scripts\GoL\Drawing\CellButton.js" />
-    <Content Include="src\scripts\GoL\Drawing\IGoLOptions.js" />
-    <Content Include="src\scripts\GoL\Drawing\ParamsForm.js" />
-    <Content Include="src\scripts\GoL\game-of-life-app.js" />
-    <Content Include="src\scripts\GoL\game-of-life-tests.js" />
-    <Content Include="src\scripts\GoL\Logic\Cell.js" />
-    <Content Include="src\scripts\GoL\Logic\CellState.js" />
-    <Content Include="src\scripts\GoL\Logic\Cycle.js" />
-    <Content Include="src\scripts\GoL\Logic\RectangularInfinite2DGrid.js" />
     <Content Include="src\styles\game-of-life.css" />
     <Content Include="src\styles\sorting.css" />
     <Content Include="gulpfile.js" />
@@ -84,19 +73,6 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="src\scripts\Sorting\Tools\OrdinalHelper.ts" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="src\scripts\GoL\Drawing\Board.js.map" />
-    <Content Include="src\scripts\GoL\Drawing\BoardLine.js.map" />
-    <Content Include="src\scripts\GoL\Drawing\CellButton.js.map" />
-    <Content Include="src\scripts\GoL\Drawing\IGoLOptions.js.map" />
-    <Content Include="src\scripts\GoL\Drawing\ParamsForm.js.map" />
-    <Content Include="src\scripts\GoL\game-of-life-app.js.map" />
-    <Content Include="src\scripts\GoL\game-of-life-tests.js.map" />
-    <Content Include="src\scripts\GoL\Logic\Cell.js.map" />
-    <Content Include="src\scripts\GoL\Logic\CellState.js.map" />
-    <Content Include="src\scripts\GoL\Logic\Cycle.js.map" />
-    <Content Include="src\scripts\GoL\Logic\RectangularInfinite2DGrid.js.map" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
