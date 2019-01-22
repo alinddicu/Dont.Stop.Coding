@@ -53,58 +53,8 @@
 </head>
 <!-- <body onload="sort();"> -->
 <body>
-	<script type="text/html" id="sorting">
-		<div id="params">
-			<h2 id="sorting-param-title">Sorting parameters</h2>
-			<div class="form-line">
-				<label for="arraySize">Array size</label>
-				<input id="arraySize" type="number" placeholder="array size" value="32" min="10" max="800" onkeypress="onSubmitKeyPress();" />
-			</div>
-			<div class="form-line">
-				<label for="startValue">Start value</label>
-				<input id="startValue" type="number" placeholder="start value" value="1" min="1" max="1000" onkeypress="onSubmitKeyPress();" />
-			</div>
-			<div class="form-line">
-				<label for="step">X drawing step</label>
-				<input id="step" type="number" placeholder="step" value="10" min="1" max="20" onkeypress="onSubmitKeyPress();" />
-			</div>
-			<div class="form-line">
-				<label for="delay">Delay (ms)</label>
-				<input id="delay" type="number" placeholder="delay" value="50" min="0" max="10000" onkeypress="onSubmitKeyPress();" />
-			</div>
-			<div class="form-line">
-				<label for="penColor">Pen color</label>
-				<input id="penColor" type="text" placeholder="pen color" value="#edf5e1" onkeypress="onSubmitKeyPress();" />
-			</div>
-			<div class="form-line">
-				<label for="backgroundColor">Background color</label>
-				<input id="backgroundColor" type="text" placeholder="background color" value="#379683" onkeypress="onSubmitKeyPress();" />
-			</div>
-			<div class="form-line">
-				<label for="fontSize">Font size</label>
-				<input id="fontSize" type="number" placeholder="font size" value="16" min="5" max="40" onkeypress="onSubmitKeyPress();" />
-			</div>
-			<div class="form-line sort-button">
-				<button id="sortButton" onclick="sort();">Sort</button>
-			</div>
-		</div>
-		<div id="showHideParams-container">
-			<input id="showHideParams" alt="Show/Hide Parameters" title="Show/Hide Parameters" type="checkbox" onclick="showHideParams();">
-		</div>
-		<div id="canvas-container">
-			<div id="bubblesort" class="canvas-container"></div>
-			<div id="insertionsort" class="canvas-container"></div>
-			<div id="heapsort" class="canvas-container"></div>
-			<div id="mergesort" class="canvas-container"></div>
-			<div id="quicksort" class="canvas-container"></div>
-			<div id="selectionsort" class="canvas-container"></div>
-		</div>
-		<div id="copyright">
-			<a href="https://github.com/alinddicu" target="_blank" title="Contact me for projects">© Alin Dicu</a>
-		</div>
-	</script>
-	<script type="text/html" id="game-of-life">
 
+	<script type="text/html" id="game-of-life">
 		<div id="main-over-container">
 			<div id="main-container">
 				<div id="controls-over-container">
@@ -193,7 +143,7 @@
 							<input id="isShowCellsCoordinates" type="checkbox" />
 						</div>
 						<div class="form-line init-button-container">
-							<button id="init-button" onclick="init();"><i class="material-icons custom-color">done_outline</i></button>
+							<button id="init-button" onclick="reinitBoard();"><i class="material-icons custom-color">done_outline</i></button>
 						</div>
 					</div>
 					<!--/ko-->
@@ -219,17 +169,77 @@
 			</div>
 		</div>
 	</script>
+
+	<script type="text/html" id="sorting">
+		<div id="params">
+			<h2 id="sorting-param-title">Sorting parameters</h2>
+			<div class="form-line">
+				<label for="arraySize">Array size</label>
+				<input id="arraySize" type="number" placeholder="array size" value="32" min="10" max="800" onkeypress="onSubmitKeyPress();" />
+			</div>
+			<div class="form-line">
+				<label for="startValue">Start value</label>
+				<input id="startValue" type="number" placeholder="start value" value="1" min="1" max="1000" onkeypress="onSubmitKeyPress();" />
+			</div>
+			<div class="form-line">
+				<label for="step">X drawing step</label>
+				<input id="step" type="number" placeholder="step" value="10" min="1" max="20" onkeypress="onSubmitKeyPress();" />
+			</div>
+			<div class="form-line">
+				<label for="delay">Delay (ms)</label>
+				<input id="delay" type="number" placeholder="delay" value="50" min="0" max="10000" onkeypress="onSubmitKeyPress();" />
+			</div>
+			<div class="form-line">
+				<label for="penColor">Pen color</label>
+				<input id="penColor" type="text" placeholder="pen color" value="#edf5e1" onkeypress="onSubmitKeyPress();" />
+			</div>
+			<div class="form-line">
+				<label for="backgroundColor">Background color</label>
+				<input id="backgroundColor" type="text" placeholder="background color" value="#379683" onkeypress="onSubmitKeyPress();" />
+			</div>
+			<div class="form-line">
+				<label for="fontSize">Font size</label>
+				<input id="fontSize" type="number" placeholder="font size" value="16" min="5" max="40" onkeypress="onSubmitKeyPress();" />
+			</div>
+			<div class="form-line sort-button">
+				<button id="sortButton" onclick="sort();">Sort</button>
+			</div>
+		</div>
+		<div id="showHideParams-container">
+			<input id="showHideParams" alt="Show/Hide Parameters" title="Show/Hide Parameters" type="checkbox" onclick="showHideParams();">
+		</div>
+		<div id="canvas-container">
+			<div id="bubblesort" class="canvas-container"></div>
+			<div id="insertionsort" class="canvas-container"></div>
+			<div id="heapsort" class="canvas-container"></div>
+			<div id="mergesort" class="canvas-container"></div>
+			<div id="quicksort" class="canvas-container"></div>
+			<div id="selectionsort" class="canvas-container"></div>
+		</div>
+	</script>
+
+	<div id="content-container" data-bind="template: { name: templateName, data: templateData }">
+	</div>
+
+	<button onclick="viewModel.templateName('game-of-life'); initBoard();">game-of-life</button>
+	<button onclick="viewModel.templateName('sorting'); sort();">sorting</button>
+
+	<div id="copyright">
+		<a href="https://github.com/alinddicu" target="_blank" title="Contact me for projects">© Alin Dicu</a>
+	</div>
 </body>
+
 </html>
 <script>
+	/************************************** sorting **************************************/
+
 	function showHideParams() {
 		var div = document.getElementById("params");
 		var showParams = document.getElementById("showHideParams").checked;
 		if (showParams)
 		{
 			div.style.display = 'inline-block';
-		}
-		else
+		} else
 		{
 			div.style.display = 'none';
 		}
@@ -241,4 +251,74 @@
 			document.getElementById("sortButton").click();
 		}
 	}
+
+	/************************************** game-of-life **************************************/
+
+	var params = null;
+	var board = null;
+	var viewModel = {
+		templateName: ko.observable("sorting"),
+		templateData: {
+			board: ko.observable(board),
+			isParamsVisible: ko.observable(false),
+			isExportVisible: ko.observable(false),
+			isImportVisible: ko.observable(false)
+		}
+	};
+	ko.applyBindings(viewModel);
+
+	function initBoard() {
+		params = new GoL.Drawing.ParamsForm();
+		board = params.init();
+		viewModel.templateData = {
+			board: ko.observable(board),
+			isParamsVisible: ko.observable(false),
+			isExportVisible: ko.observable(false),
+			isImportVisible: ko.observable(false)
+		}
+	}
+
+	function reinitBoard() {
+		board = params.init();
+		board.initCellButtonsInSquare(params.options);
+		viewModel.templateData.board(board);
+		viewModel.templateData.board(board);
+		viewModel.templateData.isParamsVisible(false);
+	}
+
+	function showParams() {
+		var currentValue = viewModel.templateData.isParamsVisible();
+		viewModel.templateData.isParamsVisible(!currentValue);
+		viewModel.templateData.board().isEnabled(currentValue);
+	}
+
+	function exportAliveCells() {
+		var currentValue = viewModel.templateData.isExportVisible();
+		viewModel.templateData.board().isEnabled(currentValue);
+		viewModel.templateData.isExportVisible(!currentValue);
+		var textArea = document.getElementById("exportTextArea");
+		if (textArea)
+		{
+			textArea.value = board.export();
+		}
+	}
+
+	function showImportAliveCells() {
+		var currentValue = viewModel.templateData.isImportVisible();
+		viewModel.templateData.isImportVisible(!currentValue);
+		viewModel.templateData.board().isEnabled(currentValue);
+	}
+
+	function importAliveCells() {
+		var textArea = document.getElementById("importTextArea");
+		if (textArea && textArea.value)
+		{
+			board.import(textArea.value);
+		}
+
+		viewModel.templateData.isImportVisible(false);
+		viewModel.templateData.board().isEnabled(true);
+	}
+
+	sort();
 </script>
