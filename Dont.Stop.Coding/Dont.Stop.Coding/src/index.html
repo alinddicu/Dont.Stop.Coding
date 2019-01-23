@@ -82,7 +82,7 @@
 						<button class="control-button" onclick="board.skipToPrevious();" title="Skip to previous" data-bind="enable: !board().isPlaying()">
 							<i class="material-icons custom-color">skip_previous</i>
 						</button>
-						<button class="control-button" onclick="board.play();" title="Play">
+						<button class="control-button" data-bind="click: function() { board().play(); }" title="Play">
 							<!-- ko if: !board().isPlaying() || board().isPausing() --><i class="material-icons custom-color">play_circle_filled</i><!--/ko-->
 							<!-- ko if: board().isPlaying() && !board().isPausing() --><i class="material-icons custom-color">play_circle_outline</i><!--/ko-->
 						</button>
