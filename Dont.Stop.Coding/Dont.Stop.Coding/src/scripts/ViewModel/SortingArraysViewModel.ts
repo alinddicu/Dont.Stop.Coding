@@ -21,7 +21,7 @@
 			}
 		}
 
-		public onSubmitKeyPress(caller: SortingArraysViewModel, event: KeyboardEvent): void {
+		public onParamChanged(caller: SortingArraysViewModel, event: KeyboardEvent): void {
 			if (event.keyCode === 13) {
 				this.sort();
 			}
