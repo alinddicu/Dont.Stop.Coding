@@ -8,7 +8,7 @@
 			this.workflow = workflow;
 		}
 
-		public render(context: any): void {
+		public render(): void {
 			this.sort();
 		}
 

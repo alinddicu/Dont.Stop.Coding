@@ -33,7 +33,7 @@
 					value = inputField.valueAsDate;
 				}
 			} catch (e) {
-				console.error(`Problem parsing '${elementId}'`);
+				console.warn(`Problem parsing '${elementId}'`);
 			}
 
 			return value ? value : defaultValue;

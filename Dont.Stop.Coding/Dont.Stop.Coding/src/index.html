@@ -232,7 +232,7 @@
 	</script>
 
 	<div data-bind="with: currentViewModel">
-		<div id="content-container" data-bind="template: { name: pageName, afterRender: function () { render($parent); }}">
+		<div id="content-container" data-bind="template: { name: pageName, afterRender: function () { render(); }}">
 		</div>
 	</div>
 
