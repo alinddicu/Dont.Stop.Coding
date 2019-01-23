@@ -216,11 +216,11 @@
 				<input id="fontSize" type="number" placeholder="font size" value="16" min="5" max="40" onkeypress="onSubmitKeyPress();" />
 			</div>
 			<div class="form-line sort-button">
-				<button id="sortButton" onclick="sort();">Sort</button>
+				<button id="sortButton" data-bind="click: function() { sort($parent); }">Sort</button>
 			</div>
 		</div>
 		<div id="showHideParams-container">
-			<input id="showHideParams" alt="Show/Hide Parameters" title="Show/Hide Parameters" type="checkbox" onclick="showHideParams();">
+			<input id="showHideParams" alt="Show/Hide Parameters" title="Show/Hide Parameters" type="checkbox" data-bind="click: showHideParams">
 		</div>
 		<div id="canvas-container">
 			<div id="bubblesort" class="canvas-container"></div>
