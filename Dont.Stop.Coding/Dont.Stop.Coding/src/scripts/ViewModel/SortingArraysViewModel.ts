@@ -9,8 +9,8 @@
 
 		public render(context: any): void {
 			this.sort();
-		}	
-		
+		}
+
 		public showHideParams(): void {
 			var div = document.getElementById("params");
 			var showParams = (document.getElementById("showHideParams") as HTMLFormElement).checked;
@@ -18,6 +18,12 @@
 				div.style.display = "inline-block";
 			} else {
 				div.style.display = "none";
+			}
+		}
+
+		public onSubmitKeyPress(caller: SortingArraysViewModel, event: KeyboardEvent): void {
+			if (event.keyCode === 13) {
+				this.sort();
 			}
 		}
 

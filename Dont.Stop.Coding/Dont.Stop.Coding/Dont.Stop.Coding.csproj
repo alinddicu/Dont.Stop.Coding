@@ -55,7 +55,6 @@
     <TypeScriptCompile Include="src\scripts\Sorting\Algorithms\QuickSort.ts" />
     <TypeScriptCompile Include="src\scripts\Sorting\Algorithms\SelectionSort.ts" />
     <TypeScriptCompile Include="src\scripts\Sorting\Algorithms\SortBase.ts" />
-    <TypeScriptCompile Include="src\scripts\Sorting\sorting-app.ts" />
     <TypeScriptCompile Include="src\scripts\Sorting\Drawing\IDrawingParams.ts" />
     <TypeScriptCompile Include="src\scripts\Sorting\Drawing\MultiCanvasDrawer.ts" />
     <TypeScriptCompile Include="src\scripts\Sorting\Drawing\SingleCanvasDrawer.ts" />
