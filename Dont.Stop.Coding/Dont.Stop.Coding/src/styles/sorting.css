@@ -40,7 +40,6 @@ button[id=sortButton] {
 }
 
 div#params {
-	display: none;
 	z-index: 1;
 	opacity: 1;
 	background-color: #8ee4ae;

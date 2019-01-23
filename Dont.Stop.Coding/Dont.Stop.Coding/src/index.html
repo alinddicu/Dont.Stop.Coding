@@ -184,7 +184,7 @@
 	</script>
 
 	<script type="text/html" id="sorting-arrays">
-		<div id="params">
+		<div id="params" data-bind="visible: paramsOpen()">
 			<h2 id="sorting-param-title">Sorting parameters</h2>
 			<div class="form-line">
 				<label for="arraySize">Array size</label>
@@ -219,7 +219,7 @@
 			</div>
 		</div>
 		<div id="showHideParams-container">
-			<input id="showHideParams" alt="Show/Hide Parameters" title="Show/Hide Parameters" type="checkbox" data-bind="click: showHideParams">
+			<input id="showHideParams" alt="Show/Hide Parameters" title="Show/Hide Parameters" type="checkbox" data-bind="checked: paramsOpen">
 		</div>
 		<div id="canvas-container">
 			<div id="bubblesort" class="canvas-container"></div>

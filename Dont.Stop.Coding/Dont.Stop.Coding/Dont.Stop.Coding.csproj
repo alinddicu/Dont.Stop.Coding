@@ -34,7 +34,6 @@
     <Content Include="src\styles\game-of-life.css" />
     <Content Include="src\styles\sorting.css" />
     <Content Include="gulpfile.js" />
-    <Content Include="src\index-sorting.html" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="src\scripts\GoL\Drawing\Board.ts" />
