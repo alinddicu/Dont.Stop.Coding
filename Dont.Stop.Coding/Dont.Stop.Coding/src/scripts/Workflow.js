@@ -1,4 +1,6 @@
-﻿/// <reference path="../../typings/knockout.d.ts"/>
+﻿/* global ViewModel:false */
+
+/// <reference path="../../typings/knockout.d.ts"/>
 /// <reference path="../../typings/sammy.d.ts"/>
 
 function Workflow() {
