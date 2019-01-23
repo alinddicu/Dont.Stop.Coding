@@ -17,10 +17,10 @@
 		}
 
 		private valueOrDefault<T>(elementId: string, defaultValue: any): T {
-			const inputField = document.getElementById(elementId) as HTMLFormElement;
 
 			let value;
 			try {
+				const inputField = document.getElementById(elementId) as HTMLFormElement;
 				if (typeof defaultValue === "number") {
 					value = inputField.valueAsNumber;
 				}

@@ -21,7 +21,7 @@
 	<script src="scripts/Sorting/Tools/RandomArrayGenerator.js"></script>
 	<script src="scripts/Sorting/Tools/RankingSystem.js"></script>
 	<script src="scripts/Sorting/Tools/OrdinalHelper.js"></script>
-	<script src="scripts/Sorting/sorting-app.js"></script>
+	<!--<script src="scripts/Sorting/sorting-app.js"></script>-->
 
 	<link rel="stylesheet" href="styles/sorting.css" />
 	<link rel="icon" type="image/png" href="images/favicon-sorting.ico" />
@@ -30,6 +30,8 @@
 
 	<script src="lib/linq.min.js"></script>
 	<script src="lib/knockout-latest.js"></script>
+	<script src="lib/jquery.min.js"></script>
+	<script src="lib/sammy-latest.min.js"></script>
 
 	<script src="scripts/GoL/Logic/CellState.js"></script>
 	<script src="scripts/GoL/Logic/Cell.js"></script>
@@ -44,6 +46,13 @@
 
 	<script src="scripts/GoL/game-of-life-tests.js"></script>
 	<!--<script src="scripts/GoL/game-of-life-app.js"></script>-->
+
+	<script src="scripts/ViewModel/GameOfLifeViewModel.js"></script>
+	<script src="scripts/ViewModel/SortingArraysViewModel.js"></script>
+	<script src="scripts/ViewModel/IViewModel.js"></script>
+	<script src="scripts/ViewModel/IViewModel.js"></script>
+
+	<script src="scripts/Workflow.js"></script>
 
 	<link rel="stylesheet" href="styles/game-of-life.css" type="text/css" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -170,7 +179,7 @@
 		</div>
 	</script>
 
-	<script type="text/html" id="sorting">
+	<script type="text/html" id="sorting-arrays">
 		<div id="params">
 			<h2 id="sorting-param-title">Sorting parameters</h2>
 			<div class="form-line">
@@ -218,11 +227,13 @@
 		</div>
 	</script>
 
-	<div id="content-container" data-bind="template: { name: templateName, data: templateData }">
+	<div data-bind="with: currentViewModel">
+		<div id="content-container" data-bind="template: { name: pageName, afterRender: function () { render($parent); }}">
+		</div>
 	</div>
 
-	<button onclick="viewModel.templateName('game-of-life'); initBoard();">game-of-life</button>
-	<button onclick="viewModel.templateName('sorting'); sort();">sorting</button>
+	<a href="#" onclick="gotoGameOfLife();">game-of-life</a>
+	<a href="#" onclick="gotoSortingArrays();">sorting</a>
 
 	<div id="copyright">
 		<a href="https://github.com/alinddicu" target="_blank" title="Contact me for projects">© Alin Dicu</a>
@@ -230,95 +241,4 @@
 </body>
 
 </html>
-<script>
-	/************************************** sorting **************************************/
-
-	function showHideParams() {
-		var div = document.getElementById("params");
-		var showParams = document.getElementById("showHideParams").checked;
-		if (showParams)
-		{
-			div.style.display = 'inline-block';
-		} else
-		{
-			div.style.display = 'none';
-		}
-	}
-
-	function onSubmitKeyPress() {
-		if (event.keyCode === 13)
-		{
-			document.getElementById("sortButton").click();
-		}
-	}
-
-	/************************************** game-of-life **************************************/
-
-	var params = null;
-	var board = null;
-	var viewModel = {
-		templateName: ko.observable("sorting"),
-		templateData: {
-			board: ko.observable(board),
-			isParamsVisible: ko.observable(false),
-			isExportVisible: ko.observable(false),
-			isImportVisible: ko.observable(false)
-		}
-	};
-	ko.applyBindings(viewModel);
-
-	function initBoard() {
-		params = new GoL.Drawing.ParamsForm();
-		board = params.init();
-		viewModel.templateData = {
-			board: ko.observable(board),
-			isParamsVisible: ko.observable(false),
-			isExportVisible: ko.observable(false),
-			isImportVisible: ko.observable(false)
-		}
-	}
-
-	function reinitBoard() {
-		board = params.init();
-		board.initCellButtonsInSquare(params.options);
-		viewModel.templateData.board(board);
-		viewModel.templateData.board(board);
-		viewModel.templateData.isParamsVisible(false);
-	}
-
-	function showParams() {
-		var currentValue = viewModel.templateData.isParamsVisible();
-		viewModel.templateData.isParamsVisible(!currentValue);
-		viewModel.templateData.board().isEnabled(currentValue);
-	}
-
-	function exportAliveCells() {
-		var currentValue = viewModel.templateData.isExportVisible();
-		viewModel.templateData.board().isEnabled(currentValue);
-		viewModel.templateData.isExportVisible(!currentValue);
-		var textArea = document.getElementById("exportTextArea");
-		if (textArea)
-		{
-			textArea.value = board.export();
-		}
-	}
-
-	function showImportAliveCells() {
-		var currentValue = viewModel.templateData.isImportVisible();
-		viewModel.templateData.isImportVisible(!currentValue);
-		viewModel.templateData.board().isEnabled(currentValue);
-	}
-
-	function importAliveCells() {
-		var textArea = document.getElementById("importTextArea");
-		if (textArea && textArea.value)
-		{
-			board.import(textArea.value);
-		}
-
-		viewModel.templateData.isImportVisible(false);
-		viewModel.templateData.board().isEnabled(true);
-	}
-
-	sort();
-</script>
+<script src="scripts/Main.js"></script>
