@@ -5,8 +5,13 @@ function Workflow() {
 	var self = this;
 	self.currentViewModel= ko.observable();
 
-	self.gotoGameOfLife = function () { location.hash = "/game-of-life"; };
-    self.gotoSortingArrays = function () { location.hash = "/sorting-arrays"; };
+	self.gotoGameOfLife = function() {
+		 location.hash = "/game-of-life";
+	};
+
+	self.gotoSortingArrays = function() {
+		location.hash = "/sorting-arrays";
+	};
 	
 	var changePage = function(viewModel) {
 		self.currentViewModel(viewModel);

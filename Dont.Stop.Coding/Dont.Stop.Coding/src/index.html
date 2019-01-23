@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8" />
+	<meta charset="utf-8"/>
 	<meta name="description" content="Sorting algorithms simulation">
 	<meta name="keywords" content="sorting, algoritms">
 	<meta name="author" content="Alin Dicu">
@@ -23,8 +23,8 @@
 	<script src="scripts/Sorting/Tools/OrdinalHelper.js"></script>
 	<!--<script src="scripts/Sorting/sorting-app.js"></script>-->
 
-	<link rel="stylesheet" href="styles/sorting.css" />
-	<link rel="icon" type="image/png" href="images/favicon-sorting.ico" />
+	<link rel="stylesheet" href="styles/sorting.css"/>
+	<link rel="icon" type="image/png" href="images/favicon-sorting.ico"/>
 
 	<title>Game of life</title>
 
@@ -54,14 +54,19 @@
 
 	<script src="scripts/Workflow.js"></script>
 
-	<link rel="stylesheet" href="styles/game-of-life.css" type="text/css" />
+	<link rel="stylesheet" href="styles/game-of-life.css" type="text/css"/>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-	<link rel="icon" type="image/png" href="images/favicon-game-of-life.ico" />
+	<link rel="icon" type="image/png" href="images/favicon-game-of-life.ico"/>
 
 </head>
-<!-- <body onload="sort();"> -->
+
 <body>
+
+	<div style="margin-left: 100px;">
+		<a href="#" onclick="workflowViewModel.gotoGameOfLife();">game-of-life</a>
+		<a href="#" onclick="workflowViewModel.gotoSortingArrays();">sorting</a>
+	</div>
 
 	<script type="text/html" id="game-of-life">
 		<div id="main-over-container">
@@ -232,13 +237,13 @@
 		</div>
 	</div>
 
-	<a href="#" onclick="gotoGameOfLife();">game-of-life</a>
-	<a href="#" onclick="gotoSortingArrays();">sorting</a>
-
 	<div id="copyright">
 		<a href="https://github.com/alinddicu" target="_blank" title="Contact me for projects">© Alin Dicu</a>
 	</div>
 </body>
 
 </html>
-<script src="scripts/Main.js"></script>
+<script type="text/javascript">
+	var workflowViewModel = new Workflow();
+	ko.applyBindings(workflowViewModel);
+</script>
