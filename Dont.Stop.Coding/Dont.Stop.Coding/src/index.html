@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8"/>
+	<meta charset="utf-8" />
 	<meta name="description" content="Sorting algorithms simulation">
 	<meta name="keywords" content="sorting, algoritms">
 	<meta name="author" content="Alin Dicu">
@@ -22,8 +22,8 @@
 	<script src="scripts/Sorting/Tools/RankingSystem.js"></script>
 	<script src="scripts/Sorting/Tools/OrdinalHelper.js"></script>
 
-	<link rel="stylesheet" href="styles/sorting.css"/>
-	<link rel="icon" type="image/png" href="images/favicon-sorting.ico"/>
+	<link rel="stylesheet" href="styles/sorting.css" />
+	<link rel="icon" type="image/png" href="images/favicon-sorting.ico" />
 
 	<title>Game of life</title>
 
@@ -53,10 +53,10 @@
 
 	<script src="scripts/Workflow.js"></script>
 
-	<link rel="stylesheet" href="styles/game-of-life.css" type="text/css"/>
+	<link rel="stylesheet" href="styles/game-of-life.css" type="text/css" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-	<link rel="icon" type="image/png" href="images/favicon-game-of-life.ico"/>
+	<link rel="icon" type="image/png" href="images/favicon-game-of-life.ico" />
 
 </head>
 
@@ -83,12 +83,12 @@
 							<i class="material-icons custom-color">skip_previous</i>
 						</button>
 						<button class="control-button" data-bind="click: function() { board().play(); }" title="Play">
-							<!-- ko if: !board().isPlaying() || board().isPausing() --><i class="material-icons custom-color">play_circle_filled</i><!--/ko-->
-							<!-- ko if: board().isPlaying() && !board().isPausing() --><i class="material-icons custom-color">play_circle_outline</i><!--/ko-->
+							<i class="material-icons custom-color" data-bind="visible: isVisibleCanPlay">play_circle_filled</i>
+							<i class="material-icons custom-color" data-bind="visible: isVisibleIsPlaying">play_circle_outline</i>
 						</button>
 						<button class="control-button" data-bind="click: function() { board().pause(); }" title="Pause">
-							<!-- ko if: !board().isPausing() || board().isPlaying() --><i class="material-icons custom-color">pause_circle_filled</i><!--/ko-->
-							<!-- ko if: board().isPausing() && !board().isPlaying() --><i class="material-icons custom-color">pause_circle_outline</i><!--/ko-->
+							<i class="material-icons custom-color" data-bind="visible: isVisibleCanPause">pause_circle_filled</i>
+							<i class="material-icons custom-color" data-bind="visible: isVisibleIsPausing">pause_circle_outline</i>
 						</button>
 						<button class="control-button" data-bind="click: function() { board().skipToNext(); }, enable: !board().isPlaying()" title="Skip to next">
 							<i class="material-icons custom-color">skip_next</i>
@@ -114,13 +114,13 @@
 					</div>
 					<div id="import-container" data-bind="visible: isImportVisible()">
 						<div class="form-line">
-							<textarea id="importTextArea" data-bind="textInput: importedCellsContent, hasFocus: isImportVisible()"  rows="5" cols="25"></textarea>
+							<textarea id="importTextArea" data-bind="textInput: importedCellsContent, hasFocus: isImportVisible()" rows="5" cols="25"></textarea>
 						</div>
 						<div class="form-line import-button-container">
 							<button id="import-button" data-bind="click: function() { importAliveCells(); }"><i class="material-icons custom-color">done_outline</i></button>
 						</div>
 					</div>
-					<div id="params-container"data-bind="visible: isParamsVisible()">
+					<div id="params-container" data-bind="visible: isParamsVisible()">
 						<h2 id="gol-params-title">Game of life parameters</h2>
 						<div class="form-line">
 							<label for="cellsPerRow">Cells per row</label>

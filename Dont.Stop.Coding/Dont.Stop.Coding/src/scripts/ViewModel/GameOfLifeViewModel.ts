@@ -12,6 +12,11 @@ namespace ViewModel {
 		public isImportVisible: KnockoutObservable<boolean> = ko.observable(false);
 		public importedCellsContent: KnockoutObservable<string> = ko.observable("");
 
+		public isVisibleCanPlay: KnockoutComputed<boolean> = ko.pureComputed(() => { return !this.board().isPlaying() || this.board().isPausing(); }, this);
+		public isVisibleIsPlaying: KnockoutComputed<boolean> = ko.pureComputed(() => { return this.board().isPlaying() && !this.board().isPausing(); });
+		public isVisibleCanPause: KnockoutComputed<boolean> = ko.pureComputed(() => { return !this.board().isPausing() || this.board().isPlaying(); });
+		public isVisibleIsPausing: KnockoutComputed<boolean> = ko.pureComputed(() => { return this.board().isPausing() && !this.board().isPlaying(); });
+
 		constructor(workflow: IWorkflow) {
 			this.workflow = workflow;
 			this.params = new GoL.Drawing.ParamsForm();
