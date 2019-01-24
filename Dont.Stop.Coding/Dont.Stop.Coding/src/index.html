@@ -109,12 +109,12 @@
 					</div>
 					<div id="export-container" data-bind="visible: isExportVisible()">
 						<div class="form-line">
-							<textarea id="exportTextArea" rows="5" cols="25" disabled></textarea>
+							<textarea id="exportTextArea" data-bind="textInput: exportedCellsContent" rows="5" cols="25" disabled></textarea>
 						</div>
 					</div>
 					<div id="import-container" data-bind="visible: isImportVisible()">
 						<div class="form-line">
-							<textarea id="importTextArea" rows="5" cols="25"></textarea>
+							<textarea id="importTextArea" data-bind="textInput: importedCellsContent"  rows="5" cols="25"></textarea>
 						</div>
 						<div class="form-line import-button-container">
 							<button id="import-button" data-bind="click: function() { importAliveCells(); }"><i class="material-icons custom-color">done_outline</i></button>
