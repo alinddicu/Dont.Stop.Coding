@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8" />
+	<meta charset="utf-8"/>
 	<meta name="description" content="Sorting algorithms simulation">
 	<meta name="keywords" content="sorting, algoritms">
 	<meta name="author" content="Alin Dicu">
@@ -21,15 +21,16 @@
 	<script src="scripts/Sorting/Tools/RandomArrayGenerator.js"></script>
 	<script src="scripts/Sorting/Tools/RankingSystem.js"></script>
 	<script src="scripts/Sorting/Tools/OrdinalHelper.js"></script>
-	<script src="scripts/Sorting/sorting-app.js"></script>
 
-	<link rel="stylesheet" href="styles/sorting.css" />
-	<link rel="icon" type="image/png" href="images/favicon-sorting.ico" />
+	<link rel="stylesheet" href="styles/sorting.css"/>
+	<link rel="icon" type="image/png" href="images/favicon-sorting.ico"/>
 
 	<title>Game of life</title>
 
 	<script src="lib/linq.min.js"></script>
 	<script src="lib/knockout-latest.js"></script>
+	<script src="lib/jquery.min.js"></script>
+	<script src="lib/sammy-latest.min.js"></script>
 
 	<script src="scripts/GoL/Logic/CellState.js"></script>
 	<script src="scripts/GoL/Logic/Cell.js"></script>
@@ -45,14 +46,26 @@
 	<script src="scripts/GoL/game-of-life-tests.js"></script>
 	<!--<script src="scripts/GoL/game-of-life-app.js"></script>-->
 
-	<link rel="stylesheet" href="styles/game-of-life.css" type="text/css" />
+	<script src="scripts/ViewModel/GameOfLifeViewModel.js"></script>
+	<script src="scripts/ViewModel/SortingArraysViewModel.js"></script>
+	<script src="scripts/ViewModel/IViewModel.js"></script>
+	<script src="scripts/ViewModel/IViewModel.js"></script>
+
+	<script src="scripts/Workflow.js"></script>
+
+	<link rel="stylesheet" href="styles/game-of-life.css" type="text/css"/>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-	<link rel="icon" type="image/png" href="images/favicon-game-of-life.ico" />
+	<link rel="icon" type="image/png" href="images/favicon-game-of-life.ico"/>
 
 </head>
-<!-- <body onload="sort();"> -->
+
 <body>
+
+	<div style="margin-left: 100px;">
+		<a href="#" onclick="workflowViewModel.gotoGameOfLife();">game-of-life</a>
+		<a href="#" onclick="workflowViewModel.gotoSortingArrays();">sorting</a>
+	</div>
 
 	<script type="text/html" id="game-of-life">
 		<div id="main-over-container">
@@ -69,7 +82,7 @@
 						<button class="control-button" onclick="board.skipToPrevious();" title="Skip to previous" data-bind="enable: !board().isPlaying()">
 							<i class="material-icons custom-color">skip_previous</i>
 						</button>
-						<button class="control-button" onclick="board.play();" title="Play">
+						<button class="control-button" data-bind="click: function() { board().play(); }" title="Play">
 							<!-- ko if: !board().isPlaying() || board().isPausing() --><i class="material-icons custom-color">play_circle_filled</i><!--/ko-->
 							<!-- ko if: board().isPlaying() && !board().isPausing() --><i class="material-icons custom-color">play_circle_outline</i><!--/ko-->
 						</button>
@@ -170,43 +183,43 @@
 		</div>
 	</script>
 
-	<script type="text/html" id="sorting">
-		<div id="params">
+	<script type="text/html" id="sorting-arrays">
+		<div id="params" data-bind="visible: paramsOpen()">
 			<h2 id="sorting-param-title">Sorting parameters</h2>
 			<div class="form-line">
 				<label for="arraySize">Array size</label>
-				<input id="arraySize" type="number" placeholder="array size" value="32" min="10" max="800" onkeypress="onSubmitKeyPress();" />
+				<input id="arraySize" type="number" placeholder="array size" value="32" min="10" max="800" data-bind="event: { keyup: onParamChanged}" />
 			</div>
 			<div class="form-line">
 				<label for="startValue">Start value</label>
-				<input id="startValue" type="number" placeholder="start value" value="1" min="1" max="1000" onkeypress="onSubmitKeyPress();" />
+				<input id="startValue" type="number" placeholder="start value" value="1" min="1" max="1000" data-bind="event: { keyup: onParamChanged}" />
 			</div>
 			<div class="form-line">
 				<label for="step">X drawing step</label>
-				<input id="step" type="number" placeholder="step" value="10" min="1" max="20" onkeypress="onSubmitKeyPress();" />
+				<input id="step" type="number" placeholder="step" value="10" min="1" max="20" data-bind="event: { keyup: onParamChanged}" />
 			</div>
 			<div class="form-line">
 				<label for="delay">Delay (ms)</label>
-				<input id="delay" type="number" placeholder="delay" value="50" min="0" max="10000" onkeypress="onSubmitKeyPress();" />
+				<input id="delay" type="number" placeholder="delay" value="50" min="0" max="10000" data-bind="event: { keyup: onParamChanged}" />
 			</div>
 			<div class="form-line">
 				<label for="penColor">Pen color</label>
-				<input id="penColor" type="text" placeholder="pen color" value="#edf5e1" onkeypress="onSubmitKeyPress();" />
+				<input id="penColor" type="text" placeholder="pen color" value="#edf5e1" data-bind="event: { keyup: onParamChanged}" />
 			</div>
 			<div class="form-line">
 				<label for="backgroundColor">Background color</label>
-				<input id="backgroundColor" type="text" placeholder="background color" value="#379683" onkeypress="onSubmitKeyPress();" />
+				<input id="backgroundColor" type="text" placeholder="background color" value="#379683" data-bind="event: { keyup: onParamChanged}" />
 			</div>
 			<div class="form-line">
 				<label for="fontSize">Font size</label>
-				<input id="fontSize" type="number" placeholder="font size" value="16" min="5" max="40" onkeypress="onSubmitKeyPress();" />
+				<input id="fontSize" type="number" placeholder="font size" value="16" min="5" max="40" data-bind="event: { keyup: onParamChanged}" />
 			</div>
 			<div class="form-line sort-button">
-				<button id="sortButton" onclick="sort();">Sort</button>
+				<button id="sortButton" data-bind="click: function() { sort($parent); }">Sort</button>
 			</div>
 		</div>
 		<div id="showHideParams-container">
-			<input id="showHideParams" alt="Show/Hide Parameters" title="Show/Hide Parameters" type="checkbox" onclick="showHideParams();">
+			<input id="showHideParams" alt="Show/Hide Parameters" title="Show/Hide Parameters" type="checkbox" data-bind="checked: paramsOpen">
 		</div>
 		<div id="canvas-container">
 			<div id="bubblesort" class="canvas-container"></div>
@@ -218,11 +231,10 @@
 		</div>
 	</script>
 
-	<div id="content-container" data-bind="template: { name: templateName, data: templateData }">
+	<div data-bind="with: currentViewModel">
+		<div id="content-container" data-bind="template: { name: pageName, afterRender: function () { render(); }}">
+		</div>
 	</div>
-
-	<button onclick="viewModel.templateName('game-of-life'); initBoard();">game-of-life</button>
-	<button onclick="viewModel.templateName('sorting'); sort();">sorting</button>
 
 	<div id="copyright">
 		<a href="https://github.com/alinddicu" target="_blank" title="Contact me for projects">© Alin Dicu</a>
@@ -230,95 +242,7 @@
 </body>
 
 </html>
-<script>
-	/************************************** sorting **************************************/
-
-	function showHideParams() {
-		var div = document.getElementById("params");
-		var showParams = document.getElementById("showHideParams").checked;
-		if (showParams)
-		{
-			div.style.display = 'inline-block';
-		} else
-		{
-			div.style.display = 'none';
-		}
-	}
-
-	function onSubmitKeyPress() {
-		if (event.keyCode === 13)
-		{
-			document.getElementById("sortButton").click();
-		}
-	}
-
-	/************************************** game-of-life **************************************/
-
-	var params = null;
-	var board = null;
-	var viewModel = {
-		templateName: ko.observable("sorting"),
-		templateData: {
-			board: ko.observable(board),
-			isParamsVisible: ko.observable(false),
-			isExportVisible: ko.observable(false),
-			isImportVisible: ko.observable(false)
-		}
-	};
-	ko.applyBindings(viewModel);
-
-	function initBoard() {
-		params = new GoL.Drawing.ParamsForm();
-		board = params.init();
-		viewModel.templateData = {
-			board: ko.observable(board),
-			isParamsVisible: ko.observable(false),
-			isExportVisible: ko.observable(false),
-			isImportVisible: ko.observable(false)
-		}
-	}
-
-	function reinitBoard() {
-		board = params.init();
-		board.initCellButtonsInSquare(params.options);
-		viewModel.templateData.board(board);
-		viewModel.templateData.board(board);
-		viewModel.templateData.isParamsVisible(false);
-	}
-
-	function showParams() {
-		var currentValue = viewModel.templateData.isParamsVisible();
-		viewModel.templateData.isParamsVisible(!currentValue);
-		viewModel.templateData.board().isEnabled(currentValue);
-	}
-
-	function exportAliveCells() {
-		var currentValue = viewModel.templateData.isExportVisible();
-		viewModel.templateData.board().isEnabled(currentValue);
-		viewModel.templateData.isExportVisible(!currentValue);
-		var textArea = document.getElementById("exportTextArea");
-		if (textArea)
-		{
-			textArea.value = board.export();
-		}
-	}
-
-	function showImportAliveCells() {
-		var currentValue = viewModel.templateData.isImportVisible();
-		viewModel.templateData.isImportVisible(!currentValue);
-		viewModel.templateData.board().isEnabled(currentValue);
-	}
-
-	function importAliveCells() {
-		var textArea = document.getElementById("importTextArea");
-		if (textArea && textArea.value)
-		{
-			board.import(textArea.value);
-		}
-
-		viewModel.templateData.isImportVisible(false);
-		viewModel.templateData.board().isEnabled(true);
-	}
-
-	sort();
+<script type="text/javascript">
+	var workflowViewModel = new Workflow();
+	ko.applyBindings(workflowViewModel);
 </script>

@@ -243,7 +243,10 @@ ModelManifest.xml
 
 /Dont.Stop.Coding/Dont.Stop.Coding/dist
 /Dont.Stop.Coding/Dont.Stop.Coding/node_modules
-/Dont.Stop.Coding/Dont.Stop.Coding/transpiled
-/Dont.Stop.Coding/Dont.Stop.Coding/src/scripts/**/*.js.map
-/Dont.Stop.Coding/Dont.Stop.Coding/src/scripts/**/*.js
+/Dont.Stop.Coding/Dont.Stop.Coding/src/scripts/GoL/**/*.js.map
+/Dont.Stop.Coding/Dont.Stop.Coding/src/scripts/GoL/**/*.js
+/Dont.Stop.Coding/Dont.Stop.Coding/src/scripts/Sorting/**/*.js.map
+/Dont.Stop.Coding/Dont.Stop.Coding/src/scripts/Sorting/**/*.js
+/Dont.Stop.Coding/Dont.Stop.Coding/src/scripts/ViewModel/**/*.js.map
+/Dont.Stop.Coding/Dont.Stop.Coding/src/scripts/ViewModel/**/*.js
 /Dont.Stop.Coding/Dont.Stop.Coding/src/lib
