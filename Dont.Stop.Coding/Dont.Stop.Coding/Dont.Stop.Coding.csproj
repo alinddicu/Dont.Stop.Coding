@@ -58,7 +58,7 @@
     <TypeScriptCompile Include="src\scripts\Sorting\Tools\RandomArrayGenerator.ts" />
     <TypeScriptCompile Include="src\scripts\Sorting\Tools\RankingSystem.ts" />
     <TypeScriptCompile Include="src\scripts\ViewModel\GameOfLifeViewModel.ts" />
-    <TypeScriptCompile Include="src\scripts\ViewModel\IViewModel.ts" />
+    <TypeScriptCompile Include="src\scripts\ViewModel\ViewModelBase.ts" />
     <TypeScriptCompile Include="src\scripts\ViewModel\IWorkflow.ts" />
     <TypeScriptCompile Include="src\scripts\ViewModel\SortingArraysViewModel.ts" />
     <Content Include="src\scripts\Workflow.js" />

@@ -1,21 +1,14 @@
 ﻿namespace ViewModel {
-	export class SortingArraysViewModel implements IViewModel {
+	export class SortingArraysViewModel extends ViewModelBase {
 		public pageName = "sorting-arrays";
 		public paramsOpen: KnockoutObservable<boolean> = ko.observable(false);
-		private workflow: IWorkflow;
-
-		constructor(workflow: IWorkflow) {
-			this.workflow = workflow;
-		}
-
+		
 		public render(): void {
 			this.sort();
 		}
 
-		public onParamChanged(caller: SortingArraysViewModel, event: KeyboardEvent): void {
-			if (event.keyCode === 13) {
-				this.sort();
-			}
+		protected paramChangedHandler(): void {
+			this.sort();
 		}
 
 		private valueOrDefault<T>(elementId: string, defaultValue: any): T {
