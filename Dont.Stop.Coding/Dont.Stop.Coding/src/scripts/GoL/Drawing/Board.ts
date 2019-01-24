@@ -16,9 +16,9 @@ namespace GoL.Drawing {
 		private cycle = new Cycle();
 		private gridHistory: RectangularInfinite2DGrid[] = [];
 		public boardLines: KnockoutObservableArray<BoardLine> = ko.observableArray([]);
-		public isEnabled: KnockoutObservable<boolean> = ko.observable(true);
-		public isPlaying: KnockoutObservable<boolean> = ko.observable(false);
-		public isPausing: KnockoutObservable<boolean> = ko.observable(false);
+		public isEnabled = ko.observable(true);
+		public isPlaying = ko.observable(false);
+		public isPausing = ko.observable(false);
 
 		constructor(goLOptions: IGoLOptions) {
 			this.options = goLOptions;
