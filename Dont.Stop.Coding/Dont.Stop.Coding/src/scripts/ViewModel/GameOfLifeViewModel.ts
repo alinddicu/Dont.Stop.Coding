@@ -6,16 +6,16 @@ namespace ViewModel {
 
 		public pageName = "game-of-life";
 		public board: KnockoutObservable<GoL.Drawing.Board> = ko.observable(null);
-		public isParamsVisible: KnockoutObservable<boolean> = ko.observable(false);
-		public isExportVisible: KnockoutObservable<boolean> = ko.observable(false);
-		public exportedCellsContent: KnockoutObservable<string> = ko.observable("");
-		public isImportVisible: KnockoutObservable<boolean> = ko.observable(false);
-		public importedCellsContent: KnockoutObservable<string> = ko.observable("");
+		public isParamsVisible = ko.observable(false);
+		public isExportVisible = ko.observable(false);
+		public exportedCellsContent = ko.observable("");
+		public isImportVisible = ko.observable(false);
+		public importedCellsContent = ko.observable("");
 
-		public isVisibleCanPlay: KnockoutComputed<boolean> = ko.pureComputed(() => { return !this.board().isPlaying() || this.board().isPausing(); }, this);
-		public isVisibleIsPlaying: KnockoutComputed<boolean> = ko.pureComputed(() => { return this.board().isPlaying() && !this.board().isPausing(); });
-		public isVisibleCanPause: KnockoutComputed<boolean> = ko.pureComputed(() => { return !this.board().isPausing() || this.board().isPlaying(); });
-		public isVisibleIsPausing: KnockoutComputed<boolean> = ko.pureComputed(() => { return this.board().isPausing() && !this.board().isPlaying(); });
+		public isVisibleCanPlay = ko.pureComputed(() => { return !this.board().isPlaying() || this.board().isPausing(); });
+		public isVisibleIsPlaying = ko.pureComputed(() => { return this.board().isPlaying() && !this.board().isPausing(); });
+		public isVisibleCanPause = ko.pureComputed(() => { return !this.board().isPausing() || this.board().isPlaying(); });
+		public isVisibleIsPausing = ko.pureComputed(() => { return this.board().isPausing() && !this.board().isPlaying(); });
 
 		constructor(workflow: IWorkflow) {
 			this.workflow = workflow;
