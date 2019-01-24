@@ -3,7 +3,8 @@ namespace ViewModel {
 	export class GameOfLifeViewModel implements IViewModel {
 		public pageName = "game-of-life";
 		private workflow: IWorkflow;
-		public board: KnockoutObservable<GoL.Drawing.Board> = ko.observable(null);
+		//public board: KnockoutObservable<GoL.Drawing.Board> = ko.observable(null);
+		public board: GoL.Drawing.Board;
 		public isParamsVisible: KnockoutObservable<boolean> = ko.observable(false);
 		public isExportVisible: KnockoutObservable<boolean> = ko.observable(false);
 		public isImportVisible: KnockoutObservable<boolean> = ko.observable(false);
@@ -12,7 +13,7 @@ namespace ViewModel {
 		constructor(workflow: IWorkflow) {
 			this.workflow = workflow;
 			this.params = new GoL.Drawing.ParamsForm();
-			this.board(this.params.init());
+			this.board = this.params.init();
 		}
 
 		public render(): void {

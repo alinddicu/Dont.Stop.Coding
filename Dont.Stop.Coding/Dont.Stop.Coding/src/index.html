@@ -72,38 +72,38 @@
 			<div id="main-container">
 				<div id="controls-over-container">
 					<div id="controls-container">
-						<button class="control-button" onclick="showParams();" title="Parameters" data-bind="enable: !board().isPlaying() && !board().isPausing()">
+						<button class="control-button" onclick="showParams();" title="Parameters" data-bind="enable: !board.isPlaying() && !board.isPausing()">
 							<i class="material-icons custom-color">settings</i>
 						</button>
 						<button class="control-button"><i class="material-icons custom-color spacer"></i></button>
-						<button class="control-button" onclick="board.fastRewind();" title="Fast rewind" data-bind="enable: !board().isPlaying()">
+						<button class="control-button" onclick="board.fastRewind();" title="Fast rewind" data-bind="enable: !board.isPlaying()">
 							<i class="material-icons custom-color">fast_rewind</i>
 						</button>
-						<button class="control-button" onclick="board.skipToPrevious();" title="Skip to previous" data-bind="enable: !board().isPlaying()">
+						<button class="control-button" onclick="board.skipToPrevious();" title="Skip to previous" data-bind="enable: !board.isPlaying()">
 							<i class="material-icons custom-color">skip_previous</i>
 						</button>
-						<button class="control-button" data-bind="click: function() { board().play(); }" title="Play">
-							<!-- ko if: !board().isPlaying() || board().isPausing() --><i class="material-icons custom-color">play_circle_filled</i><!--/ko-->
-							<!-- ko if: board().isPlaying() && !board().isPausing() --><i class="material-icons custom-color">play_circle_outline</i><!--/ko-->
+						<button class="control-button" data-bind="click: function() { board.play(); }" title="Play">
+							<!-- ko if: !board.isPlaying() || board.isPausing() --><i class="material-icons custom-color">play_circle_filled</i><!--/ko-->
+							<!-- ko if: board.isPlaying() && !board.isPausing() --><i class="material-icons custom-color">play_circle_outline</i><!--/ko-->
 						</button>
-						<button class="control-button" onclick="board.pause();" title="Pause">
-							<!-- ko if: !board().isPausing() || board().isPlaying() --><i class="material-icons custom-color">pause_circle_filled</i><!--/ko-->
-							<!-- ko if: board().isPausing() && !board().isPlaying() --><i class="material-icons custom-color">pause_circle_outline</i><!--/ko-->
+						<button class="control-button" data-bind="click: function() { board.pause(); }" title="Pause">
+							<!-- ko if: !board.isPausing() || board.isPlaying() --><i class="material-icons custom-color">pause_circle_filled</i><!--/ko-->
+							<!-- ko if: board.isPausing() && !board.isPlaying() --><i class="material-icons custom-color">pause_circle_outline</i><!--/ko-->
 						</button>
-						<button class="control-button" onclick="board.skipToNext();" title="Skip to next" data-bind="enable: !board().isPlaying()">
+						<button class="control-button" onclick="board.skipToNext();" title="Skip to next" data-bind="enable: !board.isPlaying()">
 							<i class="material-icons custom-color">skip_next</i>
 						</button>
-						<button class="control-button" onclick="board.fastForward();" title="Fast forward" data-bind="enable: !board().isPlaying()">
+						<button class="control-button" onclick="board.fastForward();" title="Fast forward" data-bind="enable: !board.isPlaying()">
 							<i class="material-icons custom-color">fast_forward</i>
 						</button>
-						<button class="control-button" onclick="board.reset();" title="Reset">
+						<button class="control-button" data-bind="click: function() { board.reset(); }" title="Reset">
 							<i class="material-icons custom-color">stop</i>
 						</button>
 						<button class="control-button"><i class="material-icons custom-color spacer"></i></button>
-						<button class="control-button" onclick="exportAliveCells();" title="Export alive cells" data-bind="enable: !board().isPlaying() && !board().isPausing()">
+						<button class="control-button" onclick="exportAliveCells();" title="Export alive cells" data-bind="enable: !board.isPlaying() && !board.isPausing()">
 							<i class="material-icons custom-color">publish</i>
 						</button>
-						<button class="control-button" onclick="showImportAliveCells();" title="Import alive cells" data-bind="enable: !board().isPlaying() && !board().isPausing()">
+						<button class="control-button" onclick="showImportAliveCells();" title="Import alive cells" data-bind="enable: !board.isPlaying() && !board.isPausing()">
 							<i class="material-icons custom-color">save_alt</i>
 						</button>
 					</div>
@@ -162,9 +162,9 @@
 					<!--/ko-->
 				</div>
 				<div id="board-container">
-					<div data-bind="css: { 'board-disabled': !board().isEnabled(), 'board-enabled': board().isEnabled()}">
+					<div data-bind="css: { 'board-disabled': !board.isEnabled(), 'board-enabled': board.isEnabled()}">
 						<table id="cells-table">
-							<tbody data-bind="foreach: board().boardLines">
+							<tbody data-bind="foreach: board.boardLines">
 								<tr>
 									<!-- ko foreach: buttonCells -->
 									<td>
