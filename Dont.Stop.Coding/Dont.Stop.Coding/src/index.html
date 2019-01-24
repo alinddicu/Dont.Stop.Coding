@@ -72,14 +72,14 @@
 			<div id="main-container">
 				<div id="controls-over-container">
 					<div id="controls-container">
-						<button class="control-button" onclick="showParams();" data-bind="enable: !board.isPlaying() && !board.isPausing()" title="Parameters">
+						<button class="control-button" data-bind="click: function() { showParams(); }, enable: !board.isPlaying() && !board.isPausing()" title="Parameters">
 							<i class="material-icons custom-color">settings</i>
 						</button>
 						<button class="control-button"><i class="material-icons custom-color spacer"></i></button>
-						<button class="control-button" data-bind="click: function(){ board.fastRewind(); }, enable: !board.isPlaying()" title="Fast rewind">
+						<button class="control-button" data-bind="click: function() { board.fastRewind(); }, enable: !board.isPlaying()" title="Fast rewind">
 							<i class="material-icons custom-color">fast_rewind</i>
 						</button>
-						<button class="control-button" data-bind="click: function(){ board.skipToPrevious(); }, enable: !board.isPlaying()" title="Skip to previous">
+						<button class="control-button" data-bind="click: function() { board.skipToPrevious(); }, enable: !board.isPlaying()" title="Skip to previous">
 							<i class="material-icons custom-color">skip_previous</i>
 						</button>
 						<button class="control-button" data-bind="click: function() { board.play(); }" title="Play">
@@ -90,42 +90,37 @@
 							<!-- ko if: !board.isPausing() || board.isPlaying() --><i class="material-icons custom-color">pause_circle_filled</i><!--/ko-->
 							<!-- ko if: board.isPausing() && !board.isPlaying() --><i class="material-icons custom-color">pause_circle_outline</i><!--/ko-->
 						</button>
-						<button class="control-button" data-bind="click: function(){ board.skipToNext(); }, enable: !board.isPlaying()" title="Skip to next">
+						<button class="control-button" data-bind="click: function() { board.skipToNext(); }, enable: !board.isPlaying()" title="Skip to next">
 							<i class="material-icons custom-color">skip_next</i>
 						</button>
-						<button class="control-button" data-bind="click: function(){ board.fastForward(); }, enable: !board.isPlaying()" title="Fast forward">
+						<button class="control-button" data-bind="click: function() { board.fastForward(); }, enable: !board.isPlaying()" title="Fast forward">
 							<i class="material-icons custom-color">fast_forward</i>
 						</button>
 						<button class="control-button" data-bind="click: function() { board.reset(); }" title="Reset">
 							<i class="material-icons custom-color">stop</i>
 						</button>
 						<button class="control-button"><i class="material-icons custom-color spacer"></i></button>
-						<button class="control-button" onclick="exportAliveCells();" data-bind="enable: !board.isPlaying() && !board.isPausing()" title="Export alive cells">
+						<button class="control-button" data-bind="click: function() { exportAliveCells(); }, enable: !board.isPlaying() && !board.isPausing()" title="Export alive cells">
 							<i class="material-icons custom-color">publish</i>
 						</button>
-						<button class="control-button" onclick="showImportAliveCells();" data-bind="enable: !board.isPlaying() && !board.isPausing()" title="Import alive cells">
+						<button class="control-button" data-bind="click: function() { showImportAliveCells(); }, enable: !board.isPlaying() && !board.isPausing()" title="Import alive cells">
 							<i class="material-icons custom-color">save_alt</i>
 						</button>
 					</div>
-					<!--ko if: isExportVisible() -->
-					<div id="export-container">
+					<div id="export-container" data-bind="visible: isExportVisible()">
 						<div class="form-line">
 							<textarea id="exportTextArea" rows="5" cols="25" disabled></textarea>
 						</div>
 					</div>
-					<!--/ko-->
-					<!--ko if: isImportVisible() -->
-					<div id="import-container">
+					<div id="import-container" data-bind="visible: isImportVisible()">
 						<div class="form-line">
 							<textarea id="importTextArea" rows="5" cols="25"></textarea>
 						</div>
 						<div class="form-line import-button-container">
-							<button id="import-button" onclick="importAliveCells();"><i class="material-icons custom-color">done_outline</i></button>
+							<button id="import-button" data-bind="click: function() { importAliveCells(); }"><i class="material-icons custom-color">done_outline</i></button>
 						</div>
 					</div>
-					<!--/ko-->
-					<!--ko if: isParamsVisible() -->
-					<div id="params-container">
+					<div id="params-container"data-bind="visible: isParamsVisible()">
 						<h2 id="gol-params-title">Game of life parameters</h2>
 						<div class="form-line">
 							<label for="cellsPerRow">Cells per row</label>
@@ -156,10 +151,9 @@
 							<input id="isShowCellsCoordinates" type="checkbox" />
 						</div>
 						<div class="form-line init-button-container">
-							<button id="init-button" onclick="reinitBoard();"><i class="material-icons custom-color">done_outline</i></button>
+							<button id="init-button" data-bind="click: function() { reinitBoard(); }"><i class="material-icons custom-color">done_outline</i></button>
 						</div>
 					</div>
-					<!--/ko-->
 				</div>
 				<div id="board-container">
 					<div data-bind="css: { 'board-disabled': !board.isEnabled(), 'board-enabled': board.isEnabled()}">
