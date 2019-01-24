@@ -40,7 +40,6 @@
     <TypeScriptCompile Include="src\scripts\GoL\Drawing\CellButton.ts" />
     <TypeScriptCompile Include="src\scripts\GoL\Drawing\IGoLOptions.ts" />
     <TypeScriptCompile Include="src\scripts\GoL\Drawing\ParamsForm.ts" />
-    <TypeScriptCompile Include="src\scripts\GoL\game-of-life-app.ts" />
     <TypeScriptCompile Include="src\scripts\GoL\game-of-life-tests.ts" />
     <TypeScriptCompile Include="src\scripts\GoL\Logic\Cell.ts" />
     <TypeScriptCompile Include="src\scripts\GoL\Logic\CellState.ts" />
