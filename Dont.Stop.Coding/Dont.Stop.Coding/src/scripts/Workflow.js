@@ -10,12 +10,10 @@ function Workflow() {
 
 	function closeMenu() {
 		self.menuOpen(false);
-		closeMenu();
 	}
 
 	self.gotoGameOfLife = function () {
 		location.hash = "/game-of-life";
-		closeMenu();
 	};
 
 	self.gotoSortingArrays = function () {
@@ -24,6 +22,7 @@ function Workflow() {
 
 	var changePage = function (viewModel) {
 		self.currentViewModel(viewModel);
+		closeMenu();
 	};
 
 	Sammy(function () {
