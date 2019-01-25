@@ -156,14 +156,12 @@
 					<div data-bind="css: { 'board-disabled': !board().isEnabled(), 'board-enabled': board().isEnabled()}">
 						<table id="cells-table">
 							<tbody data-bind="foreach: board().boardLines">
-								<tr>
-									<!-- ko foreach: buttonCells -->
+								<tr data-bind="foreach: buttonCells">
 									<td>
 										<button class="cell-button"
 												data-bind="style: { width: width + 'px', height: height + 'px', 'background-color': backColor() },
 										click: cellButtonClick, text: text"></button>
 									</td>
-									<!-- /ko -->
 								</tr>
 							</tbody>
 						</table>
