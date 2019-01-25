@@ -10,8 +10,7 @@ var paths = {
 		'node_modules/linq/linq.min.js',
 		'node_modules/knockout/build/output/knockout-latest.js',
 		'node_modules/sammy/lib/min/sammy-latest.min.js',
-		'node_modules/jquery/dist/jquery.min.js',
-		'node_modules/finch/bin/finch.js'
+		'node_modules/jquery/dist/jquery.min.js'
 	],
 	transpiled: ['src/scripts/**/*.js'],
 	typescript: ['src/scripts/**/*.ts'],
