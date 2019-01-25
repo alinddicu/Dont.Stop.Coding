@@ -1,0 +1,20 @@
+﻿nav {
+	z-index: 1;
+	position: absolute;
+	right: 0;
+	top: 0;
+	opacity: 1;
+	background-color: yellowgreen;
+}
+
+div.inline {
+	float: right;
+}
+
+.clearBoth {
+	clear: both;
+}
+
+div#menu-toggle i {
+	cursor: pointer;
+}

@@ -7,7 +7,15 @@
 	<meta name="author" content="Alin Dicu">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>Sorting algorithms</title>
+	<title>Don't stop coding</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="icon" type="image/png" href="images/favicon-game-of-life.ico" />
+
+	<script src="lib/linq.min.js"></script>
+	<script src="lib/knockout-latest.js"></script>
+	<script src="lib/jquery.min.js"></script>
+	<script src="lib/sammy-latest.min.js"></script>
+	<link rel="stylesheet" href="styles/menu.css" type="text/css" />
 
 	<script src="scripts/Sorting/Algorithms/SortBase.js"></script>
 	<script src="scripts/Sorting/Algorithms/BubbleSort.js"></script>
@@ -23,14 +31,6 @@
 	<script src="scripts/Sorting/Tools/OrdinalHelper.js"></script>
 
 	<link rel="stylesheet" href="styles/sorting.css" />
-	<link rel="icon" type="image/png" href="images/favicon-sorting.ico" />
-
-	<title>Game of life</title>
-
-	<script src="lib/linq.min.js"></script>
-	<script src="lib/knockout-latest.js"></script>
-	<script src="lib/jquery.min.js"></script>
-	<script src="lib/sammy-latest.min.js"></script>
 
 	<script src="scripts/GoL/Logic/CellState.js"></script>
 	<script src="scripts/GoL/Logic/Cell.js"></script>
@@ -51,18 +51,21 @@
 	<script src="scripts/Workflow.js"></script>
 
 	<link rel="stylesheet" href="styles/game-of-life.css" type="text/css" />
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-	<link rel="icon" type="image/png" href="images/favicon-game-of-life.ico" />
 
 </head>
 
 <body>
-
-	<div style="margin-left: 100px;">
-		<a href="#" onclick="workflowViewModel.gotoGameOfLife();">game-of-life</a>
-		<a href="#" onclick="workflowViewModel.gotoSortingArrays();">sorting</a>
-	</div>
+	<nav role="navigation">
+		<div class="inline" id="menu-toggle">
+			<i class="material-icons" data-bind="visible: !menuOpen(), click: function() { menuOpen(true); }">menu</i>
+			<i class="material-icons" data-bind="visible: menuOpen(), click: function() { menuOpen(false); }">close</i>
+		</div>
+		<div class="inline" data-bind="visible: menuOpen()">
+			<a class="menu-entry" href="https://github.com/alinddicu" target="_blank"><i class="material-icons">contact_support</i>About</a>
+			<a class="menu-entry" href="#" data-bind="click: function() { workflowViewModel.gotoGameOfLife(); }"><i class="material-icons">grid_on</i>Game of life</a>
+			<a class="menu-entry" href="#" data-bind="click: function() { workflowViewModel.gotoSortingArrays(); }"><i class="material-icons">sort</i>Array sortings</a>
+		</div>
+	</nav>
 
 	<script type="text/html" id="game-of-life">
 		<div id="main-over-container">
@@ -222,10 +225,6 @@
 	<div data-bind="with: currentViewModel">
 		<div id="content-container" data-bind="template: { name: pageName, afterRender: function () { render(); }}">
 		</div>
-	</div>
-
-	<div id="copyright">
-		<a href="https://github.com/alinddicu" target="_blank" title="Contact me for projects">© Alin Dicu</a>
 	</div>
 </body>
 

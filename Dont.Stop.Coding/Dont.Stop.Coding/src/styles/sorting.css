@@ -72,10 +72,6 @@ label {
 	width: 130px;
 }
 
-.form-line, div#copyright a {
-	padding: 5px;
-}
-
 div#canvas-container {
 	text-align: center;
 	position: relative;

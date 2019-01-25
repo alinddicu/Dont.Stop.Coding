@@ -31,6 +31,7 @@
     <Content Include="src\lib\sammy-latest.min.js" />
     <Content Include="src\scripts\Main.js" />
     <Content Include="src\styles\game-of-life.css" />
+    <Content Include="src\styles\menu.css" />
     <Content Include="src\styles\sorting.css" />
     <Content Include="gulpfile.js" />
   </ItemGroup>

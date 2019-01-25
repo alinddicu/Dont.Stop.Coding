@@ -5,21 +5,28 @@
 
 function Workflow() {
 	var self = this;
-	self.currentViewModel= ko.observable();
+	self.currentViewModel = ko.observable();
+	self.menuOpen = ko.observable(false);
 
-	self.gotoGameOfLife = function() {
-		 location.hash = "/game-of-life";
+	function closeMenu() {
+		self.menuOpen(false);
+		closeMenu();
+	}
+
+	self.gotoGameOfLife = function () {
+		location.hash = "/game-of-life";
+		closeMenu();
 	};
 
-	self.gotoSortingArrays = function() {
+	self.gotoSortingArrays = function () {
 		location.hash = "/sorting-arrays";
 	};
-	
-	var changePage = function(viewModel) {
+
+	var changePage = function (viewModel) {
 		self.currentViewModel(viewModel);
 	};
 
-	Sammy(function() {
+	Sammy(function () {
 		this.get("#/game-of-life", function () {
 			changePage(new ViewModel.GameOfLifeViewModel(self));
 		});
@@ -29,7 +36,8 @@ function Workflow() {
 		});
 	}).run();
 
-	if (!self.currentViewModel()) {
-        self.gotoGameOfLife();
-    }
+	if (!self.currentViewModel())
+	{
+		self.gotoGameOfLife();
+	}
 }
