@@ -4,10 +4,16 @@
 	right: 0;
 	top: 0;
 	opacity: 1;
+	padding: 0 0 5px 5px;
 	background-color: inherit;
+	border-radius: 5px;
 }
 
-div.inline {
+div#menu-toggle {
+	margin: 10px;
+}
+
+div.inline-right {
 	float: right;
 }
 
@@ -27,4 +33,8 @@ a.menu-entry, a.menu-entry :visited, a.menu-entry :hover, a.menu-entry :active {
 	text-decoration: none;
 	color: #05386b;
 	font-weight: bold;
+}
+
+a.menu-entry i {
+	padding: 0 5px 0 0;
 }
