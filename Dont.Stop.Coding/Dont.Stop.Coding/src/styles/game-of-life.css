@@ -92,10 +92,6 @@ div#params-container, div#export-container, div#import-container {
 	top: 41px;
 }
 
-body {
-	background-color: var(--yellow);
-}
-
 div#board-container {
 	display: flex;
 	justify-content: center;

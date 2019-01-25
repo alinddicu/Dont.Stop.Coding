@@ -21,10 +21,11 @@ namespace ViewModel {
 			super();
 			this.params = new GoL.Drawing.ParamsForm();
 			this.board(this.params.init());
+			this.backgroundColor("#f8e9a1");
 		}
 
 		public render(): void {
-			// all is done in the constructor;
+			super.render();
 		}
 
 		protected paramChangedHandler(): void {

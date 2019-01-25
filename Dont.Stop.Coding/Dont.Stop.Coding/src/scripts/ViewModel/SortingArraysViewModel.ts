@@ -1,9 +1,15 @@
 ﻿namespace ViewModel {
 	export class SortingArraysViewModel extends ViewModelBase {
 		public pageName = "sorting-arrays";
-		public paramsOpen: KnockoutObservable<boolean> = ko.observable(false);
-		
+		public paramsOpen = ko.observable(false);
+
+		constructor() {
+			super();
+			this.backgroundColor("#8ee4ae");
+		}
+
 		public render(): void {
+			super.render();
 			this.sort();
 		}
 
