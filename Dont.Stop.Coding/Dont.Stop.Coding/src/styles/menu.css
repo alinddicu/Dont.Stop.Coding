@@ -18,3 +18,13 @@ div.inline {
 div#menu-toggle i {
 	cursor: pointer;
 }
+
+div#menu-entries-container {
+	margin-top: 20px;
+}
+
+a.menu-entry, a.menu-entry :visited, a.menu-entry :hover, a.menu-entry :active {
+	text-decoration: none;
+	color: #05386b;
+	font-weight: bold;
+}

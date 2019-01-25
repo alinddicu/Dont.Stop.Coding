@@ -60,10 +60,12 @@
 			<i class="material-icons" data-bind="visible: !menuOpen(), click: function() { menuOpen(true); }">menu</i>
 			<i class="material-icons" data-bind="visible: menuOpen(), click: function() { menuOpen(false); }">close</i>
 		</div>
-		<div class="inline" data-bind="visible: menuOpen()">
-			<a class="menu-entry" href="https://github.com/alinddicu" target="_blank"><i class="material-icons">contact_support</i>About</a>
-			<a class="menu-entry" href="#" data-bind="click: function() { workflowViewModel.gotoGameOfLife(); }"><i class="material-icons">grid_on</i>Game of life</a>
+		<div id="menu-entries-container" class="inline" data-bind="visible: menuOpen()">
 			<a class="menu-entry" href="#" data-bind="click: function() { workflowViewModel.gotoSortingArrays(); }"><i class="material-icons">sort</i>Array sortings</a>
+			<br/>
+			<a class="menu-entry" href="#" data-bind="click: function() { workflowViewModel.gotoGameOfLife(); }"><i class="material-icons">grid_on</i>Game of life</a>
+			<br/>
+			<a class="menu-entry" href="https://github.com/alinddicu" target="_blank"><i class="material-icons">contact_support</i>About</a>
 		</div>
 	</nav>
 
