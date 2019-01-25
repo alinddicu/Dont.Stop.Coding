@@ -25,7 +25,6 @@
   <ItemGroup>
     <Content Include="src\images\favicon-sorting.ico" />
     <Content Include="src\images\favicon-game-of-life.ico" />
-    <Content Include="src\index-game-of-life.html" />
     <Content Include="src\index.html" />
     <Content Include="src\lib\jquery.min.js" />
     <Content Include="src\lib\knockout-latest.js" />
@@ -42,7 +41,6 @@
     <TypeScriptCompile Include="src\scripts\GoL\Drawing\CellButton.ts" />
     <TypeScriptCompile Include="src\scripts\GoL\Drawing\IGoLOptions.ts" />
     <TypeScriptCompile Include="src\scripts\GoL\Drawing\ParamsForm.ts" />
-    <TypeScriptCompile Include="src\scripts\GoL\game-of-life-app.ts" />
     <TypeScriptCompile Include="src\scripts\GoL\game-of-life-tests.ts" />
     <TypeScriptCompile Include="src\scripts\GoL\Logic\Cell.ts" />
     <TypeScriptCompile Include="src\scripts\GoL\Logic\CellState.ts" />
@@ -61,7 +59,7 @@
     <TypeScriptCompile Include="src\scripts\Sorting\Tools\RandomArrayGenerator.ts" />
     <TypeScriptCompile Include="src\scripts\Sorting\Tools\RankingSystem.ts" />
     <TypeScriptCompile Include="src\scripts\ViewModel\GameOfLifeViewModel.ts" />
-    <TypeScriptCompile Include="src\scripts\ViewModel\IViewModel.ts" />
+    <TypeScriptCompile Include="src\scripts\ViewModel\ViewModelBase.ts" />
     <TypeScriptCompile Include="src\scripts\ViewModel\IWorkflow.ts" />
     <TypeScriptCompile Include="src\scripts\ViewModel\SortingArraysViewModel.ts" />
     <Content Include="src\scripts\Workflow.js" />

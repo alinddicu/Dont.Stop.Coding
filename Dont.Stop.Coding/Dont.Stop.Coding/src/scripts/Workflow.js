@@ -30,6 +30,6 @@ function Workflow() {
 	}).run();
 
 	if (!self.currentViewModel()) {
-        self.gotoSortingArrays();
+        self.gotoGameOfLife();
     }
 }
