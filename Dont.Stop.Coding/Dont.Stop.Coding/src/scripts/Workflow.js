@@ -26,6 +26,10 @@ function Workflow() {
 	};
 
 	Sammy(function () {
+		this.get("", function () {
+			changePage(new ViewModel.SortingArraysViewModel(self));
+		});
+
 		this.get("#/game-of-life", function () {
 			changePage(new ViewModel.GameOfLifeViewModel(self));
 		});
@@ -37,6 +41,6 @@ function Workflow() {
 
 	if (!self.currentViewModel())
 	{
-		self.gotoGameOfLife();
+		self.gotoSortingArrays();
 	}
 }
