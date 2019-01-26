@@ -1,4 +1,6 @@
 ﻿namespace ViewModel {
+	import InputValueConverter = Tools.InputValueConverter;
+
 	export class SortingArraysViewModel extends ViewModelBase {
 		public pageName = "sorting-arrays";
 		public paramsOpen = ko.observable(false);
@@ -18,17 +20,17 @@
 		}
 
 		private sort(): void {
-			const startValue = Tools.InputValueConverter.valueOrDefault<number>("startValue", 1);
+			const startValue = InputValueConverter.valueOrDefault<number>("startValue", 1);
 			const drawParams = {
-				step: Tools.InputValueConverter.valueOrDefault<number>("step", 10),
-				delay: Tools.InputValueConverter.valueOrDefault<number>("delay", 50),
-				penColor: Tools.InputValueConverter.valueOrDefault<string>("penColor", "#edf5e1"),
-				backgroundColor: Tools.InputValueConverter.valueOrDefault<string>("backgroundColor", "#379683"),
-				fontSize: Tools.InputValueConverter.valueOrDefault<number>("fontSize", 16),
+				step: InputValueConverter.valueOrDefault<number>("step", 10),
+				delay: InputValueConverter.valueOrDefault<number>("delay", 50),
+				penColor: InputValueConverter.valueOrDefault<string>("penColor", "#edf5e1"),
+				backgroundColor: InputValueConverter.valueOrDefault<string>("backgroundColor", "#379683"),
+				fontSize: InputValueConverter.valueOrDefault<number>("fontSize", 16),
 				startValue: startValue
 			};
 
-			const arraySize = Tools.InputValueConverter.valueOrDefault<number>("arraySize", 32);
+			const arraySize = InputValueConverter.valueOrDefault<number>("arraySize", 32);
 			const arrayToSort = new Sorting.Tools.RandomArrayGenerator().Generate(arraySize, startValue);
 			new Sorting.Drawing.MultiCanvasDrawer(document, drawParams).draw(arrayToSort);
 
