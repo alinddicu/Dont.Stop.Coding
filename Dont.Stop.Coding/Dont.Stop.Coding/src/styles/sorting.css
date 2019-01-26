@@ -30,6 +30,11 @@ input[type=number], input[type=text] {
 	color: #05386b;
 }
 
+div#showHideParams-container, div#params {
+	left: 10px;
+	top: 50px;
+}
+
 div#params {
 	z-index: 1;
 	opacity: 1;
@@ -41,19 +46,15 @@ div#params {
 	border: 1px solid;
 	border-radius: 5px;
 	margin: 0;
-	left: 8px;
-	top: 9px;
 }
 
 div#showHideParams-container {
 	display: inline-block;
-	z-index: 2;
+	z-index: 1;
 	opacity: 1;
 	position: absolute;
 	margin: 0;
 	padding: 0;
-	left: 6px;
-	top: 8px;
 }
 
 div#showHideParams-container i {
@@ -74,11 +75,6 @@ div#canvas-container {
 
 div.sort-button {
 	text-align: right;
-}
-
-div#copyright {
-	text-align: right;
-	padding: 0 10px 5px 0;
 }
 
 div#copyright a, div#copyright a:visited, div#copyright a:hover, div#copyright a:active {
