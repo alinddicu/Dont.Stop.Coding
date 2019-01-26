@@ -30,11 +30,6 @@ input[type=number], input[type=text] {
 	color: #05386b;
 }
 
-button[id=sortButton] {
-	color: #edf5e1;
-	background-color: #379683;
-}
-
 div#params {
 	z-index: 1;
 	opacity: 1;
