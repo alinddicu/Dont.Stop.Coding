@@ -16,7 +16,7 @@ var paths = {
 	typescript: ['src/scripts/**/*.ts'],
 	pages: ['src/**/*.html'],
 	styles: ['src/styles/*'],
-	images: ['src/images/*']
+	images: ['src/images/**/*.png']
 };
 
 var watchPaths = []

@@ -22,8 +22,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\images\favicon-sorting.ico" />
-    <Content Include="src\images\favicon-game-of-life.ico" />
+    <Content Include="src\images\favicon\game-of-life.png" />
+    <Content Include="src\images\favicon\sorting-arrays.png" />
     <Content Include="src\index.html" />
     <Content Include="src\lib\jquery.min.js" />
     <Content Include="src\lib\knockout-latest.js" />
