@@ -2,9 +2,13 @@
 	export class InputValueConverter {
 		public static valueOrDefault<T>(elementId: string, defaultValue: any): T {
 
-			let value;
+			let value = defaultValue;
+			const inputField = document.getElementById(elementId) as HTMLFormElement;
+			if (!inputField) {
+				return value;
+			}
+
 			try {
-				const inputField = document.getElementById(elementId) as HTMLFormElement;
 				if (typeof defaultValue === "number") {
 					value = inputField.valueAsNumber;
 				}
@@ -17,10 +21,10 @@
 					value = inputField.valueAsDate;
 				}
 			} catch (e) {
-				console.warn(`Problem parsing '${elementId}'`);
+				console.error(`Problem parsing '${elementId}'`);
 			}
 
-			return value ? value : defaultValue;
+			return value;
 		}
 	}
 }
