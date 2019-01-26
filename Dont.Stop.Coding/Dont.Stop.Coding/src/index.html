@@ -122,7 +122,7 @@
 							<textarea id="importTextArea" data-bind="textInput: importedCellsContent, hasFocus: isImportVisible()" rows="5" cols="25"></textarea>
 						</div>
 						<div class="form-line import-button-container">
-							<button id="import-button" data-bind="click: function() { importAliveCells(); }"><i class="material-icons custom-color">done_outline</i></button>
+							<button data-bind="click: function() { importAliveCells(); }"><i class="material-icons custom-color">done_outline</i></button>
 						</div>
 					</div>
 					<div id="params-container" data-bind="visible: isParamsVisible()">
@@ -156,7 +156,7 @@
 							<input id="isShowCellsCoordinates" type="checkbox" data-bind="event: { keyup: onParamChanged }" />
 						</div>
 						<div class="form-line init-button-container">
-							<button id="init-button" data-bind="click: function() { reinitBoard(); }"><i class="material-icons custom-color">done_outline</i></button>
+							<button data-bind="click: function() { reinitBoard(); }"><i class="material-icons custom-color">done_outline</i></button>
 						</div>
 					</div>
 				</div>
