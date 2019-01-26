@@ -49,7 +49,7 @@ function moveAll() {
   .pipe(inject(
     gulp.src(['src/templates/**/*' + templateExt], { read: false }), {
     	transform: function (filepath) {
-    		if (filepath.slice(-8) === templateExt)
+    		if (filepath.slice(-templateExt.length) === templateExt)
     		{
     			filepath = __dirname + filepath;
     			var templateId = filepath.substring(filepath.lastIndexOf('/') + 1, filepath.indexOf(templateExt));
