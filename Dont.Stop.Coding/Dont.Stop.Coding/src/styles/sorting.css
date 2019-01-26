@@ -13,7 +13,7 @@
 	margin: 1px;
 }
 
-input[type=number], input[type=text], button[id=sortButton] {
+input[type=number], input[type=text] {
 	width: 75px;
 	margin: 0;
 	-webkit-box-sizing: border-box;

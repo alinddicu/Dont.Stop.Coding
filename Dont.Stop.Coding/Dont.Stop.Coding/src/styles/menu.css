@@ -21,10 +21,6 @@ div.inline-right {
 	clear: both;
 }
 
-div#menu-toggle i {
-	cursor: pointer;
-}
-
 div#menu-entries-container {
 	margin-top: 20px;
 }

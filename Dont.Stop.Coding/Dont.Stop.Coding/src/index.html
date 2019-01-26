@@ -42,6 +42,7 @@
 	<script src="scripts/GoL/Drawing/Board.js"></script>
 	<script src="scripts/GoL/Drawing/BoardLine.js"></script>
 	<script src="scripts/GoL/Drawing/ParamsForm.js"></script>
+	<link rel="stylesheet" href="styles/game-of-life.css" type="text/css" />
 
 	<script src="scripts/GoL/game-of-life-tests.js"></script>
 
@@ -51,15 +52,15 @@
 	<script src="scripts/Tools/InputValueConverter.js"></script>
 	<script src="scripts/Workflow.js"></script>
 
-	<link rel="stylesheet" href="styles/game-of-life.css" type="text/css" />
+	<link rel="stylesheet" href="styles/all-apps.css" type="text/css" />
 
 </head>
 
 <body>
 	<nav role="navigation">
 		<div id="menu-toggle" class="inline-right">
-			<i class="material-icons" data-bind="visible: !menuOpen(), click: function() { menuOpen(true); }">menu</i>
-			<i class="material-icons" data-bind="visible: menuOpen(), click: function() { menuOpen(false); }">close</i>
+			<button data-bind="visible: !menuOpen(), click: function() { menuOpen(true); }"><i class="material-icons">menu</i></button>
+			<button data-bind="visible: menuOpen(), click: function() { menuOpen(false); }"><i class="material-icons">close</i></button>
 		</div>
 		<div id="menu-entries-container" class="inline-right" data-bind="visible: menuOpen()">
 			<a class="menu-entry" href="#" data-bind="click: function() { workflowViewModel.gotoSortingArrays(); }"><i class="material-icons menu">sort</i><span>Array sortings</span></a>
@@ -210,12 +211,12 @@
 				<input id="fontSize" type="number" placeholder="font size" value="16" min="5" max="40" data-bind="event: { keyup: onParamChanged }" />
 			</div>
 			<div class="form-line sort-button">
-				<button id="sortButton" data-bind="click: function() { sort($parent); }">Sort</button>
+				<button data-bind="click: function() { sort($parent); }, style: {'background-color': backgroundColor()}" ><i class="material-icons custom-color">done_outline</i></button>
 			</div>
 		</div>
 		<div id="showHideParams-container">
-			<i class="material-icons" data-bind="visible: !paramsOpen(), click: function() { paramsOpen(true); }">settings</i>
-			<i class="material-icons" data-bind="visible: paramsOpen(), click: function() { paramsOpen(false); }">close</i>
+			<button data-bind="visible: !paramsOpen(), click: function() { paramsOpen(true); }" ><i class="material-icons">settings</i></button>
+			<button data-bind="visible: paramsOpen(), click: function() { paramsOpen(false); }" ><i class="material-icons">close</i></button>
 		</div>
 		<div id="canvas-container">
 			<div id="bubblesort" class="canvas-container"></div>
