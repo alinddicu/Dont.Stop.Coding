@@ -20,9 +20,18 @@ function Workflow() {
 		location.hash = "/sorting-arrays";
 	};
 
+	var changeFavicon = function(faviconName) {
+		var link = document.querySelector("link[rel='icon']") || document.createElement("link");
+		link.type = "image/x-icon";
+		link.rel = "icon";
+		link.href = `images/favicon/${faviconName}.png`;
+		document.getElementsByTagName("head")[0].appendChild(link);
+	};
+
 	var changePage = function (viewModel) {
 		self.currentViewModel(viewModel);
 		closeMenu();
+		changeFavicon(viewModel.pageName);
 	};
 
 	Sammy(function () {
