@@ -68,7 +68,6 @@
     <TypeScriptCompile Include="typings\knockout.d.ts" />
     <TypeScriptCompile Include="typings\linq.d.ts" />
     <TypeScriptCompile Include="typings\sammy.d.ts" />
-    <TypeScriptCompile Include="webpack.config.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="package.json" />
