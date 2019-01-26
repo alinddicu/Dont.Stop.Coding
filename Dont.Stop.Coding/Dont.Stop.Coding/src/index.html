@@ -211,12 +211,12 @@
 				<input id="fontSize" type="number" placeholder="font size" value="16" min="5" max="40" data-bind="event: { keyup: onParamChanged }" />
 			</div>
 			<div class="form-line sort-button">
-				<button data-bind="click: function() { sort($parent); }" ><i class="material-icons custom-color">done_outline</i></button>
+				<button data-bind="click: function() { sort($parent); }"><i class="material-icons custom-color">done_outline</i></button>
 			</div>
 		</div>
 		<div id="showHideParams-container">
-			<button data-bind="visible: !paramsOpen(), click: function() { paramsOpen(true); }" ><i class="material-icons">settings</i></button>
-			<button data-bind="visible: paramsOpen(), click: function() { paramsOpen(false); }" ><i class="material-icons">close</i></button>
+			<button data-bind="visible: !paramsOpen(), click: function() { paramsOpen(true); }"><i class="material-icons">settings</i></button>
+			<button data-bind="visible: paramsOpen(), click: function() { paramsOpen(false); }"><i class="material-icons">close</i></button>
 		</div>
 		<div id="canvas-container">
 			<div id="bubblesort" class="canvas-container"></div>

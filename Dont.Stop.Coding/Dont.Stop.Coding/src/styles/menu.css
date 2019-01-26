@@ -4,7 +4,8 @@
 	right: 0;
 	top: 0;
 	opacity: 1;
-	padding: 0 0 5px 5px;
+	padding: 0;
+	margin: 0;
 	background-color: inherit;
 	border-radius: 5px;
 }
@@ -23,6 +24,7 @@ div.inline-right {
 
 div#menu-entries-container {
 	margin-top: 20px;
+	padding: 0 0 5px 5px;
 }
 
 a.menu-entry, a.menu-entry :visited, a.menu-entry :hover, a.menu-entry :active {
