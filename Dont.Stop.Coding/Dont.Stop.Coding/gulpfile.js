@@ -17,7 +17,7 @@ var paths = {
 	transpiled: ['src/scripts/**/*.js'],
 	typescript: ['src/scripts/**/*.ts'],
 	pages: ['src/**/*.html'],
-	styles: ['src/styles/*'],
+	styles: ['src/styles/*.css'],
 	images: ['src/images/**/*.png'],
 	templates: ['src/templates/**/*.t.html']
 };
@@ -44,10 +44,18 @@ function moveAll() {
 	// for disabling index.html warnings, only
 	gulp.src(paths.libs).pipe(gulp.dest('src/lib'));
 
+	var buildDependencies = __dirname + '\\build-dependencies.json';
+
 	var templateExt = '.ko.html';
+	var srcFiles = []
+		.concat(['src/templates/**/*' + templateExt])
+		.concat(JSON.parse(fs.readFileSync(buildDependencies, "utf8")).css);
+
+	console.log('srcFiles: ' + srcFiles);
+
 	gulp.src('./src/index.html')
   .pipe(inject(
-    gulp.src(['src/templates/**/*' + templateExt], { read: false }), {
+    gulp.src(srcFiles, { read: false }), {
     	transform: function (filepath) {
     		if (filepath.slice(-templateExt.length) === templateExt)
     		{
@@ -56,6 +64,11 @@ function moveAll() {
     			console.log('Injecting template with id: ' + templateId);
     			var fileContent = fs.readFileSync(filepath, "utf8");
     			return '<script type="text/html" id="' + templateId + '">' + fileContent + '</script>';
+    		}
+    		else if (filepath.slice(-4) === '.css')
+    		{
+    			filepath = filepath.replace('/src/', '');
+    			return '<link rel="stylesheet" href="' + filepath + '" type="text/css"/>';
     		}
 
     		// Use the default transform as fallback:

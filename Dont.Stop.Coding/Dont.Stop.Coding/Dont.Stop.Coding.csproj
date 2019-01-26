@@ -82,6 +82,9 @@
   <ItemGroup>
     <TypeScriptCompile Include="src\scripts\Sorting\Tools\OrdinalHelper.ts" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="build-dependencies.json" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
   </PropertyGroup>
