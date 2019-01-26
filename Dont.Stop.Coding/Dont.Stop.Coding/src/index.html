@@ -57,17 +57,17 @@
 
 <body>
 	<nav role="navigation">
-		<div id="menu-toggle" class="inline-right" >
+		<div id="menu-toggle" class="inline-right">
 			<i class="material-icons" data-bind="visible: !menuOpen(), click: function() { menuOpen(true); }">menu</i>
 			<i class="material-icons" data-bind="visible: menuOpen(), click: function() { menuOpen(false); }">close</i>
 		</div>
 		<div id="menu-entries-container" class="inline-right" data-bind="visible: menuOpen()">
 			<a class="menu-entry" href="#" data-bind="click: function() { workflowViewModel.gotoSortingArrays(); }"><i class="material-icons menu">sort</i><span>Array sortings</span></a>
-			<br/>
+			<br />
 			<a class="menu-entry" href="#" data-bind="click: function() { workflowViewModel.gotoGameOfLife(); }"><i class="material-icons menu">grid_on</i><span>Game of life</span></a>
-			<br/>
+			<br />
 			<a class="menu-entry" href="https://github.com/alinddicu" target="_blank"><i class="material-icons menu">contact_support</i><span>About</span></a>
-			<br class="clearBoth"/>
+			<br class="clearBoth" />
 		</div>
 	</nav>
 
@@ -214,7 +214,8 @@
 			</div>
 		</div>
 		<div id="showHideParams-container">
-			<input id="showHideParams" alt="Show/Hide Parameters" title="Show/Hide Parameters" type="checkbox" data-bind="checked: paramsOpen">
+			<i class="material-icons" data-bind="visible: !paramsOpen(), click: function() { paramsOpen(true); }">settings</i>
+			<i class="material-icons" data-bind="visible: paramsOpen(), click: function() { paramsOpen(false); }">close</i>
 		</div>
 		<div id="canvas-container">
 			<div id="bubblesort" class="canvas-container"></div>

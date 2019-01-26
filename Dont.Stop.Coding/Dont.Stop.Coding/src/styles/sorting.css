@@ -61,6 +61,10 @@ div#showHideParams-container {
 	top: 8px;
 }
 
+div#showHideParams-container i {
+	cursor: pointer;
+}
+
 label {
 	font-weight: bold;
 	float: left;
