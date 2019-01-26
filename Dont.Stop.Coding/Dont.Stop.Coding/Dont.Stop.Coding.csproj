@@ -77,6 +77,7 @@
     <Folder Include="dist\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="src\templates\test.t.html" />
     <Content Include="tsconfig.json" />
   </ItemGroup>
   <ItemGroup>
