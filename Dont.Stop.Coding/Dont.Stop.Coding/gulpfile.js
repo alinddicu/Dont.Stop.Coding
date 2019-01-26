@@ -44,14 +44,15 @@ function moveAll() {
 	// for disabling index.html warnings, only
 	gulp.src(paths.libs).pipe(gulp.dest('src/lib'));
 
+	var templateExt = '.t.html';
 	gulp.src('./src/index.html')
   .pipe(inject(
-    gulp.src(['src/templates/**/*t.html'], { read: false }), {
+    gulp.src(['src/templates/**/*' + templateExt], { read: false }), {
     	transform: function (filepath) {
-    		if (filepath.slice(-7) === '.t.html')
+    		if (filepath.slice(-7) === templateExt)
     		{
     			filepath = __dirname + filepath;
-    			var templateId = filepath.substring(filepath.lastIndexOf('/') + 1, filepath.indexOf('.t.html'));
+    			var templateId = filepath.substring(filepath.lastIndexOf('/') + 1, filepath.indexOf(templateExt));
     			console.log('Injecting template with id: ' + templateId);
     			var fileContent = fs.readFileSync(filepath, "utf8");
     			return '<script type="text/html" id="' + templateId + '">' + fileContent + '</script>';
