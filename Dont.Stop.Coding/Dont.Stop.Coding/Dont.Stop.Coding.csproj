@@ -77,7 +77,8 @@
     <Folder Include="dist\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\templates\test.t.html" />
+    <Content Include="src\templates\game-of-life.t.html" />
+    <Content Include="src\templates\sorting-arrays.t.html" />
     <Content Include="tsconfig.json" />
   </ItemGroup>
   <ItemGroup>

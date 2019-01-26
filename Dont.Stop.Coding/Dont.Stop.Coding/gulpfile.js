@@ -18,7 +18,8 @@ var paths = {
 	typescript: ['src/scripts/**/*.ts'],
 	pages: ['src/**/*.html'],
 	styles: ['src/styles/*'],
-	images: ['src/images/**/*.png']
+	images: ['src/images/**/*.png'],
+	templates: ['src/templates/**/*.t.html']
 };
 
 var watchPaths = []
@@ -27,7 +28,8 @@ var watchPaths = []
 	.concat(paths.libs)
 	.concat(paths.pages)
 	.concat(paths.styles)
-	.concat(paths.images);
+	.concat(paths.images)
+	.concat(paths.templates);
 
 gulp.task('dev-clean-bundle', function () {
 	return del(['bundle-dev/*']);
@@ -36,7 +38,6 @@ gulp.task('dev-clean-bundle', function () {
 function moveAll() {
 	gulp.src(paths.typescript).pipe(gulp.dest('dist/dev/scripts'));
 	gulp.src(paths.transpiled).pipe(gulp.dest('dist/dev/scripts'));
-	//gulp.src(paths.pages).pipe(gulp.dest('dist/dev'));
 	gulp.src(paths.styles).pipe(gulp.dest('dist/dev/styles'));
 	gulp.src(paths.images).pipe(gulp.dest('dist/dev/images'));
 	gulp.src(paths.libs).pipe(gulp.dest('dist/dev/lib'));
@@ -47,20 +48,17 @@ function moveAll() {
   .pipe(inject(
     gulp.src(['src/templates/**/*t.html'], { read: false }), {
     	transform: function (filepath) {
-    		//if (filepath.slice(-7) === '.docx')
-    		//{
+    		if (filepath.slice(-7) === '.t.html')
+    		{
+    			filepath = __dirname + filepath;
+    			var templateId = filepath.substring(filepath.lastIndexOf('/') + 1, filepath.indexOf('.t.html'));
+    			console.log('Injecting template with id: ' + templateId);
+    			var fileContent = fs.readFileSync(filepath, "utf8");
+    			return '<script type="text/html" id="' + templateId + '">' + fileContent + '</script>';
+    		}
 
-		    filepath = __dirname + filepath;
-		    //filepath = 'C:\\Users\\Alin\\Documents\\GitHub\\Dont.Stop.Coding\\Dont.Stop.Coding\\Dont.Stop.Coding\\src\\templates\\test.t.html';
-		    var templateId = filepath.substring(filepath.lastIndexOf('/') + 1, filepath.indexOf('.t.html'));
-			console.log('templateId: ' + templateId);
-			var fileContent = fs.readFileSync(filepath, "utf8");
-			console.log('fileContent: '+ fileContent);
-		    return '<script type="text/html" id="' + templateId + '">' + fileContent + '</script>';
-    			//return '<script href="' + filepath + '">' + filepath + '</a></li>';
-    		//}
     		// Use the default transform as fallback:
-    		// return inject.transform.apply(inject.transform, arguments);
+    		return inject.transform.apply(inject.transform, arguments);
     	}
     }
   ))
