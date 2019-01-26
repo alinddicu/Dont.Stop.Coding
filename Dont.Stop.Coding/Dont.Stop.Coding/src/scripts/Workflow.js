@@ -26,15 +26,15 @@ function Workflow() {
 	};
 
 	Sammy(function () {
-		this.get("", function () {
-			changePage(new ViewModel.SortingArraysViewModel(self));
-		});
-
 		this.get("#/game-of-life", function () {
 			changePage(new ViewModel.GameOfLifeViewModel(self));
 		});
 
 		this.get("#/sorting-arrays", function () {
+			changePage(new ViewModel.SortingArraysViewModel(self));
+		});
+
+		this.get("", function () {
 			changePage(new ViewModel.SortingArraysViewModel(self));
 		});
 	}).run();
