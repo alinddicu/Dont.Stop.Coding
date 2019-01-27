@@ -126,12 +126,12 @@ gulp.task('prod-concat-minify-js', function () {
 		.pipe(concat('scripts.js'))
 		.pipe(rename('scripts.min.js'))
 		//.pipe(sourcemaps.init())
-		.pipe(uglify())
+		//.pipe(uglify())
 		//.pipe(sourcemaps.write())
 		.pipe(gulp.dest(prodDistDest));
 });
 
-gulp.task('prod-concat-css', function () {
+gulp.task('prod-concat-minify-css', function () {
 	return gulp.src(buildResources.css)
 		.pipe(concat('styles.css'))
 		.pipe(csso())
@@ -155,7 +155,7 @@ gulp.task('prod-inject-all', function () {
 		.pipe(gulp.dest(prodDistDest));
 });
 
-gulp.task('all-prod', gulp.series('prod-clean', 'prod-copy-images', 'prod-concat-minify-js', 'prod-concat-css', 'prod-inject-all'));
+gulp.task('all-prod', gulp.series('prod-clean', 'prod-copy-images', 'prod-concat-minify-js', 'prod-concat-minify-css', 'prod-inject-all'));
 
 gulp.task('watch-prod', function () {
 	gulp.watch(watchPaths, gulp.series('all-prod'));
