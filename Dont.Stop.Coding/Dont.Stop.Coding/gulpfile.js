@@ -21,7 +21,8 @@ var paths = {
 	pages: ['src/**/*.html'],
 	styles: ['src/styles/*.css'],
 	images: ['src/images/**/*.png'],
-	templates: ['src/templates/**/*.t.html']
+	templates: ['src/templates/**/*.t.html'],
+	buildResources: 'build-resources.json'
 };
 
 var watchPaths = []
@@ -31,14 +32,16 @@ var watchPaths = []
 	.concat(paths.pages)
 	.concat(paths.styles)
 	.concat(paths.images)
-	.concat(paths.templates);
+	.concat(paths.templates)
+	.concat(paths.buildResources)
+	;
 
 gulp.task('dev-clean-bundle', function () {
 	return del(['bundle-dev/*']);
 });
 
 function buildIndexHtml() {
-	var buildResources = JSON.parse(fs.readFileSync(gulpFolder + '\\build-resources.json', "utf8"));
+	var buildResources = JSON.parse(fs.readFileSync(gulpFolder + '\\' + paths.buildResources, "utf8"));
 	var templateExt = '.ko.html';
 	var srcFiles = []
 		.concat(['src/templates/**/*' + templateExt])
