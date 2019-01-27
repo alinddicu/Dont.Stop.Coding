@@ -12,7 +12,7 @@
 			"src/lib/jquery.min.js",
 			"src/lib/sammy-latest.min.js"
 		],
-		"coded": [
+		"app": [
 			"src/scripts/Sorting/Algorithms/SortBase.js",
 			"src/scripts/Sorting/Algorithms/BubbleSort.js",
 			"src/scripts/Sorting/Algorithms/InsertionSort.js",

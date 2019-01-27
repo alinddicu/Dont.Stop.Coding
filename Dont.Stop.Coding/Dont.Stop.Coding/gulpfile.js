@@ -50,7 +50,7 @@ function buildIndexHtml() {
 		.concat(['src/templates/**/*' + templateExt])
 		.concat(buildResources.css)
 		.concat(buildResources.js.libs)
-		.concat(buildResources.js.coded)
+		.concat(buildResources.js.app)
 	;
 
 	gulp.src('./src/index.html')
@@ -132,8 +132,8 @@ function packageProdJs() {
 	  .pipe(gulp.dest(distDest));
 
 	// Concatenate AND minify app sources
-	var appStream = gulp.src(buildResources.js.coded)
-	  .pipe(concat('coded.js'))
+	var appStream = gulp.src(buildResources.js.app)
+	  .pipe(concat('app.js'))
 	  .pipe(flatten())
 	  .pipe(gulp.dest(distDest));
 
