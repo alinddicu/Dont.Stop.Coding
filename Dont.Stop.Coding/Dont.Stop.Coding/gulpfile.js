@@ -6,6 +6,9 @@ var concat = require('gulp-concat');
 var del = require('del');
 var watch = require('gulp-watch');
 var inject = require('gulp-inject');
+var uglify = require('gulp-uglify');
+var flatten = require('gulp-flatten');
+var es = require('event-stream');
 
 var gulpFolder = __dirname;
 
@@ -34,7 +37,7 @@ var watchPaths = []
 	.concat(paths.images)
 	.concat(paths.templates)
 	.concat(paths.buildResources)
-	;
+;
 
 gulp.task('dev-clean-bundle', function () {
 	return del(['bundle-dev/*']);
@@ -116,11 +119,41 @@ gulp.task('dev-watch-bundle', function () {
 /*********************************** PROD *******************************************/
 
 gulp.task('prod-clean-bundle', function () {
-	return	del(['dist/prod/*']);
+	return del(['dist/prod/*']);
 });
 
+function packageProdJs() {
+	var buildResources = JSON.parse(fs.readFileSync(gulpFolder + '\\' + paths.buildResources, "utf8"));
+	var distDest = 'dist/prod';
+
+	// Concatenate vendor scripts
+	var vendorStream = gulp.src(buildResources.js.libs)
+	  .pipe(concat('libs.js'))
+	  .pipe(gulp.dest(distDest));
+
+	// Concatenate AND minify app sources
+	var appStream = gulp.src(buildResources.js.coded)
+	  .pipe(concat('coded.js'))
+	  .pipe(flatten())
+	  .pipe(gulp.dest(distDest));
+
+	gulp.src('./src/index.html')
+	  .pipe(inject(es.merge(vendorStream, appStream), {
+	  	transform: function (filepath) {
+	  		var fileName = filepath.substring(filepath.lastIndexOf('/') + 1);
+
+	  		console.info('Injecting js: ' + fileName);
+
+	  		filepath = filepath.replace('/dist/prod/', '');
+	  		return '<script src="' + filepath + '"></script >';
+	  	}
+	  }))
+	  .pipe(gulp.dest(distDest));
+}
+
 function buildProd() {
-	moveAll('prod');
+	//moveAll('prod');
+	packageProdJs();
 }
 
 gulp.task('prod-bundle', function () {
