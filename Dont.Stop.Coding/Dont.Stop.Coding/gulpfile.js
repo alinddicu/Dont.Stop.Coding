@@ -144,9 +144,9 @@ gulp.task('prod-concat-css', function () {
 		.pipe(gulp.dest(distDest));
 });
 
-gulp.task('prod-inject-all', buildProd);
+gulp.task('prod-inject-all', prodInjectAll);
 
-function buildProd() {
+function prodInjectAll() {
 
 	var buildResources = JSON.parse(fs.readFileSync(gulpFolder + '\\' + paths.buildResources, "utf8"));
 	var distDest = 'dist/prod';
@@ -171,7 +171,7 @@ function buildProd() {
 				var templateId = fileName.substring(0, fileName.indexOf(templateExt));
 				var fileContent = fs.readFileSync(filepath, "utf8");
 
-				console.info('Injecting ko template with id: ' + templateId);
+				console.info('Injecting ko html: ' + templateId);
 
 				return '<script type="text/html" id="' + templateId + '">' + fileContent + '</script>';
 			}
