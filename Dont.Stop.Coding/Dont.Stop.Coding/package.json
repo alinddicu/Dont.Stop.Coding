@@ -13,6 +13,7 @@
 		"gulp-uglify": "3.0.1",
 		"gulp-flatten": "0.4.0",
 		"event-stream": "4.0.1",
+		"combined-stream": "1.0.7",
 		"linq": "3.1.1",
 		"knockout": "3.4.2",
 		"sammy": "0.7.6",

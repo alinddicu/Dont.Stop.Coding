@@ -8,6 +8,7 @@ var watch = require('gulp-watch');
 var inject = require('gulp-inject');
 var uglify = require('gulp-uglify');
 var flatten = require('gulp-flatten');
+var CombinedStream = require('combined-stream');
 var es = require('event-stream');
 
 var gulpFolder = __dirname;
@@ -122,41 +123,33 @@ gulp.task('prod-clean-bundle', function () {
 	return del(['dist/prod/*']);
 });
 
-function packageProdJs() {
+function moveProd() {
 	gulp.src(paths.styles).pipe(gulp.dest('dist/prod/styles'));
 	gulp.src(paths.images).pipe(gulp.dest('dist/prod/images'));
+}
+
+function buildProd() {
+	moveProd();
+
 	var buildResources = JSON.parse(fs.readFileSync(gulpFolder + '\\' + paths.buildResources, "utf8"));
 	var distDest = 'dist/prod';
 
-	// Concatenate vendor scripts
-	var vendorStream = gulp.src(buildResources.js.libs)
-	  .pipe(concat('libs.js'))
-	  .pipe(gulp.dest(distDest));
-
-	// Concatenate AND minify app sources
-	var appStream = gulp.src(buildResources.js.app)
-	  .pipe(concat('app.js'))
-	  .pipe(gulp.dest(distDest));
+	gulp.src([].concat(buildResources.js.libs).concat(buildResources.js.app))
+		.pipe(concat('scripts.js'))
+		.pipe(gulp.dest(distDest));
 
 	var templateExt = '.ko.html';
 	var srcFiles = []
 		.concat(['src/templates/**/*' + templateExt])
-		.concat(buildResources.css);
+		.concat(buildResources.css)
+		.concat(['dist/prod/scripts.js']);
 
 	gulp.src('./src/index.html')
-	.pipe(inject(es.merge(vendorStream, appStream), {
-		transform: function (filepath) {
-			var fileName = filepath.substring(filepath.lastIndexOf('/') + 1);
-
-			console.info('Injecting js: ' + fileName);
-
-			filepath = filepath.replace('/dist/prod/', '');
-			return '<script src="' + filepath + '"></script >';
-		}
-	}))
 	.pipe(inject(gulp.src(srcFiles, { read: false }), {
 		transform: function (filepath) {
 			var fileName = filepath.substring(filepath.lastIndexOf('/') + 1);
+			console.log('fileName: ' + fileName);
+
 			if (filepath.slice(-templateExt.length) === templateExt)
 			{
 				filepath = gulpFolder + filepath;
@@ -167,10 +160,16 @@ function packageProdJs() {
 
 				return '<script type="text/html" id="' + templateId + '">' + fileContent + '</script>';
 			}
+			else if (filepath.slice(-3) === '.js')
+			{
+				console.info('Injecting js: ' + fileName);
+
+				filepath = filepath.replace('/dist/prod/', '');
+				return '<script src="' + filepath + '"></script >';
+			}
 			else if (filepath.slice(-4) === '.css')
 			{
 				console.info('Injecting css: ' + fileName);
-				console.info('Injecting css path: ' + filepath);
 
 				filepath = filepath.replace('/src/', '');
 				return '<link rel="stylesheet" href="' + filepath + '" type="text/css"/>';
@@ -181,11 +180,6 @@ function packageProdJs() {
 		}
 	}))
 	.pipe(gulp.dest(distDest));
-}
-
-function buildProd() {
-	//moveAll('prod');
-	packageProdJs();
 }
 
 gulp.task('prod-bundle', function () {
