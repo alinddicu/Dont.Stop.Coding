@@ -1,4 +1,4 @@
-﻿/// <binding AfterBuild='dev-bundle' Clean='dev-clean-bundle, prod-clean-bundle' ProjectOpened='dev-watch-bundle, prod-watch-bundle' />
+﻿/// <binding AfterBuild='dev-clean, dev-bundle, prod-clean, prod-all' Clean='dev-clean, prod-clean' ProjectOpened='dev-watch-bundle, prod-watch-bundle' />
 
 var gulp = require('gulp');
 var fs = require('fs');
@@ -118,14 +118,13 @@ gulp.task('dev-watch-bundle', function () {
 
 /*********************************** PROD *******************************************/
 
-gulp.task('prod-clean-bundle', function () {
+gulp.task('prod-clean', function () {
 	return del(['dist/prod/*']);
 });
 
-function moveProd() {
-	gulp.src(paths.styles).pipe(gulp.dest('dist/prod/styles'));
-	gulp.src(paths.images).pipe(gulp.dest('dist/prod/images'));
-}
+gulp.task('prod-copy-images', function () {
+	return 	gulp.src(paths.images).pipe(gulp.dest('dist/prod/images'));
+});
 
 gulp.task('prod-concat-js', function () {
 	var buildResources = JSON.parse(fs.readFileSync(gulpFolder + '\\' + paths.buildResources, "utf8"));
@@ -136,10 +135,18 @@ gulp.task('prod-concat-js', function () {
 		.pipe(gulp.dest(distDest));
 });
 
+gulp.task('prod-concat-css', function () {
+	var buildResources = JSON.parse(fs.readFileSync(gulpFolder + '\\' + paths.buildResources, "utf8"));
+	var distDest = 'dist/prod';
+
+	return gulp.src(buildResources.css)
+		.pipe(concat('styles.css'))
+		.pipe(gulp.dest(distDest));
+});
+
 gulp.task('prod-inject-all', buildProd);
 
 function buildProd() {
-	moveProd();
 
 	var buildResources = JSON.parse(fs.readFileSync(gulpFolder + '\\' + paths.buildResources, "utf8"));
 	var distDest = 'dist/prod';
@@ -151,15 +158,13 @@ function buildProd() {
 	var templateExt = '.ko.html';
 	var srcFiles = []
 		.concat(['src/templates/**/*' + templateExt])
-		.concat(buildResources.css)
+		.concat(['dist/prod/styles.css'])
 		.concat(['dist/prod/scripts.js']);
 
 	return gulp.src('./src/index.html')
 	.pipe(inject(gulp.src(srcFiles, { read: false }), {
 		transform: function (filepath) {
 			var fileName = filepath.substring(filepath.lastIndexOf('/') + 1);
-			console.log('fileName: ' + fileName);
-
 			if (filepath.slice(-templateExt.length) === templateExt)
 			{
 				filepath = gulpFolder + filepath;
@@ -181,7 +186,7 @@ function buildProd() {
 			{
 				console.info('Injecting css: ' + fileName);
 
-				filepath = filepath.replace('/src/', '');
+				filepath = filepath.replace('/dist/prod/', '');
 				return '<link rel="stylesheet" href="' + filepath + '" type="text/css"/>';
 			}
 
@@ -192,8 +197,8 @@ function buildProd() {
 	.pipe(gulp.dest(distDest));
 }
 
-gulp.task('prod-bundle', gulp.series('prod-concat-js', 'prod-inject-all'));
+gulp.task('prod-all', gulp.series('prod-copy-images', 'prod-concat-js', 'prod-concat-css', 'prod-inject-all'));
 
 gulp.task('prod-watch-bundle', function () {
-	gulp.watch(watchPaths, gulp.series('prod-clean-bundle', 'prod-bundle'));
+	gulp.watch(watchPaths, gulp.series('prod-clean', 'prod-all'));
 });
