@@ -7,6 +7,8 @@ var del = require('del');
 var watch = require('gulp-watch');
 var inject = require('gulp-inject');
 
+var gulpFolder = __dirname;
+
 var paths = {
 	libs: [
 		'node_modules/linq/linq.min.js',
@@ -44,31 +46,43 @@ function moveAll() {
 	// for disabling index.html warnings, only
 	gulp.src(paths.libs).pipe(gulp.dest('src/lib'));
 
-	var buildDependencies = __dirname + '\\build-dependencies.json';
-
+	var buildResources = JSON.parse(fs.readFileSync(gulpFolder + '\\build-resources.json', "utf8"))
 	var templateExt = '.ko.html';
 	var srcFiles = []
 		.concat(['src/templates/**/*' + templateExt])
-		.concat(JSON.parse(fs.readFileSync(buildDependencies, "utf8")).css);
+		.concat(buildResources.css)
+		.concat(buildResources.js.libs)
+		.concat(buildResources.js.coded)
+	;
 
-	console.log('srcFiles: ' + srcFiles);
+	console.info('Building resources: ' + srcFiles);
 
 	gulp.src('./src/index.html')
   .pipe(inject(
     gulp.src(srcFiles, { read: false }), {
     	transform: function (filepath) {
+		    var fileName = filepath.substring(filepath.lastIndexOf('/') + 1);
     		if (filepath.slice(-templateExt.length) === templateExt)
     		{
-    			filepath = __dirname + filepath;
+    			filepath = gulpFolder + filepath;
     			var templateId = filepath.substring(filepath.lastIndexOf('/') + 1, filepath.indexOf(templateExt));
-    			console.log('Injecting template with id: ' + templateId);
+    			console.info('Injecting ko template with id: ' + templateId);
     			var fileContent = fs.readFileSync(filepath, "utf8");
     			return '<script type="text/html" id="' + templateId + '">' + fileContent + '</script>';
     		}
     		else if (filepath.slice(-4) === '.css')
     		{
     			filepath = filepath.replace('/src/', '');
+    			console.info('Injecting css: ' + fileName);
+
     			return '<link rel="stylesheet" href="' + filepath + '" type="text/css"/>';
+    		}
+    		else if (filepath.slice(-3) === '.js')
+    		{
+    			filepath = filepath.replace('/src/', '');
+    			console.info('Injecting js: ' + fileName);
+
+    			return '<script src="' + filepath + '"></script >';
     		}
 
     		// Use the default transform as fallback:
