@@ -55,7 +55,7 @@ function buildIndexHtml() {
 					if (filepath.slice(-templateExt.length) === templateExt)
 					{
 						filepath = gulpFolder + filepath;
-						var templateId = fileName.substring(0, filepath.indexOf(templateExt));
+						var templateId = fileName.substring(0, fileName.indexOf(templateExt));
 						var fileContent = fs.readFileSync(filepath, "utf8");
 
 						console.info('Injecting ko template with id: ' + templateId);
