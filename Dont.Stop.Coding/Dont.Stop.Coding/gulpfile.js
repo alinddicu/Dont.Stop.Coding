@@ -1,20 +1,18 @@
-﻿/// <binding AfterBuild='dev-clean, all-dev, prod-clean, all-prod' Clean='dev-clean, prod-clean' ProjectOpened='watch-dev, watch-prod' />
-
-/// <reference path="typings/gulp-required.d.ts"/>
+﻿/// <binding AfterBuild='all-dev, all-prod' ProjectOpened='watch-dev, watch-prod' />
 
 /*********************************** COMMON *******************************************/
 
-let gulp = require('gulp');
-let fs = require('fs');
-let concat = require('gulp-concat');
-let del = require('del');
-let watch = require('gulp-watch');
-let inject = require('gulp-inject');
-let uglify = require('gulp-uglify');
+var gulp = require('gulp');
+var fs = require('fs');
+var concat = require('gulp-concat');
+var del = require('del');
+var watch = require('gulp-watch');
+var inject = require('gulp-inject');
+var uglify = require('gulp-uglify');
 
-let gulpFolder = __dirname;
-let prodDistDest = 'dist/prod';
-let koTemplateExtension = '.ko.html';
+var gulpFolder = __dirname;
+var prodDistDest = 'dist/prod';
+var koTemplateExtension = '.ko.html';
 
 var paths = {
 	libs: [
@@ -89,7 +87,7 @@ gulp.task('dev-copy-all', function () {
 });
 
 gulp.task('dev-inject-all', function () {
-	let srcFiles = []
+	var srcFiles = []
 		.concat(['src/templates/**/*' + koTemplateExtension])
 		.concat(buildResources.css)
 		.concat(buildResources.js.libs)

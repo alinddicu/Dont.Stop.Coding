@@ -33,7 +33,7 @@
     <Content Include="src\styles\all-apps.css" />
     <Content Include="src\styles\menu.css" />
     <Content Include="src\styles\sorting.css" />
-    <TypeScriptCompile Include="gulpfile.ts" />
+    <Content Include="gulpfile.js" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="src\scripts\GoL\Drawing\Board.ts" />
@@ -64,7 +64,6 @@
     <TypeScriptCompile Include="src\scripts\ViewModel\IWorkflow.ts" />
     <TypeScriptCompile Include="src\scripts\ViewModel\SortingArraysViewModel.ts" />
     <Content Include="src\scripts\AppsRunner.js" />
-    <TypeScriptCompile Include="typings\gulp-required.d.ts" />
     <TypeScriptCompile Include="typings\knockout.d.ts" />
     <TypeScriptCompile Include="typings\linq.d.ts" />
     <TypeScriptCompile Include="typings\sammy.d.ts" />
