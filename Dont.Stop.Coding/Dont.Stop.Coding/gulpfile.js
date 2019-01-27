@@ -51,7 +51,7 @@ function buildIndexHtml() {
 		.concat(buildResources.js.app)
 	;
 
-	gulp.src('./src/index.html')
+	return gulp.src('./src/index.html')
 		.pipe(inject(
 			gulp.src(srcFiles, { read: false }), {
 				transform: function (filepath) {
