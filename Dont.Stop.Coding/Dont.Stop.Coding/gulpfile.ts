@@ -2,15 +2,19 @@
 
 /// <reference path="typings/gulp-required.d.ts"/>
 
-var gulp = require('gulp');
-var fs = require('fs');
-var concat = require('gulp-concat');
-var del = require('del');
-var watch = require('gulp-watch');
-var inject = require('gulp-inject');
-var uglify = require('gulp-uglify');
+/*********************************** COMMON *******************************************/
 
-var gulpFolder = __dirname;
+let gulp = require('gulp');
+let fs = require('fs');
+let concat = require('gulp-concat');
+let del = require('del');
+let watch = require('gulp-watch');
+let inject = require('gulp-inject');
+let uglify = require('gulp-uglify');
+
+let gulpFolder = __dirname;
+let prodDistDest= 'dist/prod';
+let koTemplateExtension = '.ko.html';
 
 var paths = {
 	libs: [
@@ -28,6 +32,8 @@ var paths = {
 	buildResources: 'build-resources.json'
 };
 
+var buildResources = JSON.parse(fs.readFileSync(gulpFolder + '\\' + paths.buildResources, "utf8"));
+
 var watchPaths = []
 	.concat(paths.transpiled)
 	.concat(paths.typescript)
@@ -37,46 +43,43 @@ var watchPaths = []
 	.concat(paths.images)
 	.concat(paths.templates)
 	.concat(paths.buildResources)
-;
+	;
+
+/*********************************** DEV *******************************************/
 
 gulp.task('dev-clean', function () {
 	return del(['dist/dev/*']);
 });
 
 function buildIndexHtml() {
-	var buildResources = JSON.parse(fs.readFileSync(gulpFolder + '\\' + paths.buildResources, "utf8"));
-	var templateExt = '.ko.html';
-	var srcFiles = []
-		.concat(['src/templates/**/*' + templateExt])
+	let srcFiles = []
+		.concat(['src/templates/**/*' + koTemplateExtension])
 		.concat(buildResources.css)
 		.concat(buildResources.js.libs)
 		.concat(buildResources.js.app)
-	;
+		;
 
 	return gulp.src('./src/index.html')
 		.pipe(inject(
 			gulp.src(srcFiles, { read: false }), {
 				transform: function (filepath) {
 					var fileName = filepath.substring(filepath.lastIndexOf('/') + 1);
-					if (filepath.slice(-templateExt.length) === templateExt)
-					{
+					if (filepath.slice(-koTemplateExtension.length) === koTemplateExtension) {
 						filepath = gulpFolder + filepath;
-						var templateId = fileName.substring(0, fileName.indexOf(templateExt));
+						var templateId = fileName.substring(0, fileName.indexOf(koTemplateExtension));
 						var fileContent = fs.readFileSync(filepath, "utf8");
 
 						console.info('Injecting ko template with id: ' + templateId);
 
 						return '<script type="text/html" id="' + templateId + '">' + fileContent + '</script>';
 					}
-					else if (filepath.slice(-4) === '.css')
-					{
+					else if (filepath.slice(-4) === '.css') {
 						console.info('Injecting css: ' + fileName);
 
 						filepath = filepath.replace('/src/', '');
 						return '<link rel="stylesheet" href="' + filepath + '" type="text/css"/>';
 					}
-					else if (filepath.slice(-3) === '.js')
-					{
+					else if (filepath.slice(-3) === '.js') {
 						console.info('Injecting js: ' + fileName);
 
 						filepath = filepath.replace('/src/', '');
@@ -125,78 +128,67 @@ gulp.task('prod-clean', function () {
 });
 
 gulp.task('prod-copy-images', function () {
-	return 	gulp.src(paths.images).pipe(gulp.dest('dist/prod/images'));
+	return gulp.src(paths.images).pipe(gulp.dest('dist/prod/images'));
 });
 
 gulp.task('prod-concat-js', function () {
-	var buildResources = JSON.parse(fs.readFileSync(gulpFolder + '\\' + paths.buildResources, "utf8"));
-	var distDest = 'dist/prod';
 
 	return gulp.src([].concat(buildResources.js.libs).concat(buildResources.js.app))
 		.pipe(concat('scripts.js'))
-		.pipe(gulp.dest(distDest));
+		.pipe(gulp.dest(prodDistDest));
 });
 
 gulp.task('prod-concat-css', function () {
-	var buildResources = JSON.parse(fs.readFileSync(gulpFolder + '\\' + paths.buildResources, "utf8"));
-	var distDest = 'dist/prod';
 
 	return gulp.src(buildResources.css)
 		.pipe(concat('styles.css'))
-		.pipe(gulp.dest(distDest));
+		.pipe(gulp.dest(prodDistDest));
 });
 
 gulp.task('prod-inject-all', prodInjectAll);
 
 function prodInjectAll() {
 
-	var buildResources = JSON.parse(fs.readFileSync(gulpFolder + '\\' + paths.buildResources, "utf8"));
-	var distDest = 'dist/prod';
-
 	gulp.src([].concat(buildResources.js.libs).concat(buildResources.js.app))
 		.pipe(concat('scripts.js'))
-		.pipe(gulp.dest(distDest));
+		.pipe(gulp.dest(prodDistDest));
 
-	var templateExt = '.ko.html';
 	var srcFiles = []
-		.concat(['src/templates/**/*' + templateExt])
+		.concat(['src/templates/**/*' + koTemplateExtension])
 		.concat(['dist/prod/styles.css'])
 		.concat(['dist/prod/scripts.js']);
 
 	return gulp.src('./src/index.html')
-	.pipe(inject(gulp.src(srcFiles, { read: false }), {
-		transform: function (filepath) {
-			var fileName = filepath.substring(filepath.lastIndexOf('/') + 1);
-			if (filepath.slice(-templateExt.length) === templateExt)
-			{
-				filepath = gulpFolder + filepath;
-				var templateId = fileName.substring(0, fileName.indexOf(templateExt));
-				var fileContent = fs.readFileSync(filepath, "utf8");
+		.pipe(inject(gulp.src(srcFiles, { read: false }), {
+			transform: function (filepath) {
+				var fileName = filepath.substring(filepath.lastIndexOf('/') + 1);
+				if (filepath.slice(-koTemplateExtension.length) === koTemplateExtension) {
+					filepath = gulpFolder + filepath;
+					var templateId = fileName.substring(0, fileName.indexOf(koTemplateExtension));
+					var fileContent = fs.readFileSync(filepath, "utf8");
 
-				console.info('Injecting ko html: ' + templateId);
+					console.info('Injecting ko html: ' + templateId);
 
-				return '<script type="text/html" id="' + templateId + '">' + fileContent + '</script>';
+					return '<script type="text/html" id="' + templateId + '">' + fileContent + '</script>';
+				}
+				else if (filepath.slice(-3) === '.js') {
+					console.info('Injecting js: ' + fileName);
+
+					filepath = filepath.replace('/dist/prod/', '');
+					return '<script src="' + filepath + '"></script >';
+				}
+				else if (filepath.slice(-4) === '.css') {
+					console.info('Injecting css: ' + fileName);
+
+					filepath = filepath.replace('/dist/prod/', '');
+					return '<link rel="stylesheet" href="' + filepath + '" type="text/css"/>';
+				}
+
+				// Use the default transform as fallback:
+				return inject.transform.apply(inject.transform, arguments);
 			}
-			else if (filepath.slice(-3) === '.js')
-			{
-				console.info('Injecting js: ' + fileName);
-
-				filepath = filepath.replace('/dist/prod/', '');
-				return '<script src="' + filepath + '"></script >';
-			}
-			else if (filepath.slice(-4) === '.css')
-			{
-				console.info('Injecting css: ' + fileName);
-
-				filepath = filepath.replace('/dist/prod/', '');
-				return '<link rel="stylesheet" href="' + filepath + '" type="text/css"/>';
-			}
-
-			// Use the default transform as fallback:
-			return inject.transform.apply(inject.transform, arguments);
-		}
-	}))
-	.pipe(gulp.dest(distDest));
+		}))
+		.pipe(gulp.dest(prodDistDest));
 }
 
 gulp.task('all-prod', gulp.series('prod-copy-images', 'prod-concat-js', 'prod-concat-css', 'prod-inject-all'));
