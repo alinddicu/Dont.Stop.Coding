@@ -42,8 +42,7 @@ var watchPaths = []
 	.concat(paths.styles)
 	.concat(paths.images)
 	.concat(paths.templates)
-	.concat(paths.buildResources)
-	;
+	.concat(paths.buildResources);
 
 function injectionTransformation(filepath, relativePath) {
 	var fileName = filepath.substring(filepath.lastIndexOf('/') + 1);
@@ -79,7 +78,17 @@ gulp.task('dev-clean', function () {
 	return del(['dist/dev/*']);
 });
 
-function buildIndexHtml() {
+gulp.task('dev-copy-all', function () {
+	var result = gulp.src(paths.typescript).pipe(gulp.dest('dist/dev/scripts'));
+	result && gulp.src(paths.transpiled).pipe(gulp.dest('dist/dev/scripts'));
+	result && gulp.src(paths.styles).pipe(gulp.dest('dist/dev/styles'));
+	result && gulp.src(paths.images).pipe(gulp.dest('dist/dev/images'));
+	result && gulp.src(paths.libs).pipe(gulp.dest('dist/dev/lib'));
+
+	return result && gulp.src(paths.libs).pipe(gulp.dest('src/lib'));
+});
+
+gulp.task('dev-inject-all', function () {
 	let srcFiles = []
 		.concat(['src/templates/**/*' + koTemplateExtension])
 		.concat(buildResources.css)
@@ -87,41 +96,18 @@ function buildIndexHtml() {
 		.concat(buildResources.js.app);
 
 	return gulp.src('./src/index.html')
-		.pipe(inject(
-			gulp.src(srcFiles, { read: false }), {
-				transform: function (filepath) {
-					return injectionTransformation(filepath, '/src/');
-				}
+		.pipe(inject(gulp.src(srcFiles, { read: false }), {
+			transform: function (filepath) {
+				return injectionTransformation(filepath, '/src/');
 			}
-		))
+		}))
 		.pipe(gulp.dest('dist/dev'));
-}
-
-function moveAll(environment) {
-	gulp.src(paths.typescript).pipe(gulp.dest('dist/' + environment + '/scripts'));
-	gulp.src(paths.transpiled).pipe(gulp.dest('dist/' + environment + '/scripts'));
-	gulp.src(paths.styles).pipe(gulp.dest('dist/' + environment + '/styles'));
-	gulp.src(paths.images).pipe(gulp.dest('dist/' + environment + '/images'));
-	gulp.src(paths.libs).pipe(gulp.dest('dist/' + environment + '/lib'));
-	gulp.src(paths.libs).pipe(gulp.dest('src/lib'));
-}
-
-function buildDev() {
-	moveAll('dev');
-	return buildIndexHtml();
-}
-
-gulp.task('all-dev', function () {
-	// wait for all files to build before bundling
-	setTimeout(function () {
-		buildDev();
-	}, 200);
-
-	return;
 });
 
+gulp.task('all-dev', gulp.series('dev-clean', 'dev-copy-all', 'dev-inject-all'));
+
 gulp.task('watch-dev', function () {
-	gulp.watch(watchPaths, gulp.series('dev-clean', 'all-dev'));
+	gulp.watch(watchPaths, gulp.series('all-dev'));
 });
 
 /*********************************** PROD *******************************************/
@@ -148,9 +134,7 @@ gulp.task('prod-concat-css', function () {
 		.pipe(gulp.dest(prodDistDest));
 });
 
-gulp.task('prod-inject-all', prodInjectAll);
-
-function prodInjectAll() {
+gulp.task('prod-inject-all', function () {
 
 	gulp.src([].concat(buildResources.js.libs).concat(buildResources.js.app))
 		.pipe(concat('scripts.js'))
@@ -168,7 +152,7 @@ function prodInjectAll() {
 			}
 		}))
 		.pipe(gulp.dest(prodDistDest));
-}
+});
 
 gulp.task('all-prod', gulp.series('prod-clean', 'prod-copy-images', 'prod-concat-js', 'prod-concat-css', 'prod-inject-all'));
 
