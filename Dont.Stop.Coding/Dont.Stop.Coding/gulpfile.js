@@ -8,7 +8,9 @@ var concat = require('gulp-concat');
 var del = require('del');
 var watch = require('gulp-watch');
 var inject = require('gulp-inject');
-var uglify = require('gulp-uglify');
+var uglify = require('gulp-uglify-es').default;
+var rename = require("gulp-rename");
+var sourcemaps = require('gulp-sourcemaps');
 
 var gulpFolder = __dirname;
 var prodDistDest = 'dist/prod';
@@ -118,9 +120,13 @@ gulp.task('prod-copy-images', function () {
 	return gulp.src(paths.images).pipe(gulp.dest('dist/prod/images'));
 });
 
-gulp.task('prod-concat-js', function () {
+gulp.task('prod-concat-minify-js', function () {
 	return gulp.src([].concat(buildResources.js.libs).concat(buildResources.js.app))
 		.pipe(concat('scripts.js'))
+		.pipe(rename('scripts.min.js'))
+		//.pipe(sourcemaps.init())
+		.pipe(uglify())
+		//.pipe(sourcemaps.write())
 		.pipe(gulp.dest(prodDistDest));
 });
 
@@ -134,8 +140,8 @@ gulp.task('prod-inject-all', function () {
 	
 	var srcFiles = []
 		.concat(['src/templates/**/*' + koTemplateExtension])
-		.concat(['dist/prod/styles.css'])
-		.concat(['dist/prod/scripts.js']);
+		.concat(['dist/prod/*.css'])
+		.concat(['dist/prod/*.js']);
 
 	return gulp.src('./src/index.html')
 		.pipe(inject(gulp.src(srcFiles, { read: false }), {
@@ -146,7 +152,7 @@ gulp.task('prod-inject-all', function () {
 		.pipe(gulp.dest(prodDistDest));
 });
 
-gulp.task('all-prod', gulp.series('prod-clean', 'prod-copy-images', 'prod-concat-js', 'prod-concat-css', 'prod-inject-all'));
+gulp.task('all-prod', gulp.series('prod-clean', 'prod-copy-images', 'prod-concat-minify-js', 'prod-concat-css', 'prod-inject-all'));
 
 gulp.task('watch-prod', function () {
 	gulp.watch(watchPaths, gulp.series('all-prod'));
