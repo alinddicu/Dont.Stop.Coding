@@ -7,9 +7,6 @@ var del = require('del');
 var watch = require('gulp-watch');
 var inject = require('gulp-inject');
 var uglify = require('gulp-uglify');
-var flatten = require('gulp-flatten');
-var CombinedStream = require('combined-stream');
-var es = require('event-stream');
 
 var gulpFolder = __dirname;
 
@@ -41,7 +38,7 @@ var watchPaths = []
 ;
 
 gulp.task('dev-clean-bundle', function () {
-	return del(['bundle-dev/*']);
+	return del(['dist/dev/*']);
 });
 
 function buildIndexHtml() {
