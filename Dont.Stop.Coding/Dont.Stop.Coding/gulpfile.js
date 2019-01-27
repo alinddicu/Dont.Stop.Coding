@@ -1,4 +1,4 @@
-﻿/// <binding AfterBuild='dev-bundle' Clean='dev-clean-bundle' ProjectOpened='dev-watch-bundle' />
+﻿/// <binding AfterBuild='dev-bundle' Clean='dev-clean-bundle, prod-clean-bundle' ProjectOpened='dev-watch-bundle, prod-watch-bundle' />
 
 var gulp = require('gulp');
 var fs = require('fs');
@@ -88,17 +88,17 @@ function buildIndexHtml() {
 		.pipe(gulp.dest('dist/dev'));
 }
 
-function moveAll() {
-	gulp.src(paths.typescript).pipe(gulp.dest('dist/dev/scripts'));
-	gulp.src(paths.transpiled).pipe(gulp.dest('dist/dev/scripts'));
-	gulp.src(paths.styles).pipe(gulp.dest('dist/dev/styles'));
-	gulp.src(paths.images).pipe(gulp.dest('dist/dev/images'));
-	gulp.src(paths.libs).pipe(gulp.dest('dist/dev/lib'));
+function moveAll(environment) {
+	gulp.src(paths.typescript).pipe(gulp.dest('dist/' + environment + '/scripts'));
+	gulp.src(paths.transpiled).pipe(gulp.dest('dist/' + environment + '/scripts'));
+	gulp.src(paths.styles).pipe(gulp.dest('dist/' + environment + '/styles'));
+	gulp.src(paths.images).pipe(gulp.dest('dist/' + environment + '/images'));
+	gulp.src(paths.libs).pipe(gulp.dest('dist/' + environment + '/lib'));
 	gulp.src(paths.libs).pipe(gulp.dest('src/lib'));
 }
 
 function buildDev() {
-	moveAll();
+	moveAll('dev');
 	buildIndexHtml();
 }
 
@@ -115,20 +115,21 @@ gulp.task('dev-watch-bundle', function () {
 
 /*********************************** PROD *******************************************/
 
-//gulp.task('prod-clean-bundle', function () {
-//	return	del(['bundle-prod/*']);
-//});
+gulp.task('prod-clean-bundle', function () {
+	return	del(['dist/prod/*']);
+});
 
-//gulp.task('prod-pack-js', function() {
-//	return gulp.src(['transpiled/**/*.js'])
-//		.pipe(concat('scripts.js'))
-//		.pipe(gulp.dest('bundle-prod'));
-//});
+function buildProd() {
+	moveAll('prod');
+}
 
-//gulp.task('prod-move-css', function() {
-//	gulp.src(paths.styles).pipe(gulp.dest('bundle-prod'));
-//});
+gulp.task('prod-bundle', function () {
+	// wait for all files to build before bundling
+	setTimeout(function () {
+		buildProd();
+	}, 200);
+});
 
-//gulp.task('prod-watch-bundle', function () {
-//	gulp.watch(watchPaths, ['prod-clean-bundle', 'prod-pack-js', 'prod-move-css']);
-//});
+gulp.task('prod-watch-bundle', function () {
+	gulp.watch(watchPaths, ['prod-clean-bundle', 'prod-bundle']);
+});
