@@ -100,7 +100,7 @@ function moveAll(environment) {
 
 function buildDev() {
 	moveAll('dev');
-	buildIndexHtml();
+	return buildIndexHtml();
 }
 
 gulp.task('dev-bundle', function () {
@@ -108,10 +108,12 @@ gulp.task('dev-bundle', function () {
 	setTimeout(function () {
 		buildDev();
 	}, 200);
+
+	return;
 });
 
 gulp.task('dev-watch-bundle', function () {
-	gulp.watch(watchPaths, ['dev-clean-bundle', 'dev-bundle']);
+	gulp.watch(watchPaths, gulp.series('dev-clean-bundle', 'dev-bundle'));
 });
 
 /*********************************** PROD *******************************************/
@@ -124,6 +126,17 @@ function moveProd() {
 	gulp.src(paths.styles).pipe(gulp.dest('dist/prod/styles'));
 	gulp.src(paths.images).pipe(gulp.dest('dist/prod/images'));
 }
+
+gulp.task('prod-concat-js', function () {
+	var buildResources = JSON.parse(fs.readFileSync(gulpFolder + '\\' + paths.buildResources, "utf8"));
+	var distDest = 'dist/prod';
+
+	return gulp.src([].concat(buildResources.js.libs).concat(buildResources.js.app))
+		.pipe(concat('scripts.js'))
+		.pipe(gulp.dest(distDest));
+});
+
+gulp.task('prod-inject-all', buildProd);
 
 function buildProd() {
 	moveProd();
@@ -141,7 +154,7 @@ function buildProd() {
 		.concat(buildResources.css)
 		.concat(['dist/prod/scripts.js']);
 
-	gulp.src('./src/index.html')
+	return gulp.src('./src/index.html')
 	.pipe(inject(gulp.src(srcFiles, { read: false }), {
 		transform: function (filepath) {
 			var fileName = filepath.substring(filepath.lastIndexOf('/') + 1);
@@ -179,13 +192,8 @@ function buildProd() {
 	.pipe(gulp.dest(distDest));
 }
 
-gulp.task('prod-bundle', function () {
-	// wait for all files to build before bundling
-	setTimeout(function () {
-		buildProd();
-	}, 200);
-});
+gulp.task('prod-bundle', gulp.series('prod-concat-js', 'prod-inject-all'));
 
 gulp.task('prod-watch-bundle', function () {
-	gulp.watch(watchPaths, ['prod-clean-bundle', 'prod-bundle']);
+	gulp.watch(watchPaths, gulp.series('prod-clean-bundle', 'prod-bundle'));
 });
