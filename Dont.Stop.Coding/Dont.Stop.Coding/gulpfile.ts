@@ -1,5 +1,7 @@
 ﻿/// <binding AfterBuild='dev-clean, all-dev, prod-clean, all-prod' Clean='dev-clean, prod-clean' ProjectOpened='watch-dev, watch-prod' />
 
+/// <reference path="typings/gulp-required.d.ts"/>
+
 var gulp = require('gulp');
 var fs = require('fs');
 var concat = require('gulp-concat');
