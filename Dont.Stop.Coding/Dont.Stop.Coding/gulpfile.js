@@ -1,4 +1,4 @@
-﻿/// <binding AfterBuild='dev-clean, dev-bundle, prod-clean, prod-all' Clean='dev-clean, prod-clean' ProjectOpened='dev-watch-bundle, prod-watch-bundle' />
+﻿/// <binding AfterBuild='dev-clean, all-dev, prod-clean, all-prod' Clean='dev-clean, prod-clean' ProjectOpened='watch-dev, watch-prod' />
 
 var gulp = require('gulp');
 var fs = require('fs');
@@ -37,7 +37,7 @@ var watchPaths = []
 	.concat(paths.buildResources)
 ;
 
-gulp.task('dev-clean-bundle', function () {
+gulp.task('dev-clean', function () {
 	return del(['dist/dev/*']);
 });
 
@@ -103,7 +103,7 @@ function buildDev() {
 	return buildIndexHtml();
 }
 
-gulp.task('dev-bundle', function () {
+gulp.task('all-dev', function () {
 	// wait for all files to build before bundling
 	setTimeout(function () {
 		buildDev();
@@ -112,8 +112,8 @@ gulp.task('dev-bundle', function () {
 	return;
 });
 
-gulp.task('dev-watch-bundle', function () {
-	gulp.watch(watchPaths, gulp.series('dev-clean-bundle', 'dev-bundle'));
+gulp.task('watch-dev', function () {
+	gulp.watch(watchPaths, gulp.series('dev-clean', 'all-dev'));
 });
 
 /*********************************** PROD *******************************************/
@@ -197,8 +197,8 @@ function prodInjectAll() {
 	.pipe(gulp.dest(distDest));
 }
 
-gulp.task('prod-all', gulp.series('prod-copy-images', 'prod-concat-js', 'prod-concat-css', 'prod-inject-all'));
+gulp.task('all-prod', gulp.series('prod-copy-images', 'prod-concat-js', 'prod-concat-css', 'prod-inject-all'));
 
-gulp.task('prod-watch-bundle', function () {
-	gulp.watch(watchPaths, gulp.series('prod-clean', 'prod-all'));
+gulp.task('watch-prod', function () {
+	gulp.watch(watchPaths, gulp.series('prod-clean', 'all-prod'));
 });
