@@ -121,25 +121,19 @@ gulp.task('prod-copy-images', function () {
 });
 
 gulp.task('prod-concat-js', function () {
-
 	return gulp.src([].concat(buildResources.js.libs).concat(buildResources.js.app))
 		.pipe(concat('scripts.js'))
 		.pipe(gulp.dest(prodDistDest));
 });
 
 gulp.task('prod-concat-css', function () {
-
 	return gulp.src(buildResources.css)
 		.pipe(concat('styles.css'))
 		.pipe(gulp.dest(prodDistDest));
 });
 
 gulp.task('prod-inject-all', function () {
-
-	gulp.src([].concat(buildResources.js.libs).concat(buildResources.js.app))
-		.pipe(concat('scripts.js'))
-		.pipe(gulp.dest(prodDistDest));
-
+	
 	var srcFiles = []
 		.concat(['src/templates/**/*' + koTemplateExtension])
 		.concat(['dist/prod/styles.css'])
