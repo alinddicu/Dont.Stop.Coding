@@ -11,6 +11,7 @@ var inject = require('gulp-inject');
 var uglify = require('gulp-uglify-es').default;
 var rename = require("gulp-rename");
 var sourcemaps = require('gulp-sourcemaps');
+var csso = require('gulp-csso');
 
 var gulpFolder = __dirname;
 var prodDistDest = 'dist/prod';
@@ -133,6 +134,8 @@ gulp.task('prod-concat-minify-js', function () {
 gulp.task('prod-concat-css', function () {
 	return gulp.src(buildResources.css)
 		.pipe(concat('styles.css'))
+		.pipe(csso())
+		.pipe(rename('styles.min.css'))
 		.pipe(gulp.dest(prodDistDest));
 });
 
