@@ -43,12 +43,16 @@
 				<div class="form-line">
 					<textarea id="exportTextArea" data-bind="textInput: exportedCellsContent, hasFocus: isExportVisible()" rows="5" cols="25" disabled></textarea>
 				</div>
+				<div class="form-line action-button-container">
+					<button data-bind="click: function() { closeExportAliveCells(); }"><i class="material-icons custom-color">close</i></button>
+				</div>
 			</div>
 			<div id="import-container" data-bind="visible: isImportVisible()">
 				<div class="form-line">
 					<textarea id="importTextArea" data-bind="textInput: importedCellsContent, hasFocus: isImportVisible()" rows="5" cols="25"></textarea>
 				</div>
-				<div class="form-line import-button-container">
+				<div class="form-line action-button-container">
+					<button data-bind="click: function() { closeImportAliveCells(); }"><i class="material-icons custom-color">close</i></button>
 					<button data-bind="click: function() { importAliveCells(); }"><i class="material-icons custom-color">done_outline</i></button>
 				</div>
 			</div>
@@ -82,7 +86,8 @@
 					<label for="isShowCellsCoordinates">Show cells coordinates</label>
 					<input id="isShowCellsCoordinates" type="checkbox" data-bind="event: { keyup: onParamChanged }" />
 				</div>
-				<div class="form-line init-button-container">
+				<div class="form-line action-button-container">
+					<button data-bind="click: function() { closeParams(); }"><i class="material-icons custom-color">close</i></button>
 					<button data-bind="click: function() { reinitBoard(); }"><i class="material-icons custom-color">done_outline</i></button>
 				</div>
 			</div>

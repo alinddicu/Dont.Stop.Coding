@@ -26,7 +26,7 @@ div.form-line {
 	padding: 3px 0 0 0;
 }
 
-div.init-button-container, div.import-button-container {
+div.action-button-container {
 	text-align: right;
 }
 

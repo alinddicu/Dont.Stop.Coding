@@ -40,9 +40,13 @@ namespace ViewModel {
 		}
 
 		public showParams(): void {
-			const currentValue = this.isParamsVisible();
-			this.isParamsVisible(!currentValue);
-			this.board().isEnabled(currentValue);
+			this.isParamsVisible(true);
+			this.enableBoard(false);
+		}
+
+		public closeParams(): void {
+			this.isParamsVisible(false);
+			this.enableBoard(true);
 		}
 
 		public exportAliveCells(): void {
@@ -53,9 +57,18 @@ namespace ViewModel {
 		}
 
 		public showImportAliveCells(): void {
-			const currentValue = this.isImportVisible();
-			this.isImportVisible(!currentValue);
-			this.board().isEnabled(currentValue);
+			this.isImportVisible(true);
+			this.enableBoard(false);
+		}
+
+		public closeImportAliveCells(): void {
+			this.isImportVisible(false);
+			this.enableBoard(true);
+		}
+
+		public closeExportAliveCells(): void {
+			this.isExportVisible(false);
+			this.enableBoard(true);
 		}
 
 		public importAliveCells(): void {
@@ -64,7 +77,11 @@ namespace ViewModel {
 			}
 
 			this.isImportVisible(false);
-			this.board().isEnabled(true);
+			this.enableBoard(true);
+		}
+
+		private enableBoard(enabled: boolean) {
+			this.board().isEnabled(enabled);
 		}
 	}
 }
