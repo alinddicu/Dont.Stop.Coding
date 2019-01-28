@@ -124,10 +124,10 @@ gulp.task('prod-copy-images', function () {
 gulp.task('prod-concat-minify-js', function () {
 	return gulp.src([].concat(buildResources.js.libs).concat(buildResources.js.app))
 		.pipe(concat('scripts.js'))
-		//.pipe(rename('scripts.min.js'))
-		//.pipe(sourcemaps.init())
-		//.pipe(uglify())
-		//.pipe(sourcemaps.write())
+		.pipe(rename('scripts.min.js'))
+		.pipe(sourcemaps.init())
+		.pipe(uglify())
+		.pipe(sourcemaps.write())
 		.pipe(gulp.dest(prodDistDest));
 });
 

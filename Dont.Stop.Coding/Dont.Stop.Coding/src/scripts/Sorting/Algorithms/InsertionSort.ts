@@ -1,5 +1,10 @@
 ﻿namespace Sorting.Algorithms {
 	export class InsertionSort extends SortBase {
+
+		constructor(rankingSystem: Tools.RankingSystem) {
+			super("InsertionSort", rankingSystem);
+		}
+
 		public execute(unsortedList: number[]): number[] {
 			super.execute(unsortedList);
 			super.addToIntermediateSorts(unsortedList);

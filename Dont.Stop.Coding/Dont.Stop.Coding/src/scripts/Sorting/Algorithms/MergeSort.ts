@@ -2,6 +2,10 @@
 	export class MergeSort extends SortBase {
 		private arrayCopy: number[];
 
+		constructor(rankingSystem: Tools.RankingSystem) {
+			super("MergeSort", rankingSystem);
+		}
+
 		public execute(unsortedList: number[]) {
 			super.execute(unsortedList);
 			this.arrayCopy = super.copy(unsortedList);

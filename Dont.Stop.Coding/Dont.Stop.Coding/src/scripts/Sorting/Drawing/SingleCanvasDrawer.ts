@@ -12,7 +12,7 @@
 		}
 
 		private getDivId(): string {
-			return this.sorting.constructor.name.toLowerCase();
+			return this.sorting.sortingName.toLowerCase();
 		}
 
 		private createCanvas(sortedNumbersCount: number): HTMLCanvasElement {

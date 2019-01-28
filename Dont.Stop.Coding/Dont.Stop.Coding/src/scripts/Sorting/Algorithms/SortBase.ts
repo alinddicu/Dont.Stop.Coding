@@ -6,15 +6,16 @@
 		private intermediateSorts: number[][];
 		private start: number;
 		private end: number;
-		private name: string;
 
-		constructor(rankingSystem: RankingSystem) {
+		public sortingName: string;
+
+		constructor(sortingName: string, rankingSystem: RankingSystem) {
+			this.sortingName = sortingName;
 			this.rankingSystem = rankingSystem;
-			this.name = this.constructor.name;
 		}
 
 		public getRank(): number {
-			return this.rankingSystem.getRank(this.name);
+			return this.rankingSystem.getRank(this.sortingName);
 		}
 
 		protected copy(array: number[]): number[] {
@@ -42,7 +43,7 @@
 
 		protected stopWatch(): void {
 			this.end = new Date().getTime();
-			this.rankingSystem.add(this.name, this.getDuration());
+			this.rankingSystem.add(this.sortingName, this.getDuration());
 		}
 
 		public getDuration(): number {

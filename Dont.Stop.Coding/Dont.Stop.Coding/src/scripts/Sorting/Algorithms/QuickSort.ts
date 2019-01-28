@@ -1,6 +1,11 @@
 ﻿namespace Sorting.Algorithms {
 	export class QuickSort extends SortBase {
 		private arrayCopy: number[];
+
+		constructor(rankingSystem: Tools.RankingSystem) {
+			super("QuickSort", rankingSystem);
+		}
+
 		public execute(unsortedList: number[]): number[] {
 			super.execute(unsortedList);
 			this.arrayCopy = super.copy(unsortedList);

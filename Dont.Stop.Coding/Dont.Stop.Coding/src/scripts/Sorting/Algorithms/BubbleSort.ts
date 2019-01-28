@@ -1,5 +1,11 @@
 ﻿namespace Sorting.Algorithms {
+
 	export class BubbleSort extends SortBase {
+
+		constructor(rankingSystem: Tools.RankingSystem) {
+			super("BubbleSort", rankingSystem);
+		}
+
 		public execute(unsortedList: number[]): number[] {
 			super.execute(unsortedList);
 			const sortedList = super.copy(unsortedList);
