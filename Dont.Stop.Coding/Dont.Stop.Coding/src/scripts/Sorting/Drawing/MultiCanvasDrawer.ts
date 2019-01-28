@@ -8,7 +8,7 @@
 
 		constructor(document: Document, drawParams: IDrawingParams) {
 			this.document = document;
-			const rankingSystem = new Tools.RankingSystem();
+			const rankingSystem = new Tools.RankingSystem(6);
 			this.sortings = [
 				new Algorithms.BubbleSort(rankingSystem),
 				new Algorithms.InsertionSort(rankingSystem),

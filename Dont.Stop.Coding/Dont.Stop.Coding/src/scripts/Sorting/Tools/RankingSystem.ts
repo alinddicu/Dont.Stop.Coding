@@ -1,5 +1,12 @@
 ﻿namespace Sorting.Tools {
 	export class RankingSystem {
+
+		private sortingsCount: number;
+
+		constructor(sortingsCount: number) {
+			this.sortingsCount = sortingsCount;
+		}
+
 		private ranking: Candidate[] = [];
 
 		public clear(): void {
@@ -11,6 +18,10 @@
 		}
 
 		public getRank(sortName: string): number {
+			if (this.ranking.length !== this.sortingsCount) {
+				return null;
+			}
+
 			const rank = this.ranking
 				.sort((a: Candidate, b: Candidate) => (a.duration - b.duration))
 				.map((candidate, index) => new Rank(candidate, index ))

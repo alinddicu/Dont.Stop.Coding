@@ -50,14 +50,20 @@
 			context.strokeRect(0, 0, canvas.width, canvas.height);
 		}
 
-		private writeSortingText(canvasCtx: CanvasRenderingContext2D): void {
+		private writeSortingText(canvasCtx: CanvasRenderingContext2D): boolean {
 			canvasCtx.font = `${this.drawParams.fontSize}px Calibri`;
 			const sorting = this.getDivId().split("sort")[0];
 			const sortingFormatted = sorting[0].toUpperCase() + sorting.substr(1).toLowerCase();
 			const duration = this.sorting.getDuration();
 			const rank = this.sorting.getRank();
-			const text = `${sortingFormatted} Sort (${duration}ms) ${Tools.OrdinalHelper.toOrdinal(rank)}`;
+
+			let text = `${sortingFormatted} Sort`;
+			if (rank) {
+				text += ` (${duration}ms) ${Tools.OrdinalHelper.toOrdinal(rank)}`;
+			}
+
 			canvasCtx.strokeText(text, 10, 20);
+			return rank != null;
 		}
 
 		public draw(drawParams: IDrawingParams): void {
@@ -68,18 +74,14 @@
 			const canvas = this.createCanvas(sortedNumbersCount);
 			const canvasCtx = canvas.getContext("2d") as CanvasRenderingContext2D;
 			canvasCtx.strokeStyle = this.drawParams.penColor;
-
-			if (this.drawParams.isDisableSimulation) {
-				this.writeSortingText(canvasCtx);
-				return;
-			}
-
+			
+			const isDisableSimulation = this.drawParams.isDisableSimulation;
 			let i = 0;
 			const refreshId = setInterval(() => {
 				canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
 				canvasCtx.beginPath();
 				const intermediateSort = intermediateSorts[i++];
-				for (let x = 0; x < intermediateSort.length; x++) {
+				for (let x = 0; x < intermediateSort.length && !isDisableSimulation; x++) {
 					const y = intermediateSort[x];
 					canvasCtx.moveTo(5 + x * step, canvas.height);
 					canvasCtx.lineTo(5 + x * step, canvas.height - y * step);
