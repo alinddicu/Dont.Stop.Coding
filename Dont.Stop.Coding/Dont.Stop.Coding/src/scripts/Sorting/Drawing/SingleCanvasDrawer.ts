@@ -31,7 +31,7 @@
 
 			if (this.drawParams.isDisableSimulation) {
 				canvas.height = 30;
-				canvas.width = 300;
+				canvas.width = 200;
 			} else {
 				canvas.height = (sortedNumbersCount + this.drawParams.startValue) * ratio;
 				canvas.width = sortedNumbersCount * ratio;
