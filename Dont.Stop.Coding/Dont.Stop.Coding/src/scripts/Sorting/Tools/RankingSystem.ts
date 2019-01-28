@@ -14,7 +14,7 @@
 			const rank = this.ranking
 				.sort((a: Candidate, b: Candidate) => (a.duration - b.duration))
 				.map((candidate, index) => new Rank(candidate, index ))
-				.filter(r => r.candidate.name === sortName)
+				.filter(r => r.candidate.sortName === sortName)
 				[0];
 
 			if (!rank) {
@@ -35,10 +35,10 @@
 	}
 
 	class Candidate {
-		name: string;
+		sortName: string;
 		duration: number;
-		constructor(name: string, duration: number) {
-			this.name = name;
+		constructor(sortName: string, duration: number) {
+			this.sortName = sortName;
 			this.duration = duration;
 		}
 	}
