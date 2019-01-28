@@ -12,6 +12,8 @@ var uglify = require('gulp-uglify-es').default;
 var rename = require("gulp-rename");
 var sourcemaps = require('gulp-sourcemaps');
 var csso = require('gulp-csso');
+var hash = require('gulp-hash-filename');
+var hashFormula = { "format": "{name}.{hash}.{size}{ext}" };
 
 var gulpFolder = __dirname;
 var prodDistDest = 'dist/prod';
@@ -47,7 +49,8 @@ var watchPaths = []
 
 function injectionTransformation(filepath, relativePath) {
 	var fileName = filepath.substring(filepath.lastIndexOf('/') + 1);
-	if (filepath.slice(-koTemplateExtension.length) === koTemplateExtension) {
+	if (filepath.slice(-koTemplateExtension.length) === koTemplateExtension)
+	{
 		filepath = gulpFolder + filepath;
 		var templateId = fileName.substring(0, fileName.indexOf(koTemplateExtension));
 		var fileContent = fs.readFileSync(filepath, "utf8");
@@ -56,13 +59,15 @@ function injectionTransformation(filepath, relativePath) {
 
 		return '<script type="text/html" id="' + templateId + '">' + fileContent + '</script>';
 	}
-	else if (filepath.slice(-4) === '.css') {
+	else if (filepath.slice(-4) === '.css')
+	{
 		console.info('Injecting css: ' + fileName);
 
 		filepath = filepath.replace(relativePath, '');
 		return '<link rel="stylesheet" href="' + filepath + '" type="text/css"/>';
 	}
-	else if (filepath.slice(-3) === '.js') {
+	else if (filepath.slice(-3) === '.js')
+	{
 		console.info('Injecting js: ' + fileName);
 
 		filepath = filepath.replace(relativePath, '');
@@ -127,6 +132,7 @@ gulp.task('prod-concat-minify-js', function () {
 		.pipe(rename('scripts.min.js'))
 		//.pipe(sourcemaps.init())
 		.pipe(uglify())
+		.pipe(hash(hashFormula))
 		//.pipe(sourcemaps.write())
 		.pipe(gulp.dest(prodDistDest));
 });
@@ -136,11 +142,12 @@ gulp.task('prod-concat-minify-css', function () {
 		.pipe(concat('styles.css'))
 		.pipe(csso())
 		.pipe(rename('styles.min.css'))
+		.pipe(hash(hashFormula))
 		.pipe(gulp.dest(prodDistDest));
 });
 
 gulp.task('prod-inject-all', function () {
-	
+
 	var srcFiles = []
 		.concat(['src/templates/**/*' + koTemplateExtension])
 		.concat(['dist/prod/*.css'])
