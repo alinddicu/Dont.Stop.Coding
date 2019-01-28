@@ -4,7 +4,7 @@
 
 		public init(): Board {
 			this.options = {
-				cellsPerRow: Tools.InputValueConverter.valueOrDefault<number>("cellsPerRow", 7),
+				cellsPerRow: Tools.InputValueConverter.valueOrDefault<number>("cellsPerRow", 6),
 				isShowCellsCoordinates: Tools.InputValueConverter.valueOrDefault<boolean>("isShowCellsCoordinates", false),
 				cellSize: Tools.InputValueConverter.valueOrDefault<number>("cellSize", 50),
 				normalMutationDelay: Tools.InputValueConverter.valueOrDefault<number>("normalMutationDelay", 100),

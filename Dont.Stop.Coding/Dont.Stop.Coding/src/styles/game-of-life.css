@@ -12,7 +12,7 @@
 }
 
 .material-icons.spacer {
-	width: 26px;
+	width: 10px;
 }
 
 h2#gol-params-title {
@@ -94,7 +94,7 @@ div#board-container {
 }
 
 div#controls-container {
-	padding: 5px 17px 0 17px;
+	padding: 5px 7px 0 7px;
 	margin: 0 0 5px 0;
 	-webkit-appearance: none;
 	background-color: var(--red);
