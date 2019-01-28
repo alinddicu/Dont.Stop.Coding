@@ -29,8 +29,14 @@
 				div.appendChild<HTMLCanvasElement>(canvas);
 			}
 
-			canvas.height = (sortedNumbersCount + this.drawParams.startValue) * ratio;
-			canvas.width = sortedNumbersCount * ratio;
+			if (this.drawParams.isDisableSimulation) {
+				canvas.height = 30;
+				canvas.width = 300;
+			} else {
+				canvas.height = (sortedNumbersCount + this.drawParams.startValue) * ratio;
+				canvas.width = sortedNumbersCount * ratio;
+			}
+
 			canvas.style.backgroundColor = this.drawParams.backgroundColor;
 
 			return canvas;
@@ -62,6 +68,11 @@
 			const canvas = this.createCanvas(sortedNumbersCount);
 			const canvasCtx = canvas.getContext("2d") as CanvasRenderingContext2D;
 			canvasCtx.strokeStyle = this.drawParams.penColor;
+
+			if (this.drawParams.isDisableSimulation) {
+				this.writeSortingText(canvasCtx);
+				return;
+			}
 
 			let i = 0;
 			const refreshId = setInterval(() => {

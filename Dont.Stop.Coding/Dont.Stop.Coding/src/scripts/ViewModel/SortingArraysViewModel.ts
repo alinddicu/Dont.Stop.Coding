@@ -25,7 +25,8 @@
 				penColor: Tools.InputValueConverter.valueOrDefault<string>("penColor", "#edf5e1"),
 				backgroundColor: Tools.InputValueConverter.valueOrDefault<string>("backgroundColor", "#379683"),
 				fontSize: Tools.InputValueConverter.valueOrDefault<number>("fontSize", 16),
-				startValue: startValue
+				startValue: startValue,
+				isDisableSimulation: Tools.InputValueConverter.valueOrDefault<boolean>("isDisableSimulation", false)
 			};
 
 			const arraySize = Tools.InputValueConverter.valueOrDefault<number>("arraySize", 32);

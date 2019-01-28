@@ -6,5 +6,6 @@
 		backgroundColor: string;
 		fontSize: number;
 		startValue: number;
+		isDisableSimulation: boolean;
 	}
 }
