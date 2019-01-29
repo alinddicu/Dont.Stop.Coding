@@ -1,12 +1,10 @@
 ﻿namespace ViewModel {
 	export class ViewModelBase {
-		public pageName: string;
-
-		constructor() {
-			this.pageName = "";
-		}
-
+		public pageName = "";
+		public backgroundColor = ko.observable("");
+		
 		public render(): void {
+			document.body.style.background = this.backgroundColor();
 		}
 
 		protected paramChangedHandler(): void {

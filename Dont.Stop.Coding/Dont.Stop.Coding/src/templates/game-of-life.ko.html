@@ -1,0 +1,111 @@
+﻿<br/>
+<br />
+<div id="main-over-container">
+	<div id="main-container">
+		<div id="controls-over-container">
+			<div id="controls-container">
+				<button class="control-button" data-bind="click: function() { showParams(); }, enable: !board().isPlaying() && !board().isPausing()" title="Parameters">
+					<i class="material-icons custom-color">settings</i>
+				</button>
+				<button class="control-button"><i class="material-icons custom-color spacer"></i></button>
+				<button class="control-button" data-bind="click: function() { board().fastRewind(); }, enable: !board().isPlaying()" title="Fast rewind">
+					<i class="material-icons custom-color">fast_rewind</i>
+				</button>
+				<button class="control-button" data-bind="click: function() { board().skipToPrevious(); }, enable: !board().isPlaying()" title="Skip to previous">
+					<i class="material-icons custom-color">skip_previous</i>
+				</button>
+				<button class="control-button" data-bind="click: function() { board().play(); }" title="Play">
+					<i class="material-icons custom-color" data-bind="visible: isVisibleCanPlay">play_circle_filled</i>
+					<i class="material-icons custom-color" data-bind="visible: isVisibleIsPlaying">play_circle_outline</i>
+				</button>
+				<button class="control-button" data-bind="click: function() { board().pause(); }" title="Pause">
+					<i class="material-icons custom-color" data-bind="visible: isVisibleCanPause">pause_circle_filled</i>
+					<i class="material-icons custom-color" data-bind="visible: isVisibleIsPausing">pause_circle_outline</i>
+				</button>
+				<button class="control-button" data-bind="click: function() { board().skipToNext(); }, enable: !board().isPlaying()" title="Skip to next">
+					<i class="material-icons custom-color">skip_next</i>
+				</button>
+				<button class="control-button" data-bind="click: function() { board().fastForward(); }, enable: !board().isPlaying()" title="Fast forward">
+					<i class="material-icons custom-color">fast_forward</i>
+				</button>
+				<button class="control-button" data-bind="click: function() { board().reset(); }" title="Reset">
+					<i class="material-icons custom-color">stop</i>
+				</button>
+				<button class="control-button"><i class="material-icons custom-color spacer"></i></button>
+				<button class="control-button" data-bind="click: function() { exportAliveCells(); }, enable: !board().isPlaying() && !board().isPausing()" title="Export alive cells">
+					<i class="material-icons custom-color">publish</i>
+				</button>
+				<button class="control-button" data-bind="click: function() { showImportAliveCells(); }, enable: !board().isPlaying() && !board().isPausing()" title="Import alive cells">
+					<i class="material-icons custom-color">save_alt</i>
+				</button>
+			</div>
+			<div id="export-container" data-bind="visible: isExportVisible()">
+				<div class="form-line">
+					<textarea id="exportTextArea" data-bind="textInput: exportedCellsContent, hasFocus: isExportVisible()" rows="5" cols="25" disabled></textarea>
+				</div>
+				<div class="form-line action-button-container">
+					<button data-bind="click: function() { closeExportAliveCells(); }"><i class="material-icons custom-color">close</i></button>
+				</div>
+			</div>
+			<div id="import-container" data-bind="visible: isImportVisible()">
+				<div class="form-line">
+					<textarea id="importTextArea" data-bind="textInput: importedCellsContent, hasFocus: isImportVisible()" rows="5" cols="25"></textarea>
+				</div>
+				<div class="form-line action-button-container">
+					<button data-bind="click: function() { closeImportAliveCells(); }"><i class="material-icons custom-color">close</i></button>
+					<button data-bind="click: function() { importAliveCells(); }"><i class="material-icons custom-color">done_outline</i></button>
+				</div>
+			</div>
+			<div id="params-container" data-bind="visible: isParamsVisible()">
+				<h2 id="gol-params-title">Game of life parameters</h2>
+				<div class="form-line">
+					<label for="cellsPerRow">Cells per row</label>
+					<input id="cellsPerRow" type="number" value="7" min="5" max="100" data-bind="event: { keyup: onParamChanged }" />
+				</div>
+				<div class="form-line">
+					<label for="cellSize">Cell size (px)</label>
+					<input id="cellSize" type="number" value="50" min="10" max="100" data-bind="event: { keyup: onParamChanged }" />
+				</div>
+				<div class="form-line">
+					<label for="normalMutationDelay">Normal mutation delay (ms)</label>
+					<input id="normalMutationDelay" type="number" value="100" min="0" data-bind="event: { keyup: onParamChanged }" />
+				</div>
+				<div class="form-line">
+					<label for="rapidMutationDelay">Rapid mutation delay (ms)</label>
+					<input id="rapidMutationDelay" type="number" value="10" min="0" data-bind="event: { keyup: onParamChanged }" />
+				</div>
+				<div class="form-line">
+					<label for="aliveCellColor">Alive cell color</label>
+					<input id="aliveCellColor" type="text" value="#374785" data-bind="event: { keyup: onParamChanged }" />
+				</div>
+				<div class="form-line">
+					<label for="deadCellColor">Dead cell color</label>
+					<input id="deadCellColor" type="text" value="#a8d0e6" data-bind="event: { keyup: onParamChanged }" />
+				</div>
+				<div class="form-line">
+					<label for="isShowCellsCoordinates">Show cells coordinates</label>
+					<input id="isShowCellsCoordinates" type="checkbox" data-bind="event: { keyup: onParamChanged }" />
+				</div>
+				<div class="form-line action-button-container">
+					<button data-bind="click: function() { closeParams(); }"><i class="material-icons custom-color">close</i></button>
+					<button data-bind="click: function() { reinitBoard(); }"><i class="material-icons custom-color">done_outline</i></button>
+				</div>
+			</div>
+		</div>
+		<div id="board-container">
+			<div data-bind="css: { 'board-disabled': !board().isEnabled(), 'board-enabled': board().isEnabled()}">
+				<table id="cells-table">
+					<tbody data-bind="foreach: board().boardLines">
+						<tr data-bind="foreach: buttonCells">
+							<td>
+								<button class="cell-button"
+										data-bind="style: { width: width + 'px', height: height + 'px', 'background-color': backColor() },
+										click: cellButtonClick, text: text"></button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

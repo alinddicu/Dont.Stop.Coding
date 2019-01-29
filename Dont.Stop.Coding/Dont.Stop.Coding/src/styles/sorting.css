@@ -1,9 +1,5 @@
-﻿body {
-	background-color: #8ee4ae;
-}
-
-h2#sorting-param-title {
-	padding: 0 0 0 5px;
+﻿h2#sorting-param-title {
+	padding: 0;
 	margin: 0;
 }
 
@@ -17,7 +13,7 @@ h2#sorting-param-title {
 	margin: 1px;
 }
 
-input[type=number], input[type=text], button[id=sortButton] {
+input[type=number], input[type=text] {
 	width: 75px;
 	margin: 0;
 	-webkit-box-sizing: border-box;
@@ -34,9 +30,9 @@ input[type=number], input[type=text] {
 	color: #05386b;
 }
 
-button[id=sortButton] {
-	color: #edf5e1;
-	background-color: #379683;
+div#showHideParams-container, div#params {
+	left: 10px;
+	top: 50px;
 }
 
 div#params {
@@ -50,19 +46,19 @@ div#params {
 	border: 1px solid;
 	border-radius: 5px;
 	margin: 0;
-	left: 8px;
-	top: 9px;
 }
 
 div#showHideParams-container {
 	display: inline-block;
-	z-index: 2;
+	z-index: 1;
 	opacity: 1;
 	position: absolute;
 	margin: 0;
 	padding: 0;
-	left: 6px;
-	top: 8px;
+}
+
+div#showHideParams-container i {
+	cursor: pointer;
 }
 
 label {
@@ -72,10 +68,6 @@ label {
 	width: 130px;
 }
 
-.form-line, div#copyright a {
-	padding: 5px;
-}
-
 div#canvas-container {
 	text-align: center;
 	position: relative;
@@ -83,11 +75,6 @@ div#canvas-container {
 
 div.sort-button {
 	text-align: right;
-}
-
-div#copyright {
-	text-align: right;
-	padding: 0 10px 5px 0;
 }
 
 div#copyright a, div#copyright a:visited, div#copyright a:hover, div#copyright a:active {

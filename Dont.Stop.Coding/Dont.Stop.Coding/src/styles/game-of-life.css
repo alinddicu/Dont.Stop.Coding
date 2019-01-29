@@ -12,7 +12,7 @@
 }
 
 .material-icons.spacer {
-	width: 24px;
+	width: 7px;
 }
 
 h2#gol-params-title {
@@ -26,7 +26,7 @@ div.form-line {
 	padding: 3px 0 0 0;
 }
 
-div.init-button-container, div.import-button-container {
+div.action-button-container {
 	text-align: right;
 }
 
@@ -38,15 +38,6 @@ label {
 	margin: 0;
 	padding: 0;
 }
-
-button[id=init-button], button[id=import-button] {
-	border: none;
-	background-color: var(--yellow);
-}
-
-	button[id=init-button], button[id=import-button] i {
-		cursor: pointer;
-	}
 
 input[type=number], input[type=text] {
 	width: 75px;
@@ -92,20 +83,17 @@ div#params-container, div#export-container, div#import-container {
 	top: 41px;
 }
 
-body {
-	background-color: var(--yellow);
-}
-
 div#board-container {
 	display: flex;
 	justify-content: center;
 	background-color: var(--yellow);
-	border: 1px dotted;
+	padding-top: 2px;
+	padding-right: 2.5px;
 	border-radius: 3px;
 }
 
 div#controls-container {
-	padding: 5px 17px 0 17px;
+	padding: 5px 6px 0 6px;
 	margin: 0 0 5px 0;
 	-webkit-appearance: none;
 	background-color: var(--red);
@@ -113,16 +101,9 @@ div#controls-container {
 }
 
 button.control-button {
-	background-color: transparent;
 	margin: 0 10px 0 0;
 	padding: 0;
-	border: none;
 	text-align: center;
-	cursor: pointer;
-}
-
-button.control-button, button#cell-button {
-	cursor: pointer;
 }
 
 .board-disabled {
@@ -131,6 +112,13 @@ button.control-button, button#cell-button {
 
 .board-enabled {
 	pointer-events: auto;
+}
+
+table {
+	display: table;
+	border-spacing: 0;
+	/*-webkit-border-horizontal-spacing: 2px;
+	-webkit-border-vertical-spacing: 2px;*/
 }
 
 table#cells-table {
@@ -157,5 +145,8 @@ div#main-container, div#controls-container, button.cell-button {
 button.control-button, button.cell-button {
 	padding: 0;
 	margin: 0;
-	cursor: pointer;
+}
+
+button.cell-button {
+	margin-left: 2.75px;
 }

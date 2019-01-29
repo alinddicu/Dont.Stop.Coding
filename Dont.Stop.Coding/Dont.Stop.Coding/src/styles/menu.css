@@ -1,0 +1,29 @@
+﻿nav {
+	z-index: 2;
+	position: absolute;
+	left: 0;
+	top: 0;
+	opacity: 1;
+	padding: 0;
+	margin: 0;
+	background-color: inherit;
+	border-radius: 5px;
+}
+
+div#menu-toggle {
+	margin: 10px 10px 5px 10px;
+}
+
+div#menu-entries-container {
+	padding: 0 0 5px 10px;
+}
+
+a.menu-entry, a.menu-entry :visited, a.menu-entry :hover, a.menu-entry :active {
+	text-decoration: none;
+	color: #05386b;
+	font-weight: bold;
+}
+
+a.menu-entry i {
+	padding: 0 5px 0 0;
+}

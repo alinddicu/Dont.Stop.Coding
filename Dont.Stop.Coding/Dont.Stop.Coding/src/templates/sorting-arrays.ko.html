@@ -1,0 +1,50 @@
+﻿<div id="params" data-bind="visible: paramsOpen()">
+	<h2 id="sorting-param-title">Sorting parameters</h2>
+	<div class="form-line">
+		<label for="arraySize">Array size</label>
+		<input id="arraySize" type="number" placeholder="array size" value="32" min="10" max="800" data-bind="event: { keyup: onParamChanged }" />
+	</div>
+	<div class="form-line">
+		<label for="startValue">Start value</label>
+		<input id="startValue" type="number" placeholder="start value" value="1" min="1" max="1000" data-bind="event: { keyup: onParamChanged }" />
+	</div>
+	<div class="form-line">
+		<label for="step">X drawing step</label>
+		<input id="step" type="number" placeholder="step" value="10" min="1" max="20" data-bind="event: { keyup: onParamChanged }" />
+	</div>
+	<div class="form-line">
+		<label for="delay">Delay (ms)</label>
+		<input id="delay" type="number" placeholder="delay" value="50" min="0" max="10000" data-bind="event: { keyup: onParamChanged }" />
+	</div>
+	<div class="form-line">
+		<label for="penColor">Pen color</label>
+		<input id="penColor" type="text" placeholder="pen color" value="#edf5e1" data-bind="event: { keyup: onParamChanged }" />
+	</div>
+	<div class="form-line">
+		<label for="backgroundColor">Background color</label>
+		<input id="backgroundColor" type="text" placeholder="background color" value="#379683" data-bind="event: { keyup: onParamChanged }" />
+	</div>
+	<div class="form-line">
+		<label for="fontSize">Font size</label>
+		<input id="fontSize" type="number" placeholder="font size" value="16" min="5" max="40" data-bind="event: { keyup: onParamChanged }"/>
+	</div>
+	<div class="form-line">
+		<label for="isDisableSimulation">Disable simulation</label>
+		<input id="isDisableSimulation" type="checkbox" data-bind="event: { keyup: onParamChanged }" />
+	</div>
+	<div class="form-line sort-button">
+		<button data-bind="click: function() { sort($parent); }"><i class="material-icons custom-color">done_outline</i></button>
+	</div>
+</div>
+<div id="showHideParams-container">
+	<button data-bind="visible: !paramsOpen(), click: function() { paramsOpen(true); }"><i class="material-icons">settings</i></button>
+	<button data-bind="visible: paramsOpen(), click: function() { paramsOpen(false); }"><i class="material-icons">close</i></button>
+</div>
+<div id="canvas-container">
+	<div id="bubblesort" class="canvas-container"></div>
+	<div id="insertionsort" class="canvas-container"></div>
+	<div id="heapsort" class="canvas-container"></div>
+	<div id="mergesort" class="canvas-container"></div>
+	<div id="quicksort" class="canvas-container"></div>
+	<div id="selectionsort" class="canvas-container"></div>
+</div>

@@ -1,5 +1,10 @@
 ﻿namespace Sorting.Algorithms {
 	export class SelectionSort extends SortBase {
+
+		constructor(rankingSystem: Tools.RankingSystem) {
+			super("SelectionSort", rankingSystem);
+		}
+
 		public execute(unsortedList: number[]): number[] {
 			super.execute(unsortedList);
 			const sortedList = super.copy(unsortedList);

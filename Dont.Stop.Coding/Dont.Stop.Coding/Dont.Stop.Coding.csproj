@@ -23,15 +23,16 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\images\favicon-sorting.ico" />
-    <Content Include="src\images\favicon-game-of-life.ico" />
+    <Content Include="src\images\favicon\game-of-life.png" />
+    <Content Include="src\images\favicon\sorting-arrays.png" />
     <Content Include="src\index.html" />
     <Content Include="src\lib\jquery.min.js" />
     <Content Include="src\lib\knockout-latest.js" />
     <Content Include="src\lib\linq.min.js" />
     <Content Include="src\lib\sammy-latest.min.js" />
-    <Content Include="src\scripts\Main.js" />
     <Content Include="src\styles\game-of-life.css" />
+    <Content Include="src\styles\all-apps.css" />
+    <Content Include="src\styles\menu.css" />
     <Content Include="src\styles\sorting.css" />
     <Content Include="gulpfile.js" />
   </ItemGroup>
@@ -58,15 +59,15 @@
     <TypeScriptCompile Include="src\scripts\Sorting\Drawing\SingleCanvasDrawer.ts" />
     <TypeScriptCompile Include="src\scripts\Sorting\Tools\RandomArrayGenerator.ts" />
     <TypeScriptCompile Include="src\scripts\Sorting\Tools\RankingSystem.ts" />
+    <TypeScriptCompile Include="src\scripts\Tools\InputValueConverter.ts" />
     <TypeScriptCompile Include="src\scripts\ViewModel\GameOfLifeViewModel.ts" />
     <TypeScriptCompile Include="src\scripts\ViewModel\ViewModelBase.ts" />
     <TypeScriptCompile Include="src\scripts\ViewModel\IWorkflow.ts" />
     <TypeScriptCompile Include="src\scripts\ViewModel\SortingArraysViewModel.ts" />
-    <Content Include="src\scripts\Workflow.js" />
+    <Content Include="src\scripts\AppsRunner.js" />
     <TypeScriptCompile Include="typings\knockout.d.ts" />
     <TypeScriptCompile Include="typings\linq.d.ts" />
     <TypeScriptCompile Include="typings\sammy.d.ts" />
-    <TypeScriptCompile Include="webpack.config.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="package.json" />
@@ -75,10 +76,15 @@
     <Folder Include="dist\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="src\templates\game-of-life.ko.html" />
+    <Content Include="src\templates\sorting-arrays.ko.html" />
     <Content Include="tsconfig.json" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="src\scripts\Sorting\Tools\OrdinalHelper.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="build-resources.json" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>

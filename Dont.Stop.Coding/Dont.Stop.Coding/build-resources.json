@@ -1,0 +1,45 @@
+{
+	"css": [
+		"src/styles/menu.css",
+		"src/styles/sorting.css",
+		"src/styles/game-of-life.css",
+		"src/styles/all-apps.css"
+	],
+	"js": {
+		"libs": [
+			"src/lib/linq.min.js",
+			"src/lib/knockout-latest.js",
+			"src/lib/jquery.min.js",
+			"src/lib/sammy-latest.min.js"
+		],
+		"app": [
+			"src/scripts/Sorting/Algorithms/SortBase.js",
+			"src/scripts/Sorting/Algorithms/BubbleSort.js",
+			"src/scripts/Sorting/Algorithms/InsertionSort.js",
+			"src/scripts/Sorting/Algorithms/HeapSort.js",
+			"src/scripts/Sorting/Algorithms/MergeSort.js",
+			"src/scripts/Sorting/Algorithms/QuickSort.js",
+			"src/scripts/Sorting/Algorithms/SelectionSort.js",
+			"src/scripts/Sorting/Drawing/SingleCanvasDrawer.js",
+			"src/scripts/Sorting/Drawing/MultiCanvasDrawer.js",
+			"src/scripts/Sorting/Tools/RandomArrayGenerator.js",
+			"src/scripts/Sorting/Tools/RankingSystem.js",
+			"src/scripts/Sorting/Tools/OrdinalHelper.js",
+			"src/scripts/GoL/Logic/CellState.js",
+			"src/scripts/GoL/Logic/Cell.js",
+			"src/scripts/GoL/Logic/RectangularInfinite2DGrid.js",
+			"src/scripts/GoL/Logic/Cycle.js",
+			"src/scripts/GoL/Drawing/IGoLOptions.js",
+			"src/scripts/GoL/Drawing/CellButton.js",
+			"src/scripts/GoL/Drawing/Board.js",
+			"src/scripts/GoL/Drawing/BoardLine.js",
+			"src/scripts/GoL/Drawing/ParamsForm.js",
+			"src/scripts/GoL/game-of-life-tests.js",
+			"src/scripts/ViewModel/ViewModelBase.js",
+			"src/scripts/ViewModel/GameOfLifeViewModel.js",
+			"src/scripts/ViewModel/SortingArraysViewModel.js",
+			"src/scripts/Tools/InputValueConverter.js",
+			"src/scripts/AppsRunner.js"
+		]
+	}
+}

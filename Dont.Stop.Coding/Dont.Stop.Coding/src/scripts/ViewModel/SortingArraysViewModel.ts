@@ -1,9 +1,15 @@
 ﻿namespace ViewModel {
 	export class SortingArraysViewModel extends ViewModelBase {
 		public pageName = "sorting-arrays";
-		public paramsOpen: KnockoutObservable<boolean> = ko.observable(false);
-		
+		public paramsOpen = ko.observable(false);
+
+		constructor() {
+			super();
+			this.backgroundColor("#8ee4ae");
+		}
+
 		public render(): void {
+			super.render();
 			this.sort();
 		}
 
@@ -11,39 +17,19 @@
 			this.sort();
 		}
 
-		private valueOrDefault<T>(elementId: string, defaultValue: any): T {
-			let value: T = defaultValue;
-			try {
-				const inputField = document.getElementById(elementId) as HTMLFormElement;
-
-				if (typeof defaultValue === "number") {
-					value = inputField.valueAsNumber;
-				}
-				else if (typeof defaultValue === "string") {
-					value = inputField.value;
-				} else {
-					value = inputField.valueAsDate;
-				}
-			} catch (e) {
-				console.warn(`Problem parsing '${elementId}'`);
-				value = defaultValue;
-			}
-
-			return value;
-		}
-
 		private sort(): void {
-			const startValue = this.valueOrDefault<number>("startValue", 1);
+			const startValue = Tools.InputValueConverter.valueOrDefault<number>("startValue", 1);
 			const drawParams = {
-				step: this.valueOrDefault<number>("step", 10),
-				delay: this.valueOrDefault<number>("delay", 50),
-				penColor: this.valueOrDefault<string>("penColor", "#edf5e1"),
-				backgroundColor: this.valueOrDefault<string>("backgroundColor", "#379683"),
-				fontSize: this.valueOrDefault<number>("fontSize", 16),
-				startValue: startValue
+				step: Tools.InputValueConverter.valueOrDefault<number>("step", 10),
+				delay: Tools.InputValueConverter.valueOrDefault<number>("delay", 50),
+				penColor: Tools.InputValueConverter.valueOrDefault<string>("penColor", "#edf5e1"),
+				backgroundColor: Tools.InputValueConverter.valueOrDefault<string>("backgroundColor", "#379683"),
+				fontSize: Tools.InputValueConverter.valueOrDefault<number>("fontSize", 16),
+				startValue: startValue,
+				isDisableSimulation: Tools.InputValueConverter.valueOrDefault<boolean>("isDisableSimulation", false)
 			};
 
-			const arraySize = this.valueOrDefault<number>("arraySize", 32);
+			const arraySize = Tools.InputValueConverter.valueOrDefault<number>("arraySize", 32);
 			const arrayToSort = new Sorting.Tools.RandomArrayGenerator().Generate(arraySize, startValue);
 			new Sorting.Drawing.MultiCanvasDrawer(document, drawParams).draw(arrayToSort);
 

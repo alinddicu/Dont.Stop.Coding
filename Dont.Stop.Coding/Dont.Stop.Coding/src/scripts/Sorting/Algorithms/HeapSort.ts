@@ -2,20 +2,23 @@
 	export class HeapSort extends SortBase {
 		private arrayCopy: number[];
 
+		constructor(rankingSystem: Tools.RankingSystem) {
+			super("HeapSort", rankingSystem);
+		}
+
 		public execute(unsortedList: number[]): number[] {
-	
-		super.execute(unsortedList);
-		this.arrayCopy = super.copy(unsortedList);
-		super.addToIntermediateSorts(this.arrayCopy);
 
-		this.sort(this.arrayCopy);
+			super.execute(unsortedList);
+			this.arrayCopy = super.copy(unsortedList);
+			super.addToIntermediateSorts(this.arrayCopy);
 
-		this.stopWatch();
-		return this.arrayCopy;
-	}
+			this.sort(this.arrayCopy);
 
-		private sort(arr: number[]):void
-		{
+			this.stopWatch();
+			return this.arrayCopy;
+		}
+
+		private sort(arr: number[]): void {
 			const n = arr.length;
 
 			// Build heap (rearrange array) 
@@ -39,8 +42,7 @@
 
 		// To heapify a subtree rooted with node i which is 
 		// an index in arr[]. n is size of heap 
-		private heapify(arr: number[], n: number, i: number): void
-		{
+		private heapify(arr: number[], n: number, i: number): void {
 			while (true) {
 				let largest = i;
 				// Initialize largest as root 
