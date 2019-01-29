@@ -9,3 +9,7 @@
 .clearBoth {
 	clear: both;
 }
+
+div.form-line {
+	padding: 3px 0 0 0;
+}

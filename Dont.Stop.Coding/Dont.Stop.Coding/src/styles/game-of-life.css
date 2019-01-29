@@ -22,10 +22,6 @@ h2#gol-params-title {
 	background-color: var(--yellow);
 }
 
-div.form-line {
-	padding: 3px 0 0 0;
-}
-
 div.action-button-container {
 	text-align: right;
 }
