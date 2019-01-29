@@ -26,7 +26,7 @@
 	</div>
 	<div class="form-line">
 		<label for="fontSize">Font size</label>
-		<input id="fontSize" type="number" placeholder="font size" value="16" min="5" max="40" data-bind="event: { keyup: onParamChanged }"/>
+		<input id="fontSize" type="number" placeholder="font size" value="16" min="5" max="40" data-bind="event: { keyup: onParamChanged }" />
 	</div>
 	<div class="form-line">
 		<label for="isDisableSimulation">Disable simulation</label>
@@ -41,6 +41,7 @@
 	<button data-bind="visible: !paramsOpen(), click: function() { paramsOpen(true); }"><i class="material-icons">settings</i></button>
 	<button data-bind="visible: paramsOpen(), click: function() { paramsOpen(false); }"><i class="material-icons">close</i></button>
 </div>
+<button id="sort-button-out" data-bind="click: function() { sort(); }" title="Sort"><i class="material-icons custom-color">done_outline</i></button>
 <div id="canvas-container">
 	<div id="bubblesort" class="canvas-container"></div>
 	<div id="insertionsort" class="canvas-container"></div>
