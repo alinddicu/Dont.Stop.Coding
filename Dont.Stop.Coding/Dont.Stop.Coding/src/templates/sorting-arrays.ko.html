@@ -30,7 +30,11 @@
 	</div>
 	<div class="form-line">
 		<label for="isDisableSimulation">Disable simulation</label>
-		<input id="isDisableSimulation" type="checkbox" data-bind="event: { keyup: onParamChanged }" />
+		<input id="isDisableSimulation" type="checkbox" data-bind="event: { keyup: onParamChanged }"/>
+	</div>
+	<div class="form-line">
+		<label for="isKeepSameArray">Keep same array</label>
+		<input id="isKeepSameArray" type="checkbox" data-bind="event: { keyup: onParamChanged }" />
 	</div>
 	<div class="form-line sort-button">
 		<button data-bind="click: function() { paramsOpen(false); }"><i class="material-icons custom-color">close</i></button>
