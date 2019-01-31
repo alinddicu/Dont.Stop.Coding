@@ -16,37 +16,11 @@ namespace GoL.Logic {
 		}
 
 		public discover(): void {
-			//var newCells = 
-			//	(From cell in this.Cells
-			//	From1 neighbour in this.GetNeighbours(cell)
-			//	where!this.Cells.Contains(neighbour)
-			//	select neighbour).Distinct().ToArray();
-
 			Enumerable.from(this.cells)
 				.selectMany((cell: Cell) => this.getNeighbours(cell))
 				.where((cell: Cell) => !Enumerable.from(this.cells).contains(cell))
 				.distinct()
 				.forEach((cell: Cell) => this.cells.push(cell));
-
-			//const newCells: Cell[] = [];
-			//for (let i = 0; i < this.cells.length; i++) {
-			//	const cell = this.cells[i];
-			//	const neighbours = this.getNeighbours(cell);
-			//	for (let j = 0; j < neighbours.length; j++) {
-			//		const neighbour = neighbours[j];
-
-			//		for (let k = 0; k < this.cells.length; k++) {
-			//			const cell2 = this.cells[k];
-
-			//			if (!Cell.equals(neighbour, cell2)) {
-			//				newCells.push(neighbour);
-			//			}
-			//		}
-			//	}
-			//}
-
-			//const newDisctinctCells: Cell[] = this.uniqueCells(newCells);
-			//Enumerable.from(newCells).forEach((cell: Cell) => this.cells.push(cell));
 		}
 
 		private uniqueCells(cells: Cell[]) {
