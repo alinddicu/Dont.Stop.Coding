@@ -30,7 +30,7 @@
 	</div>
 	<div class="form-line">
 		<label for="isDisableSimulation">Disable simulation</label>
-		<input id="isDisableSimulation" type="checkbox" data-bind="event: { keyup: onParamChanged }"/>
+		<input id="isDisableSimulation" type="checkbox" data-bind="event: { keyup: onParamChanged }" />
 	</div>
 	<div class="form-line">
 		<label for="isKeepSameArray">Keep same array</label>
@@ -43,13 +43,13 @@
 </div>
 <div id="showHideParams-container">
 	<button data-bind="visible: !paramsOpen(), click: function() { paramsOpen(true); }"><i class="material-icons">settings</i></button>
-	<button data-bind="visible: paramsOpen(), click: function() { paramsOpen(false); }"><i class="material-icons">close</i></button>
 </div>
 <button id="sort-button-out" data-bind="visible: !paramsOpen(), click: function() { sort(); }" title="Sort"><i class="material-icons custom-color">done_outline</i></button>
 <div id="canvas-container">
 	<div id="bubblesort" class="canvas-container"></div>
 	<div id="insertionsort" class="canvas-container"></div>
 	<div id="heapsort" class="canvas-container"></div>
+	<br />
 	<div id="mergesort" class="canvas-container"></div>
 	<div id="quicksort" class="canvas-container"></div>
 	<div id="selectionsort" class="canvas-container"></div>

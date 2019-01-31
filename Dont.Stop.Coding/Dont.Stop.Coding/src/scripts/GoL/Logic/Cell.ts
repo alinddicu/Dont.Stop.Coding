@@ -2,7 +2,7 @@
 
 'use strict';
 
-namespace Gol.Logic {
+namespace GoL.Logic {
 	import CellState = GoL.Logic.CellState;
 
 	export class Cell {
