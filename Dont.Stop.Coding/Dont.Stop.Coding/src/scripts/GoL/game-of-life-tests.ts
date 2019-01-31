@@ -1,6 +1,6 @@
 ﻿/// <reference path="../../../typings/linq.d.ts"/>
 'use strict';
-import Cell = Gol.Logic.Cell;
+import Cell = GoL.Logic.Cell;
 
 function assertArrays(expectedArray: any[], checkedArray: any[]) {
 	for (let i = 0; i < expectedArray.length; i++) {

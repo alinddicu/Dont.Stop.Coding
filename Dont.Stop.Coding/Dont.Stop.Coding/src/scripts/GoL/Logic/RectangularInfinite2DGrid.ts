@@ -3,7 +3,7 @@
 'use strict';
 
 namespace GoL.Logic {
-	import Cell = Gol.Logic.Cell;
+	import Cell = GoL.Logic.Cell;
 
 	export class RectangularInfinite2DGrid {
 		public cells: Cell[] = [];

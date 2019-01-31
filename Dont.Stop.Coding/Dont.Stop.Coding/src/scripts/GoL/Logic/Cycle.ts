@@ -3,7 +3,7 @@
 'use strict';
 
 namespace GoL.Logic {
-	import Cell = Gol.Logic.Cell;
+	import Cell = GoL.Logic.Cell;
 
 	export class Cycle {
 		public Run(currentGrid: RectangularInfinite2DGrid): RectangularInfinite2DGrid {
