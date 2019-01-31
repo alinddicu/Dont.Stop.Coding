@@ -1,7 +1,6 @@
 ﻿
 namespace ViewModel {
 	export class GameOfLifeViewModel extends ViewModelBase {
-		private workflow: IWorkflow;
 		private params: GoL.Drawing.ParamsForm;
 
 		public pageName = "game-of-life";
@@ -17,8 +16,8 @@ namespace ViewModel {
 		public isVisibleCanPause = ko.pureComputed(() => { return !this.board().isPausing() || this.board().isPlaying(); });
 		public isVisibleIsPausing = ko.pureComputed(() => { return this.board().isPausing() && !this.board().isPlaying(); });
 
-		constructor() {
-			super();
+		constructor(workflow: IWorkflow) {
+			super(workflow);
 			this.params = new GoL.Drawing.ParamsForm();
 			this.board(this.params.init());
 			this.backgroundColor("#f8e9a1");

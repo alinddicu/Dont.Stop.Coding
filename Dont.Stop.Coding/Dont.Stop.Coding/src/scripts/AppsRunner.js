@@ -7,6 +7,7 @@ function Workflow() {
 	var self = this;
 	self.currentViewModel = ko.observable();
 	self.menuOpen = ko.observable(false);
+	self.api = new Api();
 
 	function closeMenu() {
 		self.menuOpen(false);
@@ -20,7 +21,11 @@ function Workflow() {
 		location.hash = "/sorting-arrays";
 	};
 
-	var changeFavicon = function(faviconName) {
+	self.gotoRssAggregator = function () {
+		location.hash = "/rss-aggregator";
+	};
+
+	var changeFavicon = function (faviconName) {
 		var link = document.querySelector("link[rel='icon']") || document.createElement("link");
 		link.type = "image/x-icon";
 		link.rel = "icon";
@@ -41,6 +46,10 @@ function Workflow() {
 
 		this.get("#/sorting-arrays", function () {
 			changePage(new ViewModel.SortingArraysViewModel(self));
+		});
+
+		this.get("#/rss-aggregator", function () {
+			changePage(new ViewModel.RssAggregatorViewModel(self));
 		});
 
 		this.get("", function () {

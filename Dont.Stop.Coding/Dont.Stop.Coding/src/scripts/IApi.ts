@@ -1,0 +1,3 @@
+﻿interface IApi {
+	getRss: any;
+}

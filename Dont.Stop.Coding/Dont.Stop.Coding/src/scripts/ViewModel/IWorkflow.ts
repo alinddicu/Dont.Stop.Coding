@@ -1,3 +1,3 @@
 ﻿interface IWorkflow {
-	
+	api: IApi;
 }

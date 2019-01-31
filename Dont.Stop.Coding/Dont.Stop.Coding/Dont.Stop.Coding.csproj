@@ -29,6 +29,7 @@
     <Content Include="src\lib\knockout-latest.js" />
     <Content Include="src\lib\linq.min.js" />
     <Content Include="src\lib\sammy-latest.min.js" />
+    <Content Include="src\scripts\Api.js" />
     <Content Include="src\styles\game-of-life.css" />
     <Content Include="src\styles\all-apps.css" />
     <Content Include="src\styles\menu.css" />
@@ -46,6 +47,7 @@
     <TypeScriptCompile Include="src\scripts\GoL\Logic\CellState.ts" />
     <TypeScriptCompile Include="src\scripts\GoL\Logic\Cycle.ts" />
     <TypeScriptCompile Include="src\scripts\GoL\Logic\RectangularInfinite2DGrid.ts" />
+    <TypeScriptCompile Include="src\scripts\IApi.ts" />
     <TypeScriptCompile Include="src\scripts\Sorting\Algorithms\BubbleSort.ts" />
     <TypeScriptCompile Include="src\scripts\Sorting\Algorithms\HeapSort.ts" />
     <TypeScriptCompile Include="src\scripts\Sorting\Algorithms\InsertionSort.ts" />
@@ -60,6 +62,7 @@
     <TypeScriptCompile Include="src\scripts\Sorting\Tools\RankingSystem.ts" />
     <TypeScriptCompile Include="src\scripts\Tools\InputValueConverter.ts" />
     <TypeScriptCompile Include="src\scripts\ViewModel\GameOfLifeViewModel.ts" />
+    <TypeScriptCompile Include="src\scripts\ViewModel\RssAggregatorViewModel.ts" />
     <TypeScriptCompile Include="src\scripts\ViewModel\ViewModelBase.ts" />
     <TypeScriptCompile Include="src\scripts\ViewModel\IWorkflow.ts" />
     <TypeScriptCompile Include="src\scripts\ViewModel\SortingArraysViewModel.ts" />
@@ -73,9 +76,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="dist\" />
+    <Folder Include="src\scripts\RssAggregator\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="src\templates\game-of-life.ko.html" />
+    <Content Include="src\templates\rss-aggregator.ko.html" />
     <Content Include="src\templates\sorting-arrays.ko.html" />
     <Content Include="tsconfig.json" />
   </ItemGroup>
