@@ -1,3 +1,7 @@
-﻿<div data-bind="foreach: rssItems()">
-	<span data-bind="text: title"></span>
+﻿<br />
+<br />
+<div data-bind="foreach: rssItems()">
+	<h3 data-bind="text: title"></h3>
+	<a data-bind="attr: { href: link }" target="_blank">read more</a>
+	<p data-bind="text: description"></p>
 </div>
