@@ -13,7 +13,7 @@ var rename = require("gulp-rename");
 var sourcemaps = require('gulp-sourcemaps');
 var csso = require('gulp-csso');
 var hash = require('gulp-hash-filename');
-var hashFormula = { "format": "{name}.{hash}.{size}{ext}" };
+var hashFormula = { "format": "{name}.{hash}{ext}" };
 
 var gulpFolder = __dirname;
 var prodDistDest = 'dist/prod';
