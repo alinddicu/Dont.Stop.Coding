@@ -1,5 +1,11 @@
 ﻿namespace ViewModel {
 	export class SortingArraysViewModel extends ViewModelBase {
+		private arraySize: number = 32;
+		private previousArraySize: number = 32;
+		private startValue: number = 1;
+		private previousStartValue: number = 1;
+		private arrayToSort: number[] = new Sorting.Tools.RandomArrayGenerator().Generate(this.arraySize, this.startValue);
+
 		public pageName = "sorting-arrays";
 		public paramsOpen = ko.observable(false);
 
@@ -18,7 +24,8 @@
 		}
 
 		private sort(): void {
-			const startValue = Tools.InputValueConverter.valueOrDefault<number>("startValue", 1);
+			const isKeepSameArray = Tools.InputValueConverter.valueOrDefault<boolean>("isKeepSameArray", false);
+			const startValue = Tools.InputValueConverter.valueOrDefault<number>("startValue", this.startValue);
 			const drawParams = {
 				step: Tools.InputValueConverter.valueOrDefault<number>("step", 10),
 				delay: Tools.InputValueConverter.valueOrDefault<number>("delay", 50),
@@ -29,10 +36,15 @@
 				isDisableSimulation: Tools.InputValueConverter.valueOrDefault<boolean>("isDisableSimulation", false)
 			};
 
-			const arraySize = Tools.InputValueConverter.valueOrDefault<number>("arraySize", 32);
-			const arrayToSort = new Sorting.Tools.RandomArrayGenerator().Generate(arraySize, startValue);
-			new Sorting.Drawing.MultiCanvasDrawer(document, drawParams).draw(arrayToSort);
+			const arraySize = Tools.InputValueConverter.valueOrDefault<number>("arraySize", this.arraySize);
+			if (!isKeepSameArray || this.previousStartValue !== startValue || this.previousArraySize !== arraySize) {
+				this.arrayToSort = new Sorting.Tools.RandomArrayGenerator().Generate(arraySize, startValue);
+			}
 
+			new Sorting.Drawing.MultiCanvasDrawer(document, drawParams).draw(this.arrayToSort);
+
+			this.previousArraySize = arraySize;
+			this.previousStartValue = startValue;
 			this.paramsOpen(false);
 		}
 	}

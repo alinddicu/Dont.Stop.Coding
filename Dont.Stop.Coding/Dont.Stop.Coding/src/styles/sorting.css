@@ -82,3 +82,10 @@ div#copyright a, div#copyright a:visited, div#copyright a:hover, div#copyright a
 	color: #05386b;
 	font-weight: bold;
 }
+
+button#sort-button-out {
+	padding-left: 4px;
+	position: absolute;
+	top: 90px;
+	z-index: 1;
+}

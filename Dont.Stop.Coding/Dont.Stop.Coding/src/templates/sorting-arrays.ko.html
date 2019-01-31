@@ -26,20 +26,26 @@
 	</div>
 	<div class="form-line">
 		<label for="fontSize">Font size</label>
-		<input id="fontSize" type="number" placeholder="font size" value="16" min="5" max="40" data-bind="event: { keyup: onParamChanged }"/>
+		<input id="fontSize" type="number" placeholder="font size" value="16" min="5" max="40" data-bind="event: { keyup: onParamChanged }" />
 	</div>
 	<div class="form-line">
 		<label for="isDisableSimulation">Disable simulation</label>
-		<input id="isDisableSimulation" type="checkbox" data-bind="event: { keyup: onParamChanged }" />
+		<input id="isDisableSimulation" type="checkbox" data-bind="event: { keyup: onParamChanged }"/>
+	</div>
+	<div class="form-line">
+		<label for="isKeepSameArray">Keep same array</label>
+		<input id="isKeepSameArray" type="checkbox" data-bind="event: { keyup: onParamChanged }" />
 	</div>
 	<div class="form-line sort-button">
-		<button data-bind="click: function() { sort($parent); }"><i class="material-icons custom-color">done_outline</i></button>
+		<button data-bind="click: function() { paramsOpen(false); }"><i class="material-icons custom-color">close</i></button>
+		<button data-bind="click: function() { sort(); }"><i class="material-icons custom-color">done_outline</i></button>
 	</div>
 </div>
 <div id="showHideParams-container">
 	<button data-bind="visible: !paramsOpen(), click: function() { paramsOpen(true); }"><i class="material-icons">settings</i></button>
 	<button data-bind="visible: paramsOpen(), click: function() { paramsOpen(false); }"><i class="material-icons">close</i></button>
 </div>
+<button id="sort-button-out" data-bind="visible: !paramsOpen(), click: function() { sort(); }" title="Sort"><i class="material-icons custom-color">done_outline</i></button>
 <div id="canvas-container">
 	<div id="bubblesort" class="canvas-container"></div>
 	<div id="insertionsort" class="canvas-container"></div>
