@@ -7,6 +7,7 @@ namespace ViewModel {
 
 		constructor(workflow: IWorkflow) {
 			super(workflow);
+			this.backgroundColor("#efe2ba");
 			this.render();
 		}
 
