@@ -11,11 +11,12 @@ namespace ViewModel {
 		}
 
 		public render(): void {
+			var self = this;
 			super.render();
 			this.workflow.api.getRss()
 				.done(function (rss: any) {
 					rss.channel.item.map(function(item: any) {
-						this.rssItems.push(item);
+						self.rssItems.push(item);
 					});
 				})
 				.fail(function () {
