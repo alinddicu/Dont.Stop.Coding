@@ -23,6 +23,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="src\images\favicon\game-of-life.png" />
+    <Content Include="src\images\favicon\rss-aggregator.png" />
     <Content Include="src\images\favicon\sorting-arrays.png" />
     <Content Include="src\index.html" />
     <Content Include="src\lib\jquery.min.js" />
@@ -76,7 +77,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="dist\" />
-    <Folder Include="src\scripts\RssAggregator\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="src\templates\game-of-life.ko.html" />
