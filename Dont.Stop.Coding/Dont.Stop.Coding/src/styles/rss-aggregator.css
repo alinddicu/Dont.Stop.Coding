@@ -25,3 +25,34 @@ div.rss-item {
 	padding: 5px;
 	background-color: var(--white);
 }
+
+/* Feeds menu */
+
+div#rss-list {
+	z-index: 1;
+	position: absolute;
+	left: 45px;
+	top: 0;
+	opacity: 1;
+	padding: 0;
+	margin: 0;
+	background-color: var(--light-blue);
+	border-radius: 5px;
+}
+
+div#rss-toggle {
+	background-color: var(--light-blue);
+	margin: 10px 0 0 10px;
+}
+
+div#rss-entries-container {
+	background-color: var(--light-blue);
+	padding: 5px;
+	border-radius: 3px;
+}
+
+a.rss-feed, a.rss-feed :visited, a.rss-feed :hover, a.rss-feed :active {
+	text-decoration: none;
+	color: var(--blue);
+	font-weight: bold;
+}

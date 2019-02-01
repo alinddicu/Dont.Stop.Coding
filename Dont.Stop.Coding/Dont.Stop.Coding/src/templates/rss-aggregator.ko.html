@@ -1,4 +1,14 @@
-﻿<br />
+﻿<div id="rss-list">
+	<div id="rss-toggle">
+		<button data-bind="visible: !menuOpen(), click: function() { menuOpen(true); }"><i class="material-icons">settings</i></button>
+		<button data-bind="visible: menuOpen(), click: function() { menuOpen(false); }"><i class="material-icons">close</i></button>
+	</div>
+	<div id="rss-entries-container" data-bind="visible: menuOpen(), foreach: rssFeeds">
+		<a class="rss-feed" href="#" data-bind="click: function() { $parent.callUrl(url); }"><span data-bind="text: channel"></span></a>
+		<br/>
+	</div>
+</div>
+<br />
 <br />
 <div data-bind="foreach: rssItems()">
 	<div class="rss-item">

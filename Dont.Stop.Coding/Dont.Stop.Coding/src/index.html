@@ -24,7 +24,7 @@
 			<button data-bind="visible: !menuOpen(), click: function() { menuOpen(true); }"><i class="material-icons">menu</i></button>
 			<button data-bind="visible: menuOpen(), click: function() { menuOpen(false); }"><i class="material-icons">close</i></button>
 		</div>
-		<div id="menu-entries-container" class="inline-right" data-bind="visible: menuOpen()">
+		<div id="menu-entries-container" data-bind="visible: menuOpen()">
 			<a class="menu-entry" href="#" data-bind="click: function() { appsRunner.gotoSortingArrays(); }"><i class="material-icons menu">sort</i><span>Array sortings</span></a>
 			<br />
 			<a class="menu-entry" href="#" data-bind="click: function() { appsRunner.gotoGameOfLife(); }"><i class="material-icons menu">grid_on</i><span>Game of life</span></a>
