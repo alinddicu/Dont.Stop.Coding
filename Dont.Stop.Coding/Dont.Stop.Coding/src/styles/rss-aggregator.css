@@ -18,8 +18,8 @@ p.rss-description {
 	color: var(--blue);
 }
 
-div.news-item {
-	border-radius: 3px;
+div.rss-item {
+	border-radius: 5px;
 	border: 1px dotted;
 	border-color: var(--brown);
 	padding: 5px;
