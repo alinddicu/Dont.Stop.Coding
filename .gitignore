@@ -249,4 +249,5 @@ ModelManifest.xml
 /Dont.Stop.Coding/Dont.Stop.Coding/src/scripts/Tools/**/*.js
 /Dont.Stop.Coding/Dont.Stop.Coding/src/lib
 /Dont.Stop.Coding/Dont.Stop.Coding/src/scripts/Api.js
+/Dont.Stop.Coding/Dont.Stop.Coding/src/scripts/IApi.js
 /Dont.Stop.Coding/Dont.Stop.Coding/src/scripts/ApiTest.js

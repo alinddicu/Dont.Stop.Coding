@@ -5,7 +5,7 @@ namespace ViewModel {
 		public pageName = "rss-aggregator";
 		public rssItems: KnockoutObservableArray<string> = ko.observableArray([]);
 
-		constructor(workflow: IWorkflow) {
+		constructor(workflow: IAppsRunner) {
 			super(workflow);
 			this.backgroundColor("#8fc1e3");
 			this.render();

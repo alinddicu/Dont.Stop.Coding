@@ -67,7 +67,7 @@
     <TypeScriptCompile Include="src\scripts\ViewModel\GameOfLifeViewModel.ts" />
     <TypeScriptCompile Include="src\scripts\ViewModel\RssAggregatorViewModel.ts" />
     <TypeScriptCompile Include="src\scripts\ViewModel\ViewModelBase.ts" />
-    <TypeScriptCompile Include="src\scripts\ViewModel\IWorkflow.ts" />
+    <TypeScriptCompile Include="src\scripts\ViewModel\IAppsRunner.ts" />
     <TypeScriptCompile Include="src\scripts\ViewModel\SortingArraysViewModel.ts" />
     <Content Include="src\scripts\AppsRunner.js" />
     <TypeScriptCompile Include="typings\knockout.d.ts" />
