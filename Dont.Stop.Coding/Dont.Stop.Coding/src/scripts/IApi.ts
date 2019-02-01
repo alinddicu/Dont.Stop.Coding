@@ -1,3 +1,3 @@
 ﻿interface IApi {
-	getRss: any;
+	getRss(url: string): any;
 }

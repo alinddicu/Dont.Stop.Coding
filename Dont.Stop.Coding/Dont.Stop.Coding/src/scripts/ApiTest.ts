@@ -205,7 +205,7 @@
 		}
 	}
 
-	public getRss(): any {
+	public getRss(url: string): any {
 		return this.testGetRss();
 	}
 }

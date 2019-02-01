@@ -14,10 +14,10 @@ namespace ViewModel {
 		public render(): void {
 			var self = this;
 			super.render();
-			this.workflow.api.getRss()
+			this.workflow.api.getRss("http://www.cbn.com/cbnnews/world/feed/")
 				.done(function (rss: any) {
-					rss.channel.item.map(function(item: any) {
-						self.rssItems.push(item);
+					rss.channel.item.map(function(rssItem: any) {
+						self.rssItems.push(rssItem);
 					});
 				})
 				.fail(function () {

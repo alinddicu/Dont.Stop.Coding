@@ -5,7 +5,7 @@
 		this.jQuery = jQuery;
 	}
 
-	public getRss(): any {
-		return this.jQuery.getJSON("/cakephp/ws");
+	public getRss(url: string): any {
+		return this.jQuery.getJSON("/cakephp/ws", { "url": encodeURIComponent(url)});
 	}
 }
