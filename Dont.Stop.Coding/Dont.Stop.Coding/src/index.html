@@ -25,11 +25,11 @@
 			<button data-bind="visible: menuOpen(), click: function() { menuOpen(false); }"><i class="material-icons">close</i></button>
 		</div>
 		<div id="menu-entries-container" class="inline-right" data-bind="visible: menuOpen()">
-			<a class="menu-entry" href="#" data-bind="click: function() { workflowViewModel.gotoSortingArrays(); }"><i class="material-icons menu">sort</i><span>Array sortings</span></a>
+			<a class="menu-entry" href="#" data-bind="click: function() { appsRunner.gotoSortingArrays(); }"><i class="material-icons menu">sort</i><span>Array sortings</span></a>
 			<br />
-			<a class="menu-entry" href="#" data-bind="click: function() { workflowViewModel.gotoGameOfLife(); }"><i class="material-icons menu">grid_on</i><span>Game of life</span></a>
+			<a class="menu-entry" href="#" data-bind="click: function() { appsRunner.gotoGameOfLife(); }"><i class="material-icons menu">grid_on</i><span>Game of life</span></a>
 			<br />
-			<a class="menu-entry" href="#" data-bind="click: function() { workflowViewModel.gotoRssAggregator(); }"><i class="material-icons menu">rss_feed</i><span>RSS aggregator</span></a>
+			<a class="menu-entry" href="#" data-bind="click: function() { appsRunner.gotoRssAggregator(); }"><i class="material-icons menu">rss_feed</i><span>RSS aggregator</span></a>
 			<br />
 			<a class="menu-entry" href="https://github.com/alinddicu" target="_blank"><i class="material-icons menu">contact_support</i><span>About</span></a>
 			<br class="clearBoth" />
@@ -47,6 +47,6 @@
 
 </html>
 <script type="text/javascript">
-	var workflowViewModel = new Workflow();
-	ko.applyBindings(workflowViewModel);
+	var appsRunner = new AppsRunner();
+	ko.applyBindings(appsRunner);
 </script>
