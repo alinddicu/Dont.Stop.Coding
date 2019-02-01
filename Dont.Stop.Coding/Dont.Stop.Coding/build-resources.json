@@ -3,7 +3,8 @@
 		"src/styles/menu.css",
 		"src/styles/sorting.css",
 		"src/styles/game-of-life.css",
-		"src/styles/all-apps.css"
+		"src/styles/all-apps.css",
+		"src/styles/rss-aggregator.css"
 	],
 	"js": {
 		"libs": [

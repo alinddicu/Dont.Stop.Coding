@@ -1,0 +1,31 @@
+﻿:root {
+	/*color theme "Artsy and Creative" from https://visme.co/blog/website-color-schemes/*/
+	--brown: #687864;
+	--turquoise: #31708e;
+	--blue: #5085a5;
+	--light-blue: #8fc1e3;
+	--white: #f7f9fb;
+}
+
+a.rss-link, a.rss-link :visited, a.rss-link :hover, a.rss-link :active {
+	text-decoration: none;
+	color: var(--turquoise);
+}
+
+p.rss-description {
+	margin: 10px 0 0 0;
+	color: var(--blue);
+}
+
+a.rss-link, p.rss-description, span.rss-title, div.news-item {
+	/*padding: 0;
+	margin: 0;*/
+}
+
+div.news-item {
+	border-radius: 3px;
+	border: 1px dotted;
+	border-color: var(--brown);
+	padding: 5px;
+	background-color: var(--white);
+}
