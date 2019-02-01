@@ -1,6 +1,5 @@
-﻿Api = function () {
-
-	var testRss = {
+﻿class ApiTest implements IApi {
+	private testRss: any = {
 		"@attributes": {
 			"version": "2.0"
 		},
@@ -183,17 +182,18 @@
 		}
 	};
 
-	var testGetRss = function () {
+	private testGetRss(): any {
+		var self = this;
 		return {
-			done: function (doneCallback) {
-				doneCallback(testRss);
+			done(doneCallback: (result: any) => void) {
+				doneCallback(self.testRss);
 				return {
-					fail: function (failCallback) {
+					fail(failCallback: () => void) {
 						if (failCallback) {
 							failCallback();
 						}
 						return {
-							always: function (alwaysCallback) {
+							always(alwaysCallback: () => void) {
 								if (alwaysCallback) {
 									alwaysCallback();
 								}
@@ -205,8 +205,7 @@
 		}
 	}
 
-	this.getRss = function () {
-		return $.getJSON("/cakephp/ws");
-		//return testGetRss();
-	};
-};
+	public getRss(): any {
+		return this.testGetRss();
+	}
+}

@@ -41,6 +41,7 @@
 			"src/scripts/ViewModel/SortingArraysViewModel.js",
 			"src/scripts/ViewModel/RssAggregatorViewModel.js",
 			"src/scripts/Tools/InputValueConverter.js",
+			"src/scripts/ApiTest.js",
 			"src/scripts/Api.js",
 			"src/scripts/AppsRunner.js"
 		]
