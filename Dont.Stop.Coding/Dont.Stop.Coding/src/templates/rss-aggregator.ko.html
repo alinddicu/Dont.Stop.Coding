@@ -17,7 +17,7 @@
 <br />
 <div data-bind="foreach: rssItems()">
 	<div class="rss-item">
-		<a class="rss-link" data-bind="attr: { href: link }" target="_blank">
+		<a class="rss-link" data-bind="attr: { href: link, target: '_blank' }">
 			<span class="rss-title" data-bind="text: title"></span>
 		</a>
 		<br />
