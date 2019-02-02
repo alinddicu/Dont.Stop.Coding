@@ -6,14 +6,15 @@ var gulp = require('gulp');
 var fs = require('fs');
 var concat = require('gulp-concat');
 var del = require('del');
-var watch = require('gulp-watch');
 var inject = require('gulp-inject');
 var uglify = require('gulp-uglify-es').default;
 var rename = require("gulp-rename");
 var sourcemaps = require('gulp-sourcemaps');
 var csso = require('gulp-csso');
 var hash = require('gulp-hash-filename');
-var hashFormula = { "format": "{name}.{hash}{ext}" };
+var cssHash = null;
+var jsHash = null;
+var hashFormula = { "format": "{name}-{hash}-{ext}" };
 
 var gulpFolder = __dirname;
 var prodDistDest = 'dist/prod';
@@ -48,6 +49,14 @@ var watchPaths = []
 	.concat(paths.templates)
 	.concat(paths.buildResources);
 
+function extractHash(baseFileName) {
+	return baseFileName.substring(baseFileName.indexOf('-') + 1, baseFileName.lastIndexOf('-'));
+}
+
+function createInjectedHashedFikeLink(filename, hash) {
+	return cssHash ? (filename + "?" + hash) : filename;
+}
+
 function injectionTransformation(filepath, relativePath) {
 	var fileName = filepath.substring(filepath.lastIndexOf('/') + 1);
 	if (filepath.slice(-koTemplateExtension.length) === koTemplateExtension)
@@ -65,14 +74,16 @@ function injectionTransformation(filepath, relativePath) {
 		console.info('Injecting css: ' + fileName);
 
 		filepath = filepath.replace(relativePath, '');
-		return '<link rel="stylesheet" href="' + filepath + '" type="text/css"/>';
+		var cssLink = createInjectedHashedFikeLink(filepath, cssHash);
+		return '<link rel="stylesheet" href="' + cssLink + '" type="text/css"/>';
 	}
 	else if (filepath.slice(-3) === '.js')
 	{
 		console.info('Injecting js: ' + fileName);
 
 		filepath = filepath.replace(relativePath, '');
-		return '<script src="' + filepath + '"></script >';
+		var jsLink = createInjectedHashedFikeLink(filepath, cssHash);
+		return '<script src="' + jsLink + '"></script >';
 	}
 
 	// Use the default transform as fallback:
@@ -130,11 +141,10 @@ gulp.task('prod-copy-images', function () {
 gulp.task('prod-concat-minify-js', function () {
 	return gulp.src([].concat(buildResources.js.libs).concat(buildResources.js.app))
 		.pipe(concat('scripts.js'))
-		.pipe(rename('scripts.min.js'))
-		//.pipe(sourcemaps.init())
 		.pipe(uglify())
 		.pipe(hash(hashFormula))
-		//.pipe(sourcemaps.write())
+		.pipe(rename(function (path) { jsHash = extractHash(path.basename); }))
+		.pipe(rename('scripts.min.js'))
 		.pipe(gulp.dest(prodDistDest));
 });
 
@@ -142,8 +152,9 @@ gulp.task('prod-concat-minify-css', function () {
 	return gulp.src(buildResources.css)
 		.pipe(concat('styles.css'))
 		.pipe(csso())
-		.pipe(rename('styles.min.css'))
 		.pipe(hash(hashFormula))
+		.pipe(rename(function (path) { cssHash = extractHash(path.basename); }))
+		.pipe(rename('styles.min.css'))
 		.pipe(gulp.dest(prodDistDest));
 });
 
