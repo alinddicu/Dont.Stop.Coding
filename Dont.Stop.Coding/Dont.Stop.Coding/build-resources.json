@@ -11,7 +11,8 @@
 			"src/lib/linq.min.js",
 			"src/lib/knockout-latest.js",
 			"src/lib/jquery.min.js",
-			"src/lib/sammy-latest.min.js"
+			"src/lib/sammy-latest.min.js",
+			"src/lib/moment.min.js"
 		],
 		"app": [
 			"src/scripts/Sorting/Algorithms/SortBase.js",

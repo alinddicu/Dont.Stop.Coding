@@ -13,7 +13,7 @@ a.rss-link, a.rss-link :visited, a.rss-link :hover, a.rss-link :active {
 	font-weight: bold;
 }
 
-p.rss-description {
+.rss-description {
 	margin: 10px 0 0 0;
 	color: var(--blue);
 }

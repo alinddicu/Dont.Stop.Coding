@@ -17,7 +17,10 @@
 <br />
 <div data-bind="foreach: rssItems()">
 	<div class="rss-item">
-		<a class="rss-link" data-bind="attr: { href: link }" target="_blank"><span class="rss-title" data-bind="text: title"></span></a>
+		<a class="rss-link" data-bind="attr: { href: link }" target="_blank">
+			<span class="rss-title" data-bind="text: title"></span>
+		</a>
+		<span class="rss-description" data-bind="text: moment(pubDate).format('LL')"></span>
 		<p class="rss-description" data-bind="text: description"></p>
 	</div>
 	<hr class="rss-item-spacer" />

@@ -29,6 +29,7 @@
     <Content Include="src\lib\jquery.min.js" />
     <Content Include="src\lib\knockout-latest.js" />
     <Content Include="src\lib\linq.min.js" />
+    <Content Include="src\lib\moment.min.js" />
     <Content Include="src\lib\sammy-latest.min.js" />
     <Content Include="src\styles\game-of-life.css" />
     <Content Include="src\styles\all-apps.css" />
