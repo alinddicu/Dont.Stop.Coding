@@ -20,7 +20,7 @@ a.rss-link, a.rss-link :visited, a.rss-link :hover, a.rss-link :active {
 
 div.rss-item {
 	border-radius: 5px;
-	border: 1px dotted;
+	border: 1px solid;
 	border-color: var(--brown);
 	padding: 5px;
 	background-color: var(--white);
