@@ -53,12 +53,14 @@ div#rss-toggle {
 
 div#rss-entries-container {
 	background-color: var(--light-blue);
-	padding: 5px;
-	border-radius: 3px;
+	padding: 5px 10px 5px 10px;
+	border-radius: 5px;
 }
 
 a.rss-feed, a.rss-feed :visited, a.rss-feed :hover, a.rss-feed :active {
 	text-decoration: none;
 	color: var(--blue);
 	font-weight: bold;
+	display: block;
+	padding-bottom: 7px;
 }
