@@ -241,13 +241,13 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 
-/Dont.Stop.Coding/Dont.Stop.Coding/dist
-/Dont.Stop.Coding/Dont.Stop.Coding/node_modules
-/Dont.Stop.Coding/Dont.Stop.Coding/src/scripts/GoL/**/*.js
-/Dont.Stop.Coding/Dont.Stop.Coding/src/scripts/Sorting/**/*.js
-/Dont.Stop.Coding/Dont.Stop.Coding/src/scripts/ViewModel/**/*.js
-/Dont.Stop.Coding/Dont.Stop.Coding/src/scripts/Tools/**/*.js
-/Dont.Stop.Coding/Dont.Stop.Coding/src/lib
-/Dont.Stop.Coding/Dont.Stop.Coding/src/scripts/Api.js
-/Dont.Stop.Coding/Dont.Stop.Coding/src/scripts/IApi.js
-/Dont.Stop.Coding/Dont.Stop.Coding/src/scripts/ApiTest.js
+/Dont.Stop.Coding/Dont.Stop.Coding.Web/dist
+/Dont.Stop.Coding/Dont.Stop.Coding.Web/node_modules
+/Dont.Stop.Coding/Dont.Stop.Coding.Web/src/scripts/GoL/**/*.js
+/Dont.Stop.Coding/Dont.Stop.Coding.Web/src/scripts/Sorting/**/*.js
+/Dont.Stop.Coding/Dont.Stop.Coding.Web/src/scripts/ViewModel/**/*.js
+/Dont.Stop.Coding/Dont.Stop.Coding.Web/src/scripts/Tools/**/*.js
+/Dont.Stop.Coding/Dont.Stop.Coding.Web/src/lib
+/Dont.Stop.Coding/Dont.Stop.Coding.Web/src/scripts/Api.js
+/Dont.Stop.Coding/Dont.Stop.Coding.Web/src/scripts/IApi.js
+/Dont.Stop.Coding/Dont.Stop.Coding.Web/src/scripts/ApiTest.js
