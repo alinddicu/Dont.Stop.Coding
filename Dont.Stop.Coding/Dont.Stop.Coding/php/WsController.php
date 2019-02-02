@@ -6,6 +6,7 @@ class WsController extends AppController
 {
     public function index()
     {
+		//$url = "http://www.cbn.com/cbnnews/world/feed/";
 		$url = urldecode($_GET['url']);
 		$fileContents = file_get_contents($url);
 		$json = json_encode(simplexml_load_string($fileContents, 'SimpleXMLElement', LIBXML_NOCDATA));

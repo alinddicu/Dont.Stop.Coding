@@ -1,9 +1,12 @@
 ﻿/// <reference path="../../../typings/knockout.d.ts"/>
 
 namespace ViewModel {
+	import RssItems = Tools.IRssItems;
+	import RssItem = Tools.IRssItem;
+
 	export class RssAggregatorViewModel extends ViewModelBase {
 		public pageName = "rss-aggregator";
-		public rssItems: KnockoutObservableArray<any> = ko.observableArray([]);
+		public rssItems: KnockoutObservableArray<RssItem> = ko.observableArray([]);
 		public menuOpen = ko.observable(false);
 		public rssFeeds: any = [
 			{
@@ -26,20 +29,29 @@ namespace ViewModel {
 			this.callUrl("http://www.cbn.com/cbnnews/world/feed/");
 		}
 
+		private cleanRssItems(rssItems: RssItems): void {
+			rssItems.channel.item.map((rssItem: RssItem) => {
+				const description = rssItem.description;
+				const divIndex = description.indexOf("<div");
+				const endOfDescription = divIndex === -1 ? description.length - 1 : divIndex;
+				rssItem.description = description.substring(0, endOfDescription);
+			});
+		}
+
 		public callUrl(url: string): void {
-			var self = this;
 			super.render();
 			this.workflow.api.getRss(url)
-				.done(function (rss: any) {
-					self.rssItems([]);
-					rss.channel.item.map(function (rssItem: any) {
-						self.rssItems.push(rssItem);
+				.done((rssItems: RssItems) => {
+					this.rssItems([]);
+					this.cleanRssItems(rssItems);
+					rssItems.channel.item.map((rssItem: RssItem) => {
+						this.rssItems.push(rssItem);
 					});
 				})
-				.fail(function () {
-					// todo
+				.fail(() => {
+					// console.error(`Error when calling '${url}'`);
 				})
-				.always(function () {
+				.always(() => {
 					// todo 
 				});
 		}

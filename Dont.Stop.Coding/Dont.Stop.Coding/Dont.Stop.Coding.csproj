@@ -64,6 +64,7 @@
     <TypeScriptCompile Include="src\scripts\Sorting\Tools\RankingSystem.ts" />
     <TypeScriptCompile Include="src\scripts\Tools\InputValueConverter.ts" />
     <TypeScriptCompile Include="src\scripts\Api.ts" />
+    <TypeScriptCompile Include="src\scripts\Tools\IRss.ts" />
     <TypeScriptCompile Include="src\scripts\ViewModel\GameOfLifeViewModel.ts" />
     <TypeScriptCompile Include="src\scripts\ViewModel\RssAggregatorViewModel.ts" />
     <TypeScriptCompile Include="src\scripts\ViewModel\ViewModelBase.ts" />
