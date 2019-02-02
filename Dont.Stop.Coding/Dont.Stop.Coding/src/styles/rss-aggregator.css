@@ -61,6 +61,9 @@ a.rss-feed, a.rss-feed :visited, a.rss-feed :hover, a.rss-feed :active {
 	text-decoration: none;
 	color: var(--blue);
 	font-weight: bold;
+}
+
+a.rss-feed {
 	display: block;
 	padding-bottom: 7px;
 }
