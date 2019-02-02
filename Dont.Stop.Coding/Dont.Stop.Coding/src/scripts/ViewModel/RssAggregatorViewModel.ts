@@ -7,7 +7,7 @@ namespace ViewModel {
 	export class RssAggregatorViewModel extends ViewModelBase {
 		public pageName = "rss-aggregator";
 		public rssItems: KnockoutObservableArray<RssItem> = ko.observableArray([]);
-		public menuOpen = ko.observable(false);
+		public rssMenuOpen = ko.observable(false);
 		public rssFeeds: any = [
 			{
 				channel: "CBNNews.com",
@@ -47,6 +47,8 @@ namespace ViewModel {
 					rssItems.channel.item.map((rssItem: RssItem) => {
 						this.rssItems.push(rssItem);
 					});
+
+					this.rssMenuOpen(false);
 				})
 				.fail(() => {
 					// console.error(`Error when calling '${url}'`);
