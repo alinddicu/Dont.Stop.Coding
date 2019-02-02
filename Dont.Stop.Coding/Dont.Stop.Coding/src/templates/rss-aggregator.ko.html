@@ -20,7 +20,8 @@
 		<a class="rss-link" data-bind="attr: { href: link }" target="_blank">
 			<span class="rss-title" data-bind="text: title"></span>
 		</a>
-		<span class="rss-description" data-bind="text: moment(pubDate).format('LL')"></span>
+		<br />
+		<span class="rss-description" data-bind="text: moment(pubDate).format('MMMM Do YYYY')"></span>
 		<p class="rss-description" data-bind="text: description"></p>
 	</div>
 	<hr class="rss-item-spacer" />
