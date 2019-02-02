@@ -26,6 +26,12 @@ div.rss-item {
 	background-color: var(--white);
 }
 
+hr.rss-item-spacer {
+	height: 0;
+	visibility: hidden;
+	margin-bottom: -7px;
+}
+
 /* Feeds menu */
 
 div#rss-list {

@@ -5,7 +5,7 @@
 	</div>
 	<div id="rss-entries-container" data-bind="visible: menuOpen(), foreach: rssFeeds">
 		<a class="rss-feed" href="#" data-bind="click: function() { $parent.callUrl(url); }"><span data-bind="text: channel"></span></a>
-		<br/>
+		<br />
 	</div>
 </div>
 <br />
@@ -15,5 +15,5 @@
 		<a class="rss-link" data-bind="attr: { href: link }" target="_blank"><span class="rss-title" data-bind="text: title"></span></a>
 		<p class="rss-description" data-bind="text: description"></p>
 	</div>
-	<br />
+	<hr class="rss-item-spacer" />
 </div>
