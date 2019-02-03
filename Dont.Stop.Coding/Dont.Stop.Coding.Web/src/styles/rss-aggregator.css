@@ -65,5 +65,6 @@ a.rss-feed, a.rss-feed :visited, a.rss-feed :hover, a.rss-feed :active {
 
 a.rss-feed {
 	display: block;
-	padding-bottom: 7px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
