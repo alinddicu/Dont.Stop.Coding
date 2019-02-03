@@ -18,6 +18,10 @@ namespace ViewModel {
 				url: "http://feeds.bbci.co.uk/news/business/rss.xml"
 			},
 			{
+				channel: "Franceinfo - Monde",
+				url: "https://www.francetvinfo.fr/monde.rss"
+			},
+			{
 				channel: "CBNNews.com",
 				url: "http://www.cbn.com/cbnnews/world/feed/"
 			},
