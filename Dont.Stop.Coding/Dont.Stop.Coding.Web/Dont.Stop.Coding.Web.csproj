@@ -35,7 +35,7 @@
     <Content Include="src\styles\all-apps.css" />
     <Content Include="src\styles\menu.css" />
     <Content Include="src\styles\rss-aggregator.css" />
-    <Content Include="src\styles\sorting.css" />
+    <Content Include="src\styles\sorting-arrays.css" />
     <Content Include="gulpfile.js" />
   </ItemGroup>
   <ItemGroup>
