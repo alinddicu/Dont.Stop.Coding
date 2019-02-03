@@ -51,6 +51,7 @@
     <TypeScriptCompile Include="src\scripts\GoL\Logic\Cycle.ts" />
     <TypeScriptCompile Include="src\scripts\GoL\Logic\RectangularInfinite2DGrid.ts" />
     <TypeScriptCompile Include="src\scripts\IApi.ts" />
+    <TypeScriptCompile Include="src\scripts\RssAggregator\RssFeeds.ts" />
     <TypeScriptCompile Include="src\scripts\Sorting\Algorithms\BubbleSort.ts" />
     <TypeScriptCompile Include="src\scripts\Sorting\Algorithms\HeapSort.ts" />
     <TypeScriptCompile Include="src\scripts\Sorting\Algorithms\InsertionSort.ts" />
@@ -65,7 +66,7 @@
     <TypeScriptCompile Include="src\scripts\Sorting\Tools\RankingSystem.ts" />
     <TypeScriptCompile Include="src\scripts\Tools\InputValueConverter.ts" />
     <TypeScriptCompile Include="src\scripts\Api.ts" />
-    <TypeScriptCompile Include="src\scripts\Tools\IRss.ts" />
+    <TypeScriptCompile Include="src\scripts\RssAggregator\IRss.ts" />
     <TypeScriptCompile Include="src\scripts\ViewModel\GameOfLifeViewModel.ts" />
     <TypeScriptCompile Include="src\scripts\ViewModel\RssAggregatorViewModel.ts" />
     <TypeScriptCompile Include="src\scripts\ViewModel\ViewModelBase.ts" />

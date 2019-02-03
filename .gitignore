@@ -244,6 +244,7 @@ ModelManifest.xml
 /Dont.Stop.Coding/Dont.Stop.Coding.Web/dist
 /Dont.Stop.Coding/Dont.Stop.Coding.Web/node_modules
 /Dont.Stop.Coding/Dont.Stop.Coding.Web/src/scripts/GoL/**/*.js
+/Dont.Stop.Coding/Dont.Stop.Coding.Web/src/scripts/RssAggregator/**/*.js
 /Dont.Stop.Coding/Dont.Stop.Coding.Web/src/scripts/Sorting/**/*.js
 /Dont.Stop.Coding/Dont.Stop.Coding.Web/src/scripts/ViewModel/**/*.js
 /Dont.Stop.Coding/Dont.Stop.Coding.Web/src/scripts/Tools/**/*.js

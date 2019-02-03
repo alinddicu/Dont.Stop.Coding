@@ -1,4 +1,4 @@
-﻿namespace Tools {
+﻿namespace RssAggregator {
 
 	//private example
 	//{
