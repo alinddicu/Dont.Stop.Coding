@@ -6,6 +6,6 @@
 	}
 
 	public getRss(url: string): any {
-		return this.jQuery.getJSON("/cakephp/ws", { "url": encodeURIComponent(url)});
+		return this.jQuery.getJSON("/api/ws", { "url": encodeURIComponent(url)});
 	}
 }
