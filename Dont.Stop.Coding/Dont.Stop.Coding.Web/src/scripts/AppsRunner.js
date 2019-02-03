@@ -54,12 +54,12 @@ function AppsRunner() {
 		});
 
 		this.get("", function () {
-			changePage(new ViewModel.SortingArraysViewModel(self));
+			changePage(new ViewModel.RssAggregatorViewModel(self));
 		});
 	}).run();
 
 	if (!self.currentViewModel())
 	{
-		self.gotoSortingArrays();
+		self.gotoRssAggregator();
 	}
 }
