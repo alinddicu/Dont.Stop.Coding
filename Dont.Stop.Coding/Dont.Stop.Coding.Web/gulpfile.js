@@ -169,7 +169,7 @@ gulp.task('prod-inject-all', function () {
 	return gulp.src('./src/index.html')
 		.pipe(inject(gulp.src(srcFiles, { read: false }), {
 			transform: function (filepath) {
-				return injectionTransformation(filepath, '/dist/');
+				return injectionTransformation(filepath, '/' + prodDistDest + '/');
 			}
 		}))
 		.pipe(gulp.dest(prodDistDest));
