@@ -1,4 +1,4 @@
-namespace Dont.Stop.Coding.WebApi.Net.Controllers
+namespace Dont.Stop.Coding.WebApi.Net.RssDeserializer
 {
 	using System.Xml.Serialization;
 

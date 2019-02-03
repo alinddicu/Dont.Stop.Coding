@@ -1,15 +1,11 @@
 ﻿namespace Dont.Stop.Coding.WebApi.Net.Controllers
 {
-	using System.IO;
 	using System.Net;
 	using System.Threading.Tasks;
 	using System.Xml;
-	using System.Xml.Linq;
-	using System.Linq;
 	using System.Net.Http;
 	using System.Xml.Serialization;
 	using Microsoft.AspNetCore.Mvc;
-	using Newtonsoft.Json;
 
 	[Route("api/[controller]")]
 	public class RssController : Controller
