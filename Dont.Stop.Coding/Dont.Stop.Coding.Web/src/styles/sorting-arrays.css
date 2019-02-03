@@ -31,8 +31,25 @@ input[type=number], input[type=text] {
 }
 
 div#showHideParams-container, div#params {
-	left: 10px;
-	top: 50px;
+	left: 45px;
+	top: 10px;
+	margin-left: 10px;
+}
+
+div#showHideParams-container {
+	display: inline-block;
+	z-index: 1;
+	opacity: 1;
+	position: absolute;
+	padding: 0;
+}
+
+button#sort-button-out {
+	margin-left: 10px;
+	position: absolute;
+	top: 10px;
+	left: 95px;
+	z-index: 1;
 }
 
 div#params {
@@ -46,19 +63,6 @@ div#params {
 	border: 1px solid;
 	border-radius: 5px;
 	margin: 0;
-}
-
-div#showHideParams-container {
-	display: inline-block;
-	z-index: 1;
-	opacity: 1;
-	position: absolute;
-	margin: 0;
-	padding: 0;
-}
-
-div#showHideParams-container i {
-	cursor: pointer;
 }
 
 label {
@@ -81,11 +85,4 @@ div#copyright a, div#copyright a:visited, div#copyright a:hover, div#copyright a
 	text-decoration: none;
 	color: #05386b;
 	font-weight: bold;
-}
-
-button#sort-button-out {
-	padding-left: 4px;
-	position: absolute;
-	top: 90px;
-	z-index: 1;
 }

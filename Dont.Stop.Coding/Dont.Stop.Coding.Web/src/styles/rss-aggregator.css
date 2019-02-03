@@ -38,7 +38,7 @@ div#rss-list {
 	z-index: 1;
 	position: absolute;
 	left: 45px;
-	top: 0;
+	top: 10px;
 	opacity: 1;
 	padding: 0;
 	margin: 0;
@@ -48,7 +48,7 @@ div#rss-list {
 
 div#rss-toggle {
 	background-color: var(--light-blue);
-	margin: 10px 0 0 10px;
+	margin: 0 0 0 10px;
 }
 
 div#rss-entries-container {
