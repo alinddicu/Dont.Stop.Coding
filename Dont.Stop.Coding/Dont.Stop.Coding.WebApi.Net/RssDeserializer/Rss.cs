@@ -1,5 +1,7 @@
 namespace Dont.Stop.Coding.WebApi.Net.RssDeserializer
 {
+	using System;
+	using System.Globalization;
 	using System.Xml.Serialization;
 
 	[XmlRoot("rss")]
@@ -31,5 +33,11 @@ namespace Dont.Stop.Coding.WebApi.Net.RssDeserializer
 
 		[XmlElement("link")]
 		public string Link { get; set; }
+
+		[XmlElement("thumbnail")]
+		public string Thumbnail { get; set; }
+
+		[XmlElement("pubDate")]
+		public string PubDate { get; set; }
 	}
 }
