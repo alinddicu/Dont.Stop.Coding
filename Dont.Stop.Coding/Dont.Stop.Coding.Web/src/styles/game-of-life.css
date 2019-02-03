@@ -26,13 +26,8 @@ div.action-button-container {
 	text-align: right;
 }
 
-label {
-	font-weight: bold;
-	float: left;
-	display: block;
+div#params-container div.form-line label {
 	width: 200px;
-	margin: 0;
-	padding: 0;
 }
 
 input[type=number], input[type=text] {
