@@ -10,6 +10,14 @@ namespace ViewModel {
 		public rssMenuOpen = ko.observable(false);
 		public rssFeeds: any = [
 			{
+				channel: "BBC News - Technology",
+				url: "http://feeds.bbci.co.uk/news/technology/rss.xml"
+			},
+			{
+				channel: "BBC News - Business",
+				url: "http://feeds.bbci.co.uk/news/business/rss.xml"
+			},
+			{
 				channel: "CBNNews.com",
 				url: "http://www.cbn.com/cbnnews/world/feed/"
 			},
@@ -20,6 +28,10 @@ namespace ViewModel {
 			{
 				channel: "Reuters: World News",
 				url: "http://feeds.reuters.com/Reuters/worldNews"
+			},
+			{
+				channel: "BBC News - UK",
+				url: "http://feeds.bbci.co.uk/news/rss.xml"
 			}
 		];
 
