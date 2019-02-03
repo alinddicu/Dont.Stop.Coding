@@ -1,8 +1,8 @@
 ﻿/// <reference path="../../../typings/knockout.d.ts"/>
 
 namespace ViewModel {
-	import RssItems = Tools.IRssItems;
-	import RssItem = Tools.IRssItem;
+	import RssItems = RssAggregator.IRssItems;
+	import RssItem = RssAggregator.IRssItem;
 
 	export class RssAggregatorViewModel extends ViewModelBase {
 		public pageName = "rss-aggregator";
@@ -21,7 +21,10 @@ namespace ViewModel {
 				const description = rssItem.description;
 				const divIndex = description.indexOf("<div");
 				const endOfDescription = divIndex === -1 ? description.length - 1 : divIndex;
-				rssItem.description = description.substring(0, endOfDescription);
+				rssItem.description = description
+					.substring(0, endOfDescription)
+					.replace(/&amp;/g, "")
+					.replace(/nbsp;/g, " ");
 			});
 		}
 
