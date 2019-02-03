@@ -18,6 +18,7 @@ var hashFormula = { "format": "{name}-{hash}-{ext}" };
 
 var gulpFolder = __dirname;
 var prodDistDest = 'dist/prod';
+var devDistDest = '../Dont.Stop.Coding.WebApi.Net/wwwroot';
 var koTemplateExtension = '.ko.html';
 
 var paths = {
@@ -93,15 +94,15 @@ function injectionTransformation(filepath, relativePath) {
 /*********************************** DEV *******************************************/
 
 gulp.task('dev-clean', function () {
-	return del(['dist/dev/*']);
+	return del([devDistDest + '/*'], { force: true });
 });
 
 gulp.task('dev-copy-all', function () {
-	var result = gulp.src(paths.typescript).pipe(gulp.dest('dist/dev/scripts'));
-	result && gulp.src(paths.transpiled).pipe(gulp.dest('dist/dev/scripts'));
-	result && gulp.src(paths.styles).pipe(gulp.dest('dist/dev/styles'));
-	result && gulp.src(paths.images).pipe(gulp.dest('dist/dev/images'));
-	result && gulp.src(paths.libs).pipe(gulp.dest('dist/dev/lib'));
+	var result = gulp.src(paths.typescript).pipe(gulp.dest(devDistDest + '/scripts'));
+	result && gulp.src(paths.transpiled).pipe(gulp.dest(devDistDest + '/scripts'));
+	result && gulp.src(paths.styles).pipe(gulp.dest(devDistDest + '/styles'));
+	result && gulp.src(paths.images).pipe(gulp.dest(devDistDest + '/images'));
+	result && gulp.src(paths.libs).pipe(gulp.dest(devDistDest + '/lib'));
 
 	return result && gulp.src(paths.libs).pipe(gulp.dest('src/lib'));
 });
@@ -119,7 +120,7 @@ gulp.task('dev-inject-all', function () {
 				return injectionTransformation(filepath, '/src/');
 			}
 		}))
-		.pipe(gulp.dest('dist/dev'));
+		.pipe(gulp.dest(devDistDest + ''));
 });
 
 gulp.task('all-dev', gulp.series('dev-clean', 'dev-copy-all', 'dev-inject-all'));
