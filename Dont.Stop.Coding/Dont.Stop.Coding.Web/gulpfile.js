@@ -17,7 +17,7 @@ var jsHash = null;
 var hashFormula = { "format": "{name}-{hash}-{ext}" };
 
 var gulpFolder = __dirname;
-var prodDistDest = 'dist/prod';
+var prodDistDest = 'dist';
 var devDistDest = '../Dont.Stop.Coding.WebApi.Net/wwwroot';
 var koTemplateExtension = '.ko.html';
 
@@ -132,11 +132,11 @@ gulp.task('watch-dev', function () {
 /*********************************** PROD *******************************************/
 
 gulp.task('prod-clean', function () {
-	return del(['dist/prod/*']);
+	return del([prodDistDest + '/*']);
 });
 
 gulp.task('prod-copy-images', function () {
-	return gulp.src(paths.images).pipe(gulp.dest('dist/prod/images'));
+	return gulp.src(paths.images).pipe(gulp.dest(prodDistDest + '/images'));
 });
 
 gulp.task('prod-concat-minify-js', function () {
@@ -163,13 +163,13 @@ gulp.task('prod-inject-all', function () {
 
 	var srcFiles = []
 		.concat(['src/templates/**/*' + koTemplateExtension])
-		.concat(['dist/prod/*.css'])
-		.concat(['dist/prod/*.js']);
+		.concat([prodDistDest + '/*.css'])
+		.concat([prodDistDest + '/*.js']);
 
 	return gulp.src('./src/index.html')
 		.pipe(inject(gulp.src(srcFiles, { read: false }), {
 			transform: function (filepath) {
-				return injectionTransformation(filepath, '/dist/prod/');
+				return injectionTransformation(filepath, '/dist/');
 			}
 		}))
 		.pipe(gulp.dest(prodDistDest));
