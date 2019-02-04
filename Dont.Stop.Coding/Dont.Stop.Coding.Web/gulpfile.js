@@ -27,7 +27,9 @@ var paths = {
 		'node_modules/knockout/build/output/knockout-latest.js',
 		'node_modules/sammy/lib/min/sammy-latest.min.js',
 		'node_modules/jquery/dist/jquery.min.js',
-		'node_modules/moment/min/moment.min.js'
+		'node_modules/moment/min/moment.min.js',
+		'node_modules/moment/locale/fr.js',
+		'node_modules/moment/locale/en-gb.js'
 	],
 	transpiled: ['src/scripts/**/*.js'],
 	typescript: ['src/scripts/**/*.ts'],
