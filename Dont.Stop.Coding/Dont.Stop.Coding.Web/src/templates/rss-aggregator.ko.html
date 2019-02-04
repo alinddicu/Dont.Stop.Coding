@@ -8,7 +8,7 @@
 		</button>
 	</div>
 	<div id="rss-entries-container" data-bind="visible: rssMenuOpen(), foreach: rssFeeds">
-		<a class="rss-feed" href="#" data-bind="click: function() { $parent.callUrl(url); }">
+		<a class="rss-feed" href="#" data-bind="click: function() { $parent.getFeed(url); }">
 			<span data-bind="text: channel"></span>
 		</a>
 	</div>

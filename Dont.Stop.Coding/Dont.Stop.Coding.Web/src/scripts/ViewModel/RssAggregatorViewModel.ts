@@ -3,17 +3,18 @@
 namespace ViewModel {
 	import RssItems = RssAggregator.IRssItems;
 	import RssItem = RssAggregator.IRssItem;
+	import RssFeed = RssAggregator.IRssFeed;
 
 	export class RssAggregatorViewModel extends ViewModelBase {
 		public pageName = "rss-aggregator";
 		public rssItems: KnockoutObservableArray<RssItem> = ko.observableArray([]);
 		public rssMenuOpen = ko.observable(false);
-		public rssFeeds: any = RssAggregator.RssFeeds.rssFeeds;
+		public rssFeeds: RssFeed[] = RssAggregator.RssFeeds.rssFeeds;
 
 		constructor(workflow: IAppsRunner) {
 			super(workflow);
 			this.backgroundColor("#8fc1e3");
-			this.callUrl("http://www.cbn.com/cbnnews/world/feed/");
+			this.getFeed(this.rssFeeds[0].url);
 		}
 
 		private cleanRssItems(rssItems: RssItems): void {
@@ -28,7 +29,7 @@ namespace ViewModel {
 			});
 		}
 
-		public callUrl(url: string): void {
+		public getFeed(url: string): void {
 			super.render();
 			this.workflow.api.getRss(url)
 				.done((rssItems: RssItems) => {

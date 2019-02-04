@@ -1,6 +1,15 @@
 ﻿namespace RssAggregator {
+	export interface IRssFeed {
+		channel: string;
+		url: string;
+	}
+
 	export class RssFeeds {
-		public static rssFeeds: any[] = [
+		public static rssFeeds: IRssFeed[] = [
+			{
+				channel: "Franceinfo - Monde",
+				url: "https://www.francetvinfo.fr/monde.rss"
+			},
 			{
 				channel: "BBC News - Technology",
 				url: "http://feeds.bbci.co.uk/news/technology/rss.xml"
@@ -8,10 +17,6 @@
 			{
 				channel: "BBC News - Business",
 				url: "http://feeds.bbci.co.uk/news/business/rss.xml"
-			},
-			{
-				channel: "Franceinfo - Monde",
-				url: "https://www.francetvinfo.fr/monde.rss"
 			},
 			{
 				channel: "CBNNews.com",
