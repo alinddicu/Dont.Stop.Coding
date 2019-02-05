@@ -31,11 +31,8 @@ label {
 	right: 0;
 	background-color: black;
 	z-index: 1000;
-	background-color: rgba(0, 0, 0, 0.56);
-}
-
-.loading {
 	text-align: center;
+	background-color: rgba(0, 0, 0, 0.56);
 }
 
 	.loading > div {
