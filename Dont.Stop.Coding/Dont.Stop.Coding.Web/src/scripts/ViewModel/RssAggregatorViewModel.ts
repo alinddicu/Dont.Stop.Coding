@@ -35,6 +35,7 @@ namespace ViewModel {
 		public getFeed(url: string): void {
 			this.appsRunner.working(true);
 			super.render();
+			this.rssMenuOpen(false);
 			this.appsRunner.api.getRss(url)
 				.done((rssItems: RssItems) => {
 					this.rssItems([]);
@@ -45,7 +46,6 @@ namespace ViewModel {
 
 					this.currentChannel(rssItems.channel.title);
 					this.currentUrl = url;
-					this.rssMenuOpen(false);
 				})
 				.fail(() => {
 					// console.error(`Error when calling '${url}'`);
