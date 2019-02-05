@@ -6,6 +6,9 @@
 		<button data-bind="visible: rssMenuOpen(), click: function() { rssMenuOpen(false); }">
 			<i class="material-icons">close</i>
 		</button>
+		<button id="refresh-feed" data-bind="click: function() { getFeed(currentUrl); }">
+			<i class="material-icons custom-color">refresh</i>
+		</button>
 	</div>
 	<div id="rss-entries-container" data-bind="visible: rssMenuOpen(), foreach: rssFeeds">
 		<a class="rss-feed" href="#" data-bind="click: function() { $parent.getFeed(url); }">

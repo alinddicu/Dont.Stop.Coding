@@ -75,3 +75,11 @@ a.rss-feed {
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
+
+button#refresh-feed {
+	margin-left: 10px;
+	position: absolute;
+	top: 0px;
+	left: 40px;
+	z-index: 1;
+}

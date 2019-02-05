@@ -10,6 +10,7 @@ namespace ViewModel {
 		public rssItems: KnockoutObservableArray<RssItem> = ko.observableArray([]);
 		public rssMenuOpen = ko.observable(false);
 		public currentChannel = ko.observable(RssAggregator.RssFeeds.rssFeeds[0].channel);
+		public currentUrl = RssAggregator.RssFeeds.rssFeeds[0].url;
 		public rssFeeds: RssFeed[] = RssAggregator.RssFeeds.rssFeeds;
 
 		constructor(workflow: IAppsRunner) {
@@ -42,6 +43,7 @@ namespace ViewModel {
 					});
 
 					this.currentChannel(rssItems.channel.title);
+					this.currentUrl = url;
 					this.rssMenuOpen(false);
 				})
 				.fail(() => {
