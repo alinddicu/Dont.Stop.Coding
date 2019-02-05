@@ -12,9 +12,7 @@
 			"src/lib/knockout-latest.js",
 			"src/lib/jquery.min.js",
 			"src/lib/sammy-latest.min.js",
-			"src/lib/moment.min.js",
-			"src/lib/fr.js",
-			"src/lib/en-gb.js"
+			"src/lib/moment.min.js"
 		],
 		"app": [
 			"src/scripts/Sorting/Algorithms/SortBase.js",
