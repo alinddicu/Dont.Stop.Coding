@@ -7,6 +7,13 @@
 	--white: #f7f9fb;
 }
 
+h3#current-channel-title {
+	color: var(--turquoise);
+	margin: 0;
+	padding: 0 0 10px 0;
+	text-align: center;
+}
+
 a.rss-link, a.rss-link :visited, a.rss-link :hover, a.rss-link :active {
 	text-decoration: none;
 	color: var(--turquoise);

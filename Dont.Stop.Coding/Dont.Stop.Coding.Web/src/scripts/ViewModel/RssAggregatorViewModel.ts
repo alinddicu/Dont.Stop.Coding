@@ -9,6 +9,7 @@ namespace ViewModel {
 		public pageName = "rss-aggregator";
 		public rssItems: KnockoutObservableArray<RssItem> = ko.observableArray([]);
 		public rssMenuOpen = ko.observable(false);
+		public currentChannel = ko.observable(RssAggregator.RssFeeds.rssFeeds[0].channel);
 		public rssFeeds: RssFeed[] = RssAggregator.RssFeeds.rssFeeds;
 
 		constructor(workflow: IAppsRunner) {
@@ -39,6 +40,7 @@ namespace ViewModel {
 						this.rssItems.push(rssItem);
 					});
 
+					this.currentChannel(rssItems.channel.title);
 					this.rssMenuOpen(false);
 				})
 				.fail(() => {
