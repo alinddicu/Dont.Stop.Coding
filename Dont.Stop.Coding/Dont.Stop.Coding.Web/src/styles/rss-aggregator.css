@@ -14,13 +14,13 @@ h3#current-channel-title {
 	text-align: center;
 }
 
-a.rss-link, a.rss-link :visited, a.rss-link :hover, a.rss-link :active {
+a.rss-item-link, a.rss-item-link :visited, a.rss-item-link :hover, a.rss-item-link :active {
 	text-decoration: none;
 	color: var(--turquoise);
 	font-weight: bold;
 }
 
-.rss-description {
+.rss-item-description {
 	margin: 10px 0 0 0;
 	color: var(--blue);
 }
@@ -41,7 +41,7 @@ hr.rss-item-spacer {
 
 /* Feeds menu */
 
-div#rss-list {
+div#rss-menu {
 	z-index: 1;
 	position: absolute;
 	left: 45px;
@@ -53,12 +53,12 @@ div#rss-list {
 	border-radius: 5px;
 }
 
-div#rss-toggle {
+div#rss-menu-toggle {
 	background-color: var(--light-blue);
 	margin: 0 0 0 10px;
 }
 
-div#rss-entries-container {
+div#rss-feeds-menu {
 	background-color: var(--light-blue);
 	padding: 5px 10px 5px 10px;
 	border-radius: 5px;

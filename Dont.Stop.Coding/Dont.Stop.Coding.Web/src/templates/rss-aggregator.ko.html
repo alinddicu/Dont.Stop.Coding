@@ -1,5 +1,5 @@
-﻿<div id="rss-list">
-	<div id="rss-toggle">
+﻿<div id="rss-menu">
+	<div id="rss-menu-toggle">
 		<button data-bind="visible: !rssMenuOpen(), click: function() { rssMenuOpen(true); }">
 			<i class="material-icons">rss_feed</i>
 		</button>
@@ -10,7 +10,7 @@
 			<i class="material-icons custom-color">refresh</i>
 		</button>
 	</div>
-	<div id="rss-entries-container" data-bind="visible: rssMenuOpen(), foreach: rssFeeds">
+	<div id="rss-feeds-menu" data-bind="visible: rssMenuOpen(), foreach: rssFeeds">
 		<a class="rss-feed" href="#" data-bind="click: function() { $parent.getFeed(url); }">
 			<span data-bind="text: channel"></span>
 		</a>
@@ -21,12 +21,12 @@
 
 <div data-bind="foreach: rssItems()">
 	<div class="rss-item">
-		<a class="rss-link" data-bind="attr: { href: link, target: '_blank' }">
-			<span class="rss-title" data-bind="text: title"></span>
+		<a class="rss-item-link" data-bind="attr: { href: link, target: '_blank' }">
+			<span class="rss-item-title" data-bind="text: title"></span>
 		</a>
 		<br />
-		<span class="rss-description" data-bind="text: moment(pubDate).format('YYYY-MM-DD')"></span>
-		<p class="rss-description" data-bind="text: description"></p>
+		<span class="rss-item-description" data-bind="text: moment(pubDate).format('YYYY-MM-DD')"></span>
+		<p class="rss-item-description" data-bind="text: description"></p>
 	</div>
 	<hr class="rss-item-spacer" />
 </div>
