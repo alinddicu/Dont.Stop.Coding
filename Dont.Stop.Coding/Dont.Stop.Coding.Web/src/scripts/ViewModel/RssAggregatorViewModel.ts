@@ -26,6 +26,7 @@ namespace ViewModel {
 				rssItem.description = description
 					.substring(0, endOfDescription)
 					.replace(/&amp;/g, "")
+					.replace(/&nbsp;/g, " ")
 					.replace(/nbsp;/g, " ");
 			});
 		}
