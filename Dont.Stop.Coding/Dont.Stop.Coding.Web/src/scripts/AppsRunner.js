@@ -7,6 +7,8 @@ function AppsRunner() {
 	var self = this;
 	self.currentViewModel = ko.observable();
 	self.menuOpen = ko.observable(false);
+	self.working = ko.observable(false);
+
 	//self.api = new ApiTest();
 	self.api = new Api($);
 

@@ -9,8 +9,8 @@
 		public pageName = "sorting-arrays";
 		public paramsOpen = ko.observable(false);
 
-		constructor(workflow: IAppsRunner) {
-			super(workflow);
+		constructor(appsRunner: IAppsRunner) {
+			super(appsRunner);
 			this.backgroundColor("#8ee4ae");
 		}
 

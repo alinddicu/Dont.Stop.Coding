@@ -13,8 +13,8 @@ namespace ViewModel {
 		public currentUrl = RssAggregator.RssFeeds.rssFeeds[0].url;
 		public rssFeeds: RssFeed[] = RssAggregator.RssFeeds.rssFeeds;
 
-		constructor(workflow: IAppsRunner) {
-			super(workflow);
+		constructor(appsRunner: IAppsRunner) {
+			super(appsRunner);
 			this.backgroundColor("#8fc1e3");
 			this.getFeed(this.rssFeeds[0].url);
 		}
@@ -33,8 +33,9 @@ namespace ViewModel {
 		}
 
 		public getFeed(url: string): void {
+			this.appsRunner.working(true);
 			super.render();
-			this.workflow.api.getRss(url)
+			this.appsRunner.api.getRss(url)
 				.done((rssItems: RssItems) => {
 					this.rssItems([]);
 					this.cleanRssItems(rssItems);
@@ -50,7 +51,7 @@ namespace ViewModel {
 					// console.error(`Error when calling '${url}'`);
 				})
 				.always(() => {
-					// todo 
+					this.appsRunner.working(false);
 				});
 		}
 	}

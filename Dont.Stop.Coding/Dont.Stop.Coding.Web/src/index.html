@@ -19,6 +19,13 @@
 </head>
 
 <body>
+
+	<div class="loading" data-bind="visible: working">
+		<div>
+			<img src="images/preloader-w8-cycle-black.gif" />
+		</div>
+	</div>
+
 	<nav role="navigation">
 		<div id="menu-toggle">
 			<button data-bind="visible: !menuOpen(), click: function() { menuOpen(true); }"><i class="material-icons">menu</i></button>

@@ -35,7 +35,12 @@ var paths = {
 	typescript: ['src/scripts/**/*.ts'],
 	pages: ['src/**/*.html'],
 	styles: ['src/styles/*.css'],
-	images: ['src/images/**/*.png'],
+	images: [
+		'src/images/**/*.png',
+		'src/images/**/*.gif',
+		'src/images/**/*.jpg',
+		'src/images/**/*.jpeg'
+	],
 	templates: ['src/templates/**/*.t.html'],
 	buildResources: 'build-resources.json'
 };

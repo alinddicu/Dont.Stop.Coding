@@ -16,8 +16,8 @@ namespace ViewModel {
 		public isVisibleCanPause = ko.pureComputed(() => { return !this.board().isPausing() || this.board().isPlaying(); });
 		public isVisibleIsPausing = ko.pureComputed(() => { return this.board().isPausing() && !this.board().isPlaying(); });
 
-		constructor(workflow: IAppsRunner) {
-			super(workflow);
+		constructor(appsRunner: IAppsRunner) {
+			super(appsRunner);
 			this.params = new GoL.Drawing.ParamsForm();
 			this.board(this.params.init());
 			this.backgroundColor("#f8e9a1");

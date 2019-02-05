@@ -26,6 +26,7 @@
     <Content Include="src\images\favicon\game-of-life.png" />
     <Content Include="src\images\favicon\rss-aggregator.png" />
     <Content Include="src\images\favicon\sorting-arrays.png" />
+    <Content Include="src\images\preloader-w8-cycle-black.gif" />
     <Content Include="src\index.html" />
     <Content Include="src\lib\jquery.min.js" />
     <Content Include="src\lib\knockout-latest.js" />

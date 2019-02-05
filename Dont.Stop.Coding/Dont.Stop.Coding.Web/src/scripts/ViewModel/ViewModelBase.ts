@@ -1,11 +1,11 @@
 ﻿namespace ViewModel {
 	export class ViewModelBase {
-		protected workflow: IAppsRunner;
+		protected appsRunner: IAppsRunner;
 		public pageName = "";
 		public backgroundColor = ko.observable("");
 
-		constructor(workflow: IAppsRunner) {
-			this.workflow = workflow;
+		constructor(appsRunner: IAppsRunner) {
+			this.appsRunner = appsRunner;
 		}
 		
 		public render(): void {
