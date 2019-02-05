@@ -30,20 +30,6 @@ input[type=number], input[type=text] {
 	color: #05386b;
 }
 
-div#showHideParams-container, div#sorting-params {
-	left: 45px;
-	top: 10px;
-	margin-left: 10px;
-}
-
-div#showHideParams-container {
-	display: inline-block;
-	z-index: 1;
-	opacity: 1;
-	position: absolute;
-	padding: 0;
-}
-
 button#sort-button-out {
 	margin-left: 10px;
 	position: absolute;
@@ -53,6 +39,9 @@ button#sort-button-out {
 }
 
 div#sorting-params {
+	left: 45px;
+	top: 10px;
+	margin: 0 0 0 10px;
 	z-index: 1;
 	opacity: 1;
 	background-color: #8ee4ae;
@@ -62,7 +51,6 @@ div#sorting-params {
 	border-color: #05386b;
 	border: 1px solid;
 	border-radius: 5px;
-	margin: 0;
 }
 
 div#canvas-container {
@@ -72,12 +60,6 @@ div#canvas-container {
 
 div.sort-button {
 	text-align: right;
-}
-
-div#copyright a, div#copyright a:visited, div#copyright a:hover, div#copyright a:active {
-	text-decoration: none;
-	color: #05386b;
-	font-weight: bold;
 }
 
 div#sorting-params div.form-line label {

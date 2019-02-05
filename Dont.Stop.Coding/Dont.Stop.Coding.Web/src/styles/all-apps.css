@@ -57,5 +57,5 @@ div.app-action-bar {
 }
 
 div.app-action-bar > button {
-	margin-left: 15px;
+	margin: 0 5px 0 15px;
 }

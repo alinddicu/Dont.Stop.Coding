@@ -1,4 +1,9 @@
-﻿<div id="sorting-params" data-bind="visible: paramsOpen()">
+﻿<div class="app-action-bar">
+	<button data-bind="visible: !paramsOpen(), click: function() { paramsOpen(true); }"><i class="material-icons">settings</i></button>
+	<button data-bind="visible: !paramsOpen(), click: function() { sort(); }" title="Sort"><i class="material-icons custom-color">done_outline</i></button>
+</div>
+
+<div id="sorting-params" data-bind="visible: paramsOpen()">
 	<h2 id="sorting-param-title">Sorting parameters</h2>
 	<div class="form-line">
 		<label for="arraySize">Array size</label>
@@ -41,10 +46,7 @@
 		<button data-bind="click: function() { sort(); }"><i class="material-icons custom-color">done_outline</i></button>
 	</div>
 </div>
-<div id="showHideParams-container">
-	<button data-bind="visible: !paramsOpen(), click: function() { paramsOpen(true); }"><i class="material-icons">settings</i></button>
-</div>
-<button id="sort-button-out" data-bind="visible: !paramsOpen(), click: function() { sort(); }" title="Sort"><i class="material-icons custom-color">done_outline</i></button>
+
 <div id="canvas-container">
 	<div id="bubblesort" class="canvas-container"></div>
 	<div id="insertionsort" class="canvas-container"></div>
