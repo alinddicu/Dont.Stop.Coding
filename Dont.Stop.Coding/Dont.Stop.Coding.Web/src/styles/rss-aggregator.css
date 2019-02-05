@@ -41,24 +41,13 @@ hr.rss-item-spacer {
 
 /* Feeds menu */
 
-div#rss-menu {
+div#rss-feeds-menu {
 	z-index: 1;
 	position: absolute;
 	left: 45px;
-	top: 10px;
+	top: 35px;
 	opacity: 1;
-	padding: 0;
 	margin: 0;
-	background-color: var(--light-blue);
-	border-radius: 5px;
-}
-
-div#rss-menu-toggle {
-	background-color: var(--light-blue);
-	margin: 0 0 0 10px;
-}
-
-div#rss-feeds-menu {
 	background-color: var(--light-blue);
 	padding: 5px 10px 5px 10px;
 	border-radius: 5px;
@@ -74,12 +63,4 @@ a.rss-feed {
 	display: block;
 	padding-top: 5px;
 	padding-bottom: 5px;
-}
-
-button#refresh-feed {
-	margin-left: 10px;
-	position: absolute;
-	top: 0px;
-	left: 40px;
-	z-index: 1;
 }

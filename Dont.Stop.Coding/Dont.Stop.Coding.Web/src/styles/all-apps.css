@@ -43,3 +43,19 @@ label {
 		text-align: center;
 		z-index: 1000;
 	}
+
+div.app-action-bar {
+	z-index: 1;
+	position: absolute;
+	left: 45px;
+	top: 10px;
+	opacity: 1;
+	padding: 0;
+	margin: 0;
+	background-color: inherit;
+	border-radius: 5px;
+}
+
+div.app-action-bar > button {
+	margin-left: 15px;
+}
