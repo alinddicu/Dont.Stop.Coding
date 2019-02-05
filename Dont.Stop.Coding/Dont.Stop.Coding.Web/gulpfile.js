@@ -12,6 +12,7 @@ var rename = require("gulp-rename");
 var sourcemaps = require('gulp-sourcemaps');
 var csso = require('gulp-csso');
 var hash = require('gulp-hash-filename');
+var newer = require('gulp-newer');
 var cssHash = null;
 var jsHash = null;
 var hashFormula = { "format": "{name}-{hash}-{ext}" };
@@ -105,13 +106,18 @@ gulp.task('dev-clean', function () {
 });
 
 gulp.task('dev-copy-all', function () {
-	var result = gulp.src(paths.typescript).pipe(gulp.dest(devDistDest + '/scripts'));
-	result && gulp.src(paths.transpiled).pipe(gulp.dest(devDistDest + '/scripts'));
-	result && gulp.src(paths.styles).pipe(gulp.dest(devDistDest + '/styles'));
-	result && gulp.src(paths.images).pipe(gulp.dest(devDistDest + '/images'));
-	result && gulp.src(paths.libs).pipe(gulp.dest(devDistDest + '/lib'));
+	var scriptsDest = devDistDest + '/scripts';
+	var result = gulp.src(paths.typescript).pipe(newer(scriptsDest)).pipe(gulp.dest(scriptsDest));
+	result && gulp.src(paths.transpiled).pipe(newer(scriptsDest)).pipe(gulp.dest(scriptsDest));
 
-	return result && gulp.src(paths.libs).pipe(gulp.dest('src/lib'));
+	var stylesDest = devDistDest + '/styles';
+	result && gulp.src(paths.styles).pipe(newer(stylesDest)).pipe(gulp.dest(stylesDest));
+
+	var imagesDest = devDistDest + '/images';
+	result && gulp.src(paths.images).pipe(newer(imagesDest)).pipe(gulp.dest(imagesDest));
+
+	var libsDest = devDistDest + '/lib';
+	return result && gulp.src(paths.libs).pipe(newer(libsDest)).pipe(gulp.dest(libsDest));
 });
 
 gulp.task('dev-inject-all', function () {
@@ -130,7 +136,7 @@ gulp.task('dev-inject-all', function () {
 		.pipe(gulp.dest(devDistDest + ''));
 });
 
-gulp.task('all-dev', gulp.series('dev-clean', 'dev-copy-all', 'dev-inject-all'));
+gulp.task('all-dev', gulp.series('dev-copy-all', 'dev-inject-all'));
 
 gulp.task('watch-dev', function () {
 	gulp.watch(watchPaths, gulp.series('all-dev'));
