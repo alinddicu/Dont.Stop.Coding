@@ -21,15 +21,11 @@ var gulpFolder = __dirname;
 var prodDistDest = 'dist';
 var devDistDest = '../Dont.Stop.Coding.WebApi.Net/wwwroot';
 var koTemplateExtension = '.ko.html';
+var buildResourcesFile = 'build-resources.json';
+var buildResources = JSON.parse(fs.readFileSync(gulpFolder + '\\' + buildResourcesFile, "utf8"));
 
 var paths = {
-	libs: [
-		'node_modules/linq/linq.min.js',
-		'node_modules/knockout/build/output/knockout-latest.js',
-		'node_modules/sammy/lib/min/sammy-latest.min.js',
-		'node_modules/jquery/dist/jquery.min.js',
-		'node_modules/moment/min/moment.min.js'
-	],
+	libs: buildResources.js.libs.map(function (lib) { return "src/lib/" + lib.substring(lib.lastIndexOf('/') + 1) }),
 	transpiled: ['src/scripts/**/*.js'],
 	typescript: ['src/scripts/**/*.ts'],
 	pages: ['src/**/*.html'],
@@ -41,10 +37,8 @@ var paths = {
 		'src/images/**/*.jpeg'
 	],
 	templates: ['src/templates/**/*.t.html'],
-	buildResources: 'build-resources.json'
+	buildResources: ['buildResourcesFile']
 };
-
-var buildResources = JSON.parse(fs.readFileSync(gulpFolder + '\\' + paths.buildResources, "utf8"));
 
 var watchPaths = []
 	.concat(paths.transpiled)
@@ -115,14 +109,14 @@ gulp.task('dev-copy-all', function () {
 	result && gulp.src(paths.images).pipe(newer(imagesDest)).pipe(gulp.dest(imagesDest));
 
 	var libsDest = devDistDest + '/lib';
-	return result && gulp.src(paths.libs).pipe(newer(libsDest)).pipe(gulp.dest(libsDest));
+	return result && gulp.src(buildResources.js.libs).pipe(newer(libsDest)).pipe(gulp.dest(libsDest));
 });
 
 gulp.task('dev-inject-all', function () {
 	var srcFiles = []
 		.concat(['src/templates/**/*' + koTemplateExtension])
 		.concat(buildResources.css)
-		.concat(buildResources.js.libs)
+		.concat(paths.libs)
 		.concat(buildResources.js.app);
 
 	return gulp.src('./src/index.html')

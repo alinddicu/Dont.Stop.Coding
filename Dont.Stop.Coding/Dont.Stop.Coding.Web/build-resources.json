@@ -8,11 +8,11 @@
 	],
 	"js": {
 		"libs": [
-			"src/lib/linq.min.js",
-			"src/lib/knockout-latest.js",
-			"src/lib/jquery.min.js",
-			"src/lib/sammy-latest.min.js",
-			"src/lib/moment.min.js"
+			"node_modules/jquery/dist/jquery.min.js",
+			"node_modules/linq/linq.min.js",
+			"node_modules/knockout/build/output/knockout-latest.js",
+			"node_modules/sammy/lib/min/sammy-latest.min.js",
+			"node_modules/moment/min/moment.min.js"
 		],
 		"app": [
 			"src/scripts/Sorting/Algorithms/SortBase.js",
