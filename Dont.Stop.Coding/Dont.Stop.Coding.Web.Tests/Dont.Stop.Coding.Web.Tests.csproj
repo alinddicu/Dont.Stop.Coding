@@ -51,6 +51,7 @@
     <TypeScriptCompile Include="test-test.ts" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="jasmine.json" />
     <None Include="karma.ps1" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
