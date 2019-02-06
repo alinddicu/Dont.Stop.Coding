@@ -3,7 +3,14 @@
 var gulp = require('gulp');
 var shell = require('gulp-shell');
 
-gulp.task('server', ['node', 'karma']);
+gulp.task('node', function(done) {
+	shell.task('node app.js');
+	done();
+});
 
-gulp.task('node', shell.task('node app.js'));
-gulp.task('karma', shell.task('powershell -Command "./karma.ps1"'));
+gulp.task('karma', function(done) {
+	shell.task('powershell -Command "./karma.ps1"');
+	done();
+});
+
+gulp.task('server', gulp.series('node', 'karma'));
