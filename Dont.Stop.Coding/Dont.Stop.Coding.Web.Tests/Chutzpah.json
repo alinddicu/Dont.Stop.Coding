@@ -1,0 +1,25 @@
+﻿{
+	"Framework": "jasmine",
+	"Compile": {
+		"Mode": "External",
+		"Extensions": [ ".ts" ],
+		"ExtensionsWithNoOutput": [ ".d.ts" ],
+		"SourceDirectory": ".",
+		"OutDirectory": "./generated"
+	},
+	"CodeCoverageExcludes": [ "*.spec.ts" ],
+	"References": [
+		{
+			"Path": "../Dont.Stop.Coding.Web/src",
+			"Include": "*.ts"
+		}
+	],
+	"Tests": [
+		{
+			"Path": "./",
+			"Includes": [ "*/*.ts" ],
+			"Excludes": [ "*/*.d.ts", "*/**.spec.js" ],
+			"ExpandReferenceComments": "true"
+		}
+	]
+}

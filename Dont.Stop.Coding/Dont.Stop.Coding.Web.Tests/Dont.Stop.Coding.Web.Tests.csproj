@@ -48,11 +48,14 @@
     <Content Include="karma.conf.js" />
     <Content Include="package.json" />
     <Content Include="ReadMe.txt" />
+    <TypeScriptCompile Include="Scripts\typings\jasmine\jasmine.d.ts" />
     <TypeScriptCompile Include="test-test.ts" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Chutzpah.json" />
     <None Include="jasmine.json" />
     <None Include="karma.ps1" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

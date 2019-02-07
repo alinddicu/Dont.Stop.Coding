@@ -3,21 +3,25 @@
 	"name": "asp.net",
 	"private": true,
 	"devDependencies": {
+		"@types/jasmine": "^3.3.8",
 		"gulp": "4.0.0",
 		"gulp-shell": "0.6.5",
+		"jasmine": "^3.3.1",
 		"jasmine-core": "3.3.0",
-		"jasmine-ts": "0.3.0",
 		"jasmine-expect": "4.0.1",
+		"jasmine-ts": "^0.3.0",
 		"karma": "4.0.0",
-		"karma-typescript": "4.0.0",
 		"karma-chrome-launcher": "2.2.0",
 		"karma-html-detailed-reporter": "1.1.38",
 		"karma-jasmine": "2.0.1",
 		"karma-phantomjs-launcher": "1.0.4",
-		"phantomjs": "2.1.7"
+		"karma-typescript": "4.0.0",
+		"nyc": "^13.2.0",
+		"phantomjs": "2.1.7",
+		"ts-node": "^8.0.2",
+		"typescript": "^3.3.3"
 	},
-	"test": "node_modules/nodemon/bin/nodemon.js -w dist ./node_modules/.bin/jasmine � config=jasmine.json",
-	"dependencies": {
-		"@types/jasmine": "^3.3.8"
+	"scripts": {
+		"test": "jasmine-ts './**/*.ts'"
 	}
 }
