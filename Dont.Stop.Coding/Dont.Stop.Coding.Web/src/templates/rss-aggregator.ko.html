@@ -19,7 +19,7 @@
 
 <h3 id="current-channel-title" data-bind="text: currentChannel"></h3>
 
-<div data-bind="foreach: rssItems()">
+<div data-bind="foreach: feedItems">
 	<div class="rss-item">
 		<a class="rss-item-link" data-bind="attr: { href: link, target: '_blank' }">
 			<span class="rss-item-title" data-bind="text: title"></span>

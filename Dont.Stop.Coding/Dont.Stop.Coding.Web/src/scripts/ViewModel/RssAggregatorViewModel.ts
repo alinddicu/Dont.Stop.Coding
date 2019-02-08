@@ -1,17 +1,19 @@
 ﻿/// <reference path="../../../typings/knockout.d.ts"/>
 
 namespace ViewModel {
-	import RssItems = RssAggregator.IRssItems;
-	import RssItem = RssAggregator.IRssItem;
+	import IRssItems = RssAggregator.IRss;
 	import RssFeed = RssAggregator.IRssFeed;
 
 	export class RssAggregatorViewModel extends ViewModelBase {
 		public pageName = "rss-aggregator";
-		public rssItems: KnockoutObservableArray<RssItem> = ko.observableArray([]);
+		private static defaultFeed: RssAggregator.IRssFeed = RssAggregator.RssFeeds.rssFeeds[0];
+
 		public rssMenuOpen = ko.observable(false);
-		public currentChannel = ko.observable(RssAggregator.RssFeeds.rssFeeds[0].channel);
-		public currentUrl = RssAggregator.RssFeeds.rssFeeds[0].url;
+
 		public rssFeeds: RssFeed[] = RssAggregator.RssFeeds.rssFeeds;
+		public feedItems: KnockoutObservableArray<RssAggregator.IItem> = ko.observableArray([]);
+		public currentChannel = ko.observable(RssAggregatorViewModel.defaultFeed.channel);
+		public currentUrl = RssAggregatorViewModel.defaultFeed.url;
 
 		constructor(appsRunner: IAppsRunner) {
 			super(appsRunner);
@@ -19,17 +21,9 @@ namespace ViewModel {
 			this.getFeed(this.rssFeeds[0].url);
 		}
 
-		private cleanRssItems(rssItems: RssItems): void {
-			rssItems.channel.item.map((rssItem: RssItem) => {
-				const description = rssItem.description;
-				const divIndex = description.indexOf("<div");
-				const endOfDescription = divIndex === -1 ? description.length - 1 : divIndex;
-				rssItem.description = description
-					.substring(0, endOfDescription)
-					.replace(/&amp;/g, "")
-					.replace(/&nbsp;/g, " ")
-					.replace(/nbsp;/g, " ");
-			});
+		public render() {
+			super.render();
+			this.getFeed(this.rssFeeds[0].url);
 		}
 
 		public getFeed(url: string): void {
@@ -37,14 +31,11 @@ namespace ViewModel {
 			super.render();
 			this.rssMenuOpen(false);
 			this.appsRunner.api.getRss(url)
-				.done((rssItems: RssItems) => {
-					this.rssItems([]);
-					this.cleanRssItems(rssItems);
-					rssItems.channel.item.map((rssItem: RssItem) => {
-						this.rssItems.push(rssItem);
-					});
+				.done((rssItems: IRssItems) => {
+					const rssFeed  = new RssAggregator.RssFeed(rssItems);
+					this.feedItems(rssFeed.channel.item);
 
-					this.currentChannel(rssItems.channel.title);
+					this.currentChannel(rssFeed.channel.title);
 					this.currentUrl = url;
 				})
 				.fail(() => {

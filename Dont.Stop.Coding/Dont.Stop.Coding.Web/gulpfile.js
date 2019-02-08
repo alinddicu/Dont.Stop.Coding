@@ -128,7 +128,7 @@ gulp.task('dev-inject-all', function () {
 		.pipe(gulp.dest(devDistDest + ''));
 });
 
-gulp.task('all-dev', gulp.series('dev-copy-all', 'dev-inject-all'));
+gulp.task('all-dev', gulp.series('dev-clean', 'dev-copy-all', 'dev-inject-all'));
 
 gulp.task('watch-dev', function () {
 	gulp.watch(watchPaths, gulp.series('all-dev'));
