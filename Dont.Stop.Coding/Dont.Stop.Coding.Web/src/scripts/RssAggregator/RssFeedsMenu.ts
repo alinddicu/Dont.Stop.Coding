@@ -1,11 +1,11 @@
 ﻿namespace RssAggregator {
-	export interface IRssFeed {
+	export interface IRssFeedMenuEntry {
 		channel: string;
 		url: string;
 	}
 
-	export class RssFeeds {
-		public static rssFeeds: IRssFeed[] = [
+	export class RssFeedsMenu {
+		public static entries: IRssFeedMenuEntry[] = [
 			{
 				channel: "Franceinfo - Monde",
 				url: "https://www.francetvinfo.fr/monde.rss"

@@ -1,16 +1,15 @@
 ﻿/// <reference path="../../../typings/knockout.d.ts"/>
 
 namespace ViewModel {
-	import IRssItems = RssAggregator.IRss;
-	import RssFeed = RssAggregator.IRssFeed;
+	import IRssFeedMenuEntry = RssAggregator.IRssFeedMenuEntry;
 
 	export class RssAggregatorViewModel extends ViewModelBase {
 		public pageName = "rss-aggregator";
-		private static defaultFeed: RssAggregator.IRssFeed = RssAggregator.RssFeeds.rssFeeds[0];
+		private static defaultFeed: RssAggregator.IRssFeedMenuEntry = RssAggregator.RssFeedsMenu.entries[0];
 
-		public rssMenuOpen = ko.observable(false);
+		public rssFeedsMenuOpen = ko.observable(false);
 
-		public rssFeeds: RssFeed[] = RssAggregator.RssFeeds.rssFeeds;
+		public rssFeedsMenuEntries = RssAggregator.RssFeedsMenu.entries;
 		public feedItems: KnockoutObservableArray<RssAggregator.IItem> = ko.observableArray([]);
 		public currentChannel = ko.observable(RssAggregatorViewModel.defaultFeed.channel);
 		public currentUrl = RssAggregatorViewModel.defaultFeed.url;
@@ -18,20 +17,15 @@ namespace ViewModel {
 		constructor(appsRunner: IAppsRunner) {
 			super(appsRunner);
 			this.backgroundColor("#8fc1e3");
-			this.getFeed(this.rssFeeds[0].url);
-		}
-
-		public render() {
-			super.render();
-			this.getFeed(this.rssFeeds[0].url);
+			this.getFeed(this.currentUrl);
 		}
 
 		public getFeed(url: string): void {
 			this.appsRunner.working(true);
 			super.render();
-			this.rssMenuOpen(false);
+			this.rssFeedsMenuOpen(false);
 			this.appsRunner.api.getRss(url)
-				.done((rssItems: IRssItems) => {
+				.done((rssItems: RssAggregator.IRss) => {
 					const rssFeed  = new RssAggregator.RssFeed(rssItems);
 					this.feedItems(rssFeed.channel.item);
 

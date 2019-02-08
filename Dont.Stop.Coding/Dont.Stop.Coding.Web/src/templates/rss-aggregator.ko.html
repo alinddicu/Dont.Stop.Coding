@@ -1,16 +1,16 @@
 ﻿<div id="rss-menu">
 	<div class="app-action-bar">
-		<button data-bind="visible: !rssMenuOpen(), click: function() { rssMenuOpen(true); }">
+		<button data-bind="visible: !rssFeedsMenuOpen(), click: function() { rssFeedsMenuOpen(true); }">
 			<i class="material-icons">rss_feed</i>
 		</button>
-		<button data-bind="visible: rssMenuOpen(), click: function() { rssMenuOpen(false); }">
+		<button data-bind="visible: rssFeedsMenuOpen(), click: function() { rssFeedsMenuOpen(false); }">
 			<i class="material-icons">close</i>
 		</button>
 		<button id="refresh-feed" data-bind="click: function() { getFeed(currentUrl); }">
 			<i class="material-icons custom-color">refresh</i>
 		</button>
 	</div>
-	<div id="rss-feeds-menu" data-bind="visible: rssMenuOpen(), foreach: rssFeeds">
+	<div id="rss-feeds-menu" data-bind="visible: rssFeedsMenuOpen(), foreach: rssFeedsMenuEntries">
 		<a class="rss-feed" href="#" data-bind="click: function() { $parent.getFeed(url); }">
 			<span data-bind="text: channel"></span>
 		</a>

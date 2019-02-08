@@ -37,7 +37,7 @@
 			"src/scripts/GameOfLife/Drawing/ParamsForm.js",
 			"src/scripts/GameOfLife/game-of-life-tests.js",
 			"src/scripts/RssAggregator/RssFeed.js",
-			"src/scripts/RssAggregator/RssFeeds.js",
+			"src/scripts/RssAggregator/RssFeedsMenu.js",
 			"src/scripts/ViewModel/ViewModelBase.js",
 			"src/scripts/ViewModel/GameOfLifeViewModel.js",
 			"src/scripts/ViewModel/SortingArraysViewModel.js",
