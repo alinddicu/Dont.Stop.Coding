@@ -3,7 +3,7 @@
 
 'use strict';
 
-namespace GoL.Drawing {
+namespace GameOfLife.Drawing {
 	import RectangularInfinite2DGrid = Logic.RectangularInfinite2DGrid;
 
 	export class BoardLine {

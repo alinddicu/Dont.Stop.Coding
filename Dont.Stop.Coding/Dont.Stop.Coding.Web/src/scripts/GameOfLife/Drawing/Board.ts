@@ -3,7 +3,7 @@
 
 'use strict';
 
-namespace GoL.Drawing {
+namespace GameOfLife.Drawing {
 	import Cycle = Logic.Cycle;
 	import RectangularInfinite2DGrid = Logic.RectangularInfinite2DGrid;
 	import CellState = Logic.CellState;
@@ -11,7 +11,7 @@ namespace GoL.Drawing {
 	export class Board {
 
 		private importedCells: Cell[] = [];
-		private options: IGoLOptions;
+		private options: IGameOfLifeOptions;
 		private playIntervalId: number;
 		private cycle = new Cycle();
 		private gridHistory: RectangularInfinite2DGrid[] = [];
@@ -20,7 +20,7 @@ namespace GoL.Drawing {
 		public isPlaying = ko.observable(false);
 		public isPausing = ko.observable(false);
 
-		constructor(goLOptions: IGoLOptions) {
+		constructor(goLOptions: IGameOfLifeOptions) {
 			this.options = goLOptions;
 			this.initCellButtonsInSquare(goLOptions);
 		}
@@ -30,7 +30,7 @@ namespace GoL.Drawing {
 			this.isPausing(isPausing);
 		}
 
-		public initCellButtonsInSquare(goLOptions: IGoLOptions): void {
+		public initCellButtonsInSquare(goLOptions: IGameOfLifeOptions): void {
 
 			this.options = goLOptions;
 			this.boardLines([]);

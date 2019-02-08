@@ -1,6 +1,6 @@
-﻿namespace GoL.Drawing {
+﻿namespace GameOfLife.Drawing {
 	export class ParamsForm {
-		public options: IGoLOptions;
+		public options: IGameOfLifeOptions;
 
 		public init(): Board {
 			this.options = {

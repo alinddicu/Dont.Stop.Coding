@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-namespace GoL.Logic {
+namespace GameOfLife.Logic {
 	export enum CellState {
 		Dead = 0,
 		Alive = 1,

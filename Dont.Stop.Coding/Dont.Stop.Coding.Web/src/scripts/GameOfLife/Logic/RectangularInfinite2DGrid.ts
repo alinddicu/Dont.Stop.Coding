@@ -2,9 +2,7 @@
 
 'use strict';
 
-namespace GoL.Logic {
-	import Cell = GoL.Logic.Cell;
-
+namespace GameOfLife.Logic {
 	export class RectangularInfinite2DGrid {
 		public cells: Cell[] = [];
 

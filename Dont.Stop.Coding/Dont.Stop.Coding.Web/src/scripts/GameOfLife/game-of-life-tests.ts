@@ -1,6 +1,8 @@
 ﻿/// <reference path="../../../typings/linq.d.ts"/>
+
 'use strict';
-import Cell = GoL.Logic.Cell;
+
+import Cell = GameOfLife.Logic.Cell;
 
 function assertArrays(expectedArray: any[], checkedArray: any[]) {
 	for (let i = 0; i < expectedArray.length; i++) {
@@ -14,15 +16,15 @@ function assertArrays(expectedArray: any[], checkedArray: any[]) {
 
 function test5Star() {
 	const cells = [
-		new Cell(5, 5, GoL.Logic.CellState.Alive),
-		new Cell(5, 4, GoL.Logic.CellState.Alive),
-		new Cell(4, 5, GoL.Logic.CellState.Alive),
-		new Cell(5, 6, GoL.Logic.CellState.Alive),
-		new Cell(6, 5, GoL.Logic.CellState.Alive)
+		new Cell(5, 5, GameOfLife.Logic.CellState.Alive),
+		new Cell(5, 4, GameOfLife.Logic.CellState.Alive),
+		new Cell(4, 5, GameOfLife.Logic.CellState.Alive),
+		new Cell(5, 6, GameOfLife.Logic.CellState.Alive),
+		new Cell(6, 5, GameOfLife.Logic.CellState.Alive)
 	];
 
-	let grid = new GoL.Logic.RectangularInfinite2DGrid(cells);
-	const cycle = new GoL.Logic.Cycle();
+	let grid = new GameOfLife.Logic.RectangularInfinite2DGrid(cells);
+	const cycle = new GameOfLife.Logic.Cycle();
 	const intermediateGridWithAliveCellsStrings: string[] = [];
 	for (let i = 0; i < 9; i++) {
 		grid = cycle.Run(grid);

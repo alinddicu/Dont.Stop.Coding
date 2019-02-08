@@ -33,6 +33,16 @@
     <Content Include="src\lib\linq.min.js" />
     <Content Include="src\lib\moment.min.js" />
     <Content Include="src\lib\sammy-latest.min.js" />
+    <Content Include="src\scripts\GameOfLife\Drawing\Board.js" />
+    <Content Include="src\scripts\GameOfLife\Drawing\BoardLine.js" />
+    <Content Include="src\scripts\GameOfLife\Drawing\CellButton.js" />
+    <Content Include="src\scripts\GameOfLife\Drawing\IGoLOptions.js" />
+    <Content Include="src\scripts\GameOfLife\Drawing\ParamsForm.js" />
+    <Content Include="src\scripts\GameOfLife\game-of-life-tests.js" />
+    <Content Include="src\scripts\GameOfLife\Logic\Cell.js" />
+    <Content Include="src\scripts\GameOfLife\Logic\CellState.js" />
+    <Content Include="src\scripts\GameOfLife\Logic\Cycle.js" />
+    <Content Include="src\scripts\GameOfLife\Logic\RectangularInfinite2DGrid.js" />
     <Content Include="src\styles\game-of-life.css" />
     <Content Include="src\styles\all-apps.css" />
     <Content Include="src\styles\menu.css" />
@@ -42,16 +52,16 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="src\scripts\ApiTest.ts" />
-    <TypeScriptCompile Include="src\scripts\GoL\Drawing\Board.ts" />
-    <TypeScriptCompile Include="src\scripts\GoL\Drawing\BoardLine.ts" />
-    <TypeScriptCompile Include="src\scripts\GoL\Drawing\CellButton.ts" />
-    <TypeScriptCompile Include="src\scripts\GoL\Drawing\IGoLOptions.ts" />
-    <TypeScriptCompile Include="src\scripts\GoL\Drawing\ParamsForm.ts" />
-    <TypeScriptCompile Include="src\scripts\GoL\game-of-life-tests.ts" />
-    <TypeScriptCompile Include="src\scripts\GoL\Logic\Cell.ts" />
-    <TypeScriptCompile Include="src\scripts\GoL\Logic\CellState.ts" />
-    <TypeScriptCompile Include="src\scripts\GoL\Logic\Cycle.ts" />
-    <TypeScriptCompile Include="src\scripts\GoL\Logic\RectangularInfinite2DGrid.ts" />
+    <TypeScriptCompile Include="src\scripts\GameOfLife\Drawing\Board.ts" />
+    <TypeScriptCompile Include="src\scripts\GameOfLife\Drawing\BoardLine.ts" />
+    <TypeScriptCompile Include="src\scripts\GameOfLife\Drawing\CellButton.ts" />
+    <TypeScriptCompile Include="src\scripts\GameOfLife\Drawing\IGoLOptions.ts" />
+    <TypeScriptCompile Include="src\scripts\GameOfLife\Drawing\ParamsForm.ts" />
+    <TypeScriptCompile Include="src\scripts\GameOfLife\game-of-life-tests.ts" />
+    <TypeScriptCompile Include="src\scripts\GameOfLife\Logic\Cell.ts" />
+    <TypeScriptCompile Include="src\scripts\GameOfLife\Logic\CellState.ts" />
+    <TypeScriptCompile Include="src\scripts\GameOfLife\Logic\Cycle.ts" />
+    <TypeScriptCompile Include="src\scripts\GameOfLife\Logic\RectangularInfinite2DGrid.ts" />
     <TypeScriptCompile Include="src\scripts\IApi.ts" />
     <TypeScriptCompile Include="src\scripts\RssAggregator\RssFeeds.ts" />
     <TypeScriptCompile Include="src\scripts\Sorting\Algorithms\BubbleSort.ts" />

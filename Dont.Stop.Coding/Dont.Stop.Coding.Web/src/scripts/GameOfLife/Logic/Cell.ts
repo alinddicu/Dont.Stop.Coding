@@ -2,9 +2,7 @@
 
 'use strict';
 
-namespace GoL.Logic {
-	import CellState = GoL.Logic.CellState;
-
+namespace GameOfLife.Logic {
 	export class Cell {
 		private computeNextMutations: IComputeNextMutation[] =
 			[

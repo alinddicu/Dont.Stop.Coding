@@ -1,5 +1,5 @@
-﻿namespace GoL.Drawing {
-	export interface IGoLOptions {
+﻿namespace GameOfLife.Drawing {
+	export interface IGameOfLifeOptions {
 		cellsPerRow: number;
 		isShowCellsCoordinates: boolean;
 		cellSize: number;

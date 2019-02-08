@@ -1,10 +1,10 @@
 ﻿
 namespace ViewModel {
 	export class GameOfLifeViewModel extends ViewModelBase {
-		private params: GoL.Drawing.ParamsForm;
+		private params: GameOfLife.Drawing.ParamsForm;
 
 		public pageName = "game-of-life";
-		public board: KnockoutObservable<GoL.Drawing.Board> = ko.observable(null);
+		public board: KnockoutObservable<GameOfLife.Drawing.Board> = ko.observable(null);
 		public isParamsVisible = ko.observable(false);
 		public isExportVisible = ko.observable(false);
 		public exportedCellsContent = ko.observable("");
@@ -18,7 +18,7 @@ namespace ViewModel {
 
 		constructor(appsRunner: IAppsRunner) {
 			super(appsRunner);
-			this.params = new GoL.Drawing.ParamsForm();
+			this.params = new GameOfLife.Drawing.ParamsForm();
 			this.board(this.params.init());
 			this.backgroundColor("#f8e9a1");
 		}

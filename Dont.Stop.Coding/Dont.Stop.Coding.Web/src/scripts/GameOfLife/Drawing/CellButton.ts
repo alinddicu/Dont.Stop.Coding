@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-namespace GoL.Drawing {
+namespace GameOfLife.Drawing {
 	import CellState = Logic.CellState;
 	import RectangularInfinite2DGrid = Logic.RectangularInfinite2DGrid;
 

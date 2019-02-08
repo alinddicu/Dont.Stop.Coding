@@ -2,9 +2,7 @@
 
 'use strict';
 
-namespace GoL.Logic {
-	import Cell = GoL.Logic.Cell;
-
+namespace GameOfLife.Logic {
 	export class Cycle {
 		public Run(currentGrid: RectangularInfinite2DGrid): RectangularInfinite2DGrid {
 			const newGrid: RectangularInfinite2DGrid = this.InitializeNewGrid(currentGrid);
