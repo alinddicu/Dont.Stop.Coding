@@ -1,17 +1,15 @@
 ﻿/// <reference path="../../../typings/knockout.d.ts"/>
 
 namespace ViewModel {
-	import IRssFeedMenuEntry = RssAggregator.IRssFeedMenuEntry;
-
 	export class RssAggregatorViewModel extends ViewModelBase {
 		public pageName = "rss-aggregator";
 		private static defaultFeed: RssAggregator.IRssFeedMenuEntry = RssAggregator.RssFeedsMenu.entries[0];
 
 		public rssFeedsMenuOpen = ko.observable(false);
-
-		public rssFeedsMenuEntries = RssAggregator.RssFeedsMenu.entries;
 		public feedItems: KnockoutObservableArray<RssAggregator.IItem> = ko.observableArray([]);
 		public currentChannel = ko.observable(RssAggregatorViewModel.defaultFeed.channel);
+
+		public rssFeedsMenuEntries = RssAggregator.RssFeedsMenu.entries;
 		public currentUrl = RssAggregatorViewModel.defaultFeed.url;
 
 		constructor(appsRunner: IAppsRunner) {
