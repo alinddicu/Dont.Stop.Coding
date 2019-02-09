@@ -6,7 +6,7 @@ namespace ViewModel {
 		private static defaultFeed: RssAggregator.IRssFeedMenuEntry = RssAggregator.RssFeedsMenu.entries[0];
 
 		public rssFeedsMenuOpen = ko.observable(false);
-		public feedItems: KnockoutObservableArray<RssAggregator.IItem> = ko.observableArray([]);
+		public feedItems: KnockoutObservableArray<RssAggregator.IRssItem> = ko.observableArray([]);
 		public currentChannel = ko.observable(RssAggregatorViewModel.defaultFeed.channel);
 
 		public rssFeedsMenuEntries = RssAggregator.RssFeedsMenu.entries;

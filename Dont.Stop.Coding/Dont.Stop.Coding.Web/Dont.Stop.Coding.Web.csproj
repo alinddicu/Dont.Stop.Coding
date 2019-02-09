@@ -63,6 +63,7 @@
     <TypeScriptCompile Include="src\scripts\GameOfLife\Logic\Cycle.ts" />
     <TypeScriptCompile Include="src\scripts\GameOfLife\Logic\RectangularInfinite2DGrid.ts" />
     <TypeScriptCompile Include="src\scripts\IApi.ts" />
+    <TypeScriptCompile Include="src\scripts\RssAggregator\IRssDeclaration.ts" />
     <TypeScriptCompile Include="src\scripts\RssAggregator\RssFeedsMenu.ts" />
     <TypeScriptCompile Include="src\scripts\Sorting\Algorithms\BubbleSort.ts" />
     <TypeScriptCompile Include="src\scripts\Sorting\Algorithms\HeapSort.ts" />
