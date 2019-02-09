@@ -21,8 +21,12 @@ a.rss-item-link, a.rss-item-link :visited, a.rss-item-link :hover, a.rss-item-li
 }
 
 .rss-item-description {
-	margin: 10px 0 0 0;
+	margin: 5px 0 0 0;
 	color: var(--blue);
+}
+
+span.rss-item-description {
+	display: block;
 }
 
 div.rss-item {

@@ -19,7 +19,7 @@ var hashFormula = { "format": "{name}-{hash}-{ext}" };
 
 var gulpFolder = __dirname;
 var prodDistDest = 'dist';
-var devDistDest = '../Dont.Stop.Coding.WebApi.Net/wwwroot';
+var devDistDest = '../Dont.Stop.Coding.WebApi/wwwroot';
 var koTemplateExtension = '.ko.html';
 var buildResourcesFile = 'build-resources.json';
 var buildResources = JSON.parse(fs.readFileSync(gulpFolder + '\\' + buildResourcesFile, "utf8"));
