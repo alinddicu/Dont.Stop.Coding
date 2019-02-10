@@ -109,8 +109,8 @@
     <Content Include="build-resources.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="php\routes.php" />
-    <Content Include="php\RssController.php" />
+    <Content Include="api\routes.php" />
+    <Content Include="api\RssController.php" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
