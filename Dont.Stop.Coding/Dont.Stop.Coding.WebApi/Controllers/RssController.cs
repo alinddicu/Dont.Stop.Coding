@@ -7,15 +7,18 @@
 	[Route("api/[controller]")]
 	public class RssController : Controller
 	{
-		// GET api/ws
+		protected virtual string GetApiUrl(string feed)
+		{
+			return $"http://dontstopcod.in/api/rss?feed={feed}";
+		}
+
+		// GET api/rss
 		[HttpGet]
 		public async Task<string> Get(string feed)
 		{
-			var apiUrl = $"http://dontstopcod.in/api/rss?feed={feed}";
-
 			string jsonRss;
 			using (var client = new HttpClient())
-			using (var response = await client.GetAsync(apiUrl))
+			using (var response = await client.GetAsync(GetApiUrl(feed)))
 			using (var content = response.Content)
 			{
 				jsonRss = await content.ReadAsStringAsync();
