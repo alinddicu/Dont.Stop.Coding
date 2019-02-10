@@ -17,6 +17,8 @@
 		"karma-jasmine": "2.0.1",
 		"karma-phantomjs-launcher": "1.0.4",
 		"karma-typescript": "4.0.0",
+		"karma-spec-reporter": "0.0.32",
+		"karma-jasmine-html-reporter": "^1.4.0",
 		"nyc": "^13.2.0",
 		"phantomjs": "2.1.7",
 		"ts-node": "^8.0.2",
