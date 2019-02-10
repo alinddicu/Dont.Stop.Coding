@@ -112,6 +112,9 @@
     <Content Include="api\routes.php" />
     <Content Include="api\RssController.php" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="api\RssTestController.php" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
   </PropertyGroup>

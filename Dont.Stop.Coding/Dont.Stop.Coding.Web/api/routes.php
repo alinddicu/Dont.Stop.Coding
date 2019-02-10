@@ -70,6 +70,8 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
 	
     $routes->connect('/rss', ['controller' => 'Rss', 'action' => 'index']);
+	
+	$routes->connect('/rsstest', ['controller' => 'RssTest', 'action' => 'index']);
 
     /**
      * Connect catchall routes for all controllers.
