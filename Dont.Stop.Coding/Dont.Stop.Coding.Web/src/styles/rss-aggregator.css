@@ -76,6 +76,7 @@ a.rss-feed {
 /* thumbnails*/
 div.thumbnail-container {
 	width: 100%;
+	max-width: 500px;
 	margin: 5px 0 0 0;
 	padding: 0;
 }
