@@ -27,7 +27,9 @@
 		<br />
 		<span class="rss-item-description" data-bind="text: moment(pubDate).format('YYYY-MM-DD')"></span>
 		<div data-bind="if: thumbnail" class="thumbnail-container">
-			<img data-bind="attr: {src: thumbnail}" class="thumbnail" />
+			<a class="rss-item-link" data-bind="attr: { href: link, target: '_blank' }">
+				<img data-bind="attr: {src: thumbnail}" class="thumbnail" />
+			</a>
 		</div>
 		<p class="rss-item-description" data-bind="text: description"></p>
 	</div>
