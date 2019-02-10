@@ -29,6 +29,10 @@ span.rss-item-description {
 	display: block;
 }
 
+p.rss-item-description {
+	text-align: justify;
+}
+
 div.rss-item {
 	border-radius: 5px;
 	border: 1px solid;
@@ -69,6 +73,7 @@ a.rss-feed {
 	padding-bottom: 5px;
 }
 
+/* thumbnails*/
 div.thumbnail-container {
 	width: 250px;
 }
