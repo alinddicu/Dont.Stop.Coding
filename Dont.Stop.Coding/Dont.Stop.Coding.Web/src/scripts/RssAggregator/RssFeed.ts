@@ -3,8 +3,15 @@
 	export class RssFeed {
 		public channel: IRssChannel;
 
-		private cleanRssItems(rssItems: IRss): void {
-			rssItems.channel.item.map((item: IRssItem) => {
+
+		constructor(rss: IRss) {
+			this.cleanRssItems(rss);
+			this.handleThumbnail(rss);
+			this.channel = rss.channel;
+		}
+
+		private cleanRssItems(rss: IRss): void {
+			rss.channel.item.map((item: IRssItem) => {
 				const description = item.description;
 				const divIndex = description.indexOf("<div");
 				const endOfDescription = divIndex === -1 ? description.length - 1 : divIndex;
@@ -18,9 +25,16 @@
 			});
 		}
 
-		constructor(rss: IRss) {
-			this.cleanRssItems(rss);
-			this.channel = rss.channel;
+		handleThumbnail(rss: IRss): void {
+			rss.channel.item.map((item: IRssItem) => {
+				if (!item.thumbnail) {
+					if (item.enclosure) {
+						item.thumbnail = item.enclosure["@url"];
+					} else {
+						item.thumbnail = null;
+					}
+				} 
+			});
 		}
 	}
 }

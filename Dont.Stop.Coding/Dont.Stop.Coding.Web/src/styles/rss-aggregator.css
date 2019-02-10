@@ -68,3 +68,13 @@ a.rss-feed {
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
+
+div.thumbnail-container {
+	border-radius: 5px;
+	width: 250px;
+}
+
+img.thumbnail {
+	max-width: 100%;
+	height: auto;
+}

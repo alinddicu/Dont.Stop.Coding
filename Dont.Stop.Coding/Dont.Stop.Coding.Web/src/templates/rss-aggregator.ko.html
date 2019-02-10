@@ -26,6 +26,9 @@
 		</a>
 		<br />
 		<span class="rss-item-description" data-bind="text: moment(pubDate).format('YYYY-MM-DD')"></span>
+		<div data-bind="if: thumbnail" class="thumbnail-container">
+			<img data-bind="attr: {src: thumbnail}" class="thumbnail" />
+		</div>
 		<p class="rss-item-description" data-bind="text: description"></p>
 	</div>
 	<hr class="rss-item-spacer" />
