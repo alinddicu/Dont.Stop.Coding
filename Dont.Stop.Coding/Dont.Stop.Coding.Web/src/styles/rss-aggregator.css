@@ -81,7 +81,7 @@ div.thumbnail-container {
 }
 
 img.thumbnail {
-	max-width: 325px;
+	max-width: 97.5%;
 	height: auto;
 	border-radius: 5px;
 	display: block;
