@@ -1,0 +1,8 @@
+﻿{
+	"compilerOptions": {
+		"target": "es6"
+	},
+	"include": [
+		"../Dont.Stop.Coding.Web/src"
+	]
+}

@@ -4,22 +4,21 @@
 		"Mode": "External",
 		"Extensions": [ ".ts" ],
 		"ExtensionsWithNoOutput": [ ".d.ts" ],
-		"SourceDirectory": ".",
+		"Executable": "compile.bat",
+		"UseSourceMaps": true,
 		"OutDirectory": "./generated"
 	},
-	"CodeCoverageExcludes": [ "*.spec.ts" ],
 	"References": [
 		{
-			"Path": "../Dont.Stop.Coding.Web/src",
-			"Include": "*.ts"
+			"Includes": [
+				"../Dont.Stop.Coding.Web/src"
+			]
 		}
 	],
 	"Tests": [
 		{
-			"Path": "./",
-			"Includes": [ "*/*.ts" ],
-			"Excludes": [ "*/*.d.ts", "*/**.spec.js" ],
-			"ExpandReferenceComments": "true"
+			"Includes": [ "./Tests/*.ts" ],
+			"Excludes": [ "./Scripts/*.d.ts" ]
 		}
 	]
 }
