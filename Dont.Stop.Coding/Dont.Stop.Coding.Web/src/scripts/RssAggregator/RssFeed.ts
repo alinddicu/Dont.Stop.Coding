@@ -39,6 +39,7 @@
 				} else {
 				/*
 				 * http://www.cbn.com/cbnnews/world/feed/
+				 * plus others handled server side in php RssController
 				*/
 				}
 			});
