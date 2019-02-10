@@ -13,12 +13,15 @@
 		{
 			var apiUrl = $"http://dontstopcod.in/api/rss?feed={feed}";
 
+			string jsonRss;
 			using (var client = new HttpClient())
 			using (var response = await client.GetAsync(apiUrl))
 			using (var content = response.Content)
 			{
-				return await content.ReadAsStringAsync();
+				jsonRss = await content.ReadAsStringAsync();
 			}
+
+			return jsonRss;
 		}
 	}
 }

@@ -29,6 +29,10 @@
 			rss.channel.item.map((item: IRssItem) => {
 				if (!item.thumbnail) {
 					if (item.enclosure) {
+						/**
+						 * https://www.francetvinfo.fr/monde.rss
+						 * http://www.cbn.com/cbnnews/world/feed/
+						 */
 						item.thumbnail = item.enclosure["@attributes"].url;
 					} else {
 						item.thumbnail = null;
