@@ -29,9 +29,11 @@
 	*/
 
 	export interface IRssItemEnclosure {
-		"@type": string;
-		"@url": string;
-		"@length": string;
+		"@attributes": {
+			"type": string;
+			"url": string;
+			"length": string;
+		}
 	}
 
 	export interface IRssItem {

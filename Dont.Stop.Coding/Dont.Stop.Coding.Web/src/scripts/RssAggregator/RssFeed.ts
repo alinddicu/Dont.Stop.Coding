@@ -29,7 +29,7 @@
 			rss.channel.item.map((item: IRssItem) => {
 				if (!item.thumbnail) {
 					if (item.enclosure) {
-						item.thumbnail = item.enclosure["@url"];
+						item.thumbnail = item.enclosure["@attributes"].url;
 					} else {
 						item.thumbnail = null;
 					}
