@@ -1,5 +1,6 @@
-﻿/// <reference path="../Scripts/typings/jasmine/jasmine.d.ts"/>
-/// <reference path="../../Dont.Stop.Coding.Web/src/scripts/GameOfLife/Logic/CellState.ts"/>
+﻿/// <reference path="../node_modules/@types/jasmine/index.d.ts"/>
+
+/// <reference path="../src/CellState.ts"/>
 
 describe("GoL.Logic.CellState", () => {
 	it("Alive != Dead", () => {

@@ -1,11 +1,11 @@
 // Karma configuration
 // Generated on Wed Feb 06 2019 21:35:45 GMT+0100 (GMT+01:00)
 
-module.exports = function(config) {
+module.exports = function (config) {
 	config.set({
 
 		// base path that will be used to resolve all patterns (eg. files, exclude)
-		basePath: "./../Dont.Stop.Coding.Web",
+		basePath: "./",
 
 		// frameworks to use
 		// available frameworks: https://npmjs.org/browse/keyword/karma-adapter
@@ -13,7 +13,8 @@ module.exports = function(config) {
 
 		// list of files / patterns to load in the browser
 		files: [
-			"./../Dont.Stop.Coding.Web/src/**/*.ts"
+			"../Dont.Stop.Coding.Web/src/**/*.ts",
+			"Tests/**/*.spec.ts"
 		],
 
 		// list of files to exclude
@@ -23,7 +24,8 @@ module.exports = function(config) {
 		// preprocess matching files before serving them to the browser
 		// available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
 		preprocessors: {
-			"**/*.ts": "karma-typescript"
+			"../Dont.Stop.Coding.Web/src/**/*.ts": "karma-typescript",
+			"../Dont.Stop.Coding.Web/typings/*.d.ts": "karma-typescript"
 		},
 
 		// test results reporter to use
@@ -39,7 +41,7 @@ module.exports = function(config) {
 
 		// level of logging
 		// possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-		logLevel: config.LOG_INFO,
+		logLevel: config.LOG_DEBUG,
 
 		// enable / disable watching file and executing tests whenever any file changes
 		autoWatch: true,
@@ -54,6 +56,9 @@ module.exports = function(config) {
 
 		// Concurrency level
 		// how many browser should be started simultaneous
-		concurrency: Infinity
+		concurrency: Infinity,
+		karmaTypescriptConfig: {
+			tsconfig: './tsconfig.json'
+		}
 	});
 };

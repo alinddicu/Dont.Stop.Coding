@@ -1,7 +1,7 @@
 ﻿{
-	"spec_dir": "./../Dont.Stop.Coding.Web/src/**/*.js",
+	"spec_dir": "./../Dont.Stop.Coding.Web/src",
 	"spec_files": [
-		"**/*.js"
+		"**/*.ts"
 	],
 	"stopSpecOnExpectationFailure": true
 }
