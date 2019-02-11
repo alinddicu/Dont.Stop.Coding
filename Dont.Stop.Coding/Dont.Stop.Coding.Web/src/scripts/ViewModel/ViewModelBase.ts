@@ -1,5 +1,5 @@
 ﻿namespace ViewModel {
-	export class ViewModelBase {
+	export abstract class ViewModelBase {
 		protected appsRunner: IAppsRunner;
 		public pageName = "";
 		public backgroundColor = ko.observable("");
