@@ -1,7 +1,7 @@
 ﻿namespace Sorting.Algorithms {
 	import RankingSystem = Tools.RankingSystem;
 
-	export class SortBase {
+	export abstract class SortBase {
 		private rankingSystem: RankingSystem;
 		private intermediateSorts: number[][];
 		private start: number;
