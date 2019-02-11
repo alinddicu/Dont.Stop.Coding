@@ -14,26 +14,48 @@ h3#current-channel-title {
 	text-align: center;
 }
 
+span.rss-item-title {
+}
+
 a.rss-item-link, a.rss-item-link :visited, a.rss-item-link :hover, a.rss-item-link :active {
 	text-decoration: none;
 	color: var(--turquoise);
 	font-weight: bold;
+	text-align: left;
+	display: block;
 }
 
-.rss-item-description {
+a.rss-item-link {
+	margin: 0 0 0 5px;
+}
+
+.rss-item-description, .rss-item-pub-date {
 	margin: 5px 0 0 0;
 	color: var(--blue);
 }
 
-span.rss-item-description {
+span.rss-item-description, span.rss-item-pub-date {
 	display: block;
+}
+
+span.rss-item-pub-date {
+	text-align: left;
+	margin: 0 0 0 5px;
 }
 
 p.rss-item-description {
 	text-align: justify;
+	margin: 5px 5px 0 5px;
+}
+
+div#main-rss-container {
+	text-align: center;
+	position: relative;
 }
 
 div.rss-item {
+	max-width: 500px;
+	display: inline-table;
 	border-radius: 5px;
 	border: 1px solid;
 	border-color: var(--brown);

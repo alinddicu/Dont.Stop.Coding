@@ -19,19 +19,20 @@
 
 <h3 id="current-channel-title" data-bind="text: currentChannel"></h3>
 
-<div data-bind="foreach: feedItems">
-	<div class="rss-item">
-		<a class="rss-item-link" data-bind="attr: { href: link, target: '_blank' }">
-			<span class="rss-item-title" data-bind="text: title"></span>
-		</a>
-		<br />
-		<span class="rss-item-description" data-bind="text: moment(pubDate).format('YYYY-MM-DD')"></span>
-		<div data-bind="if: thumbnail" class="thumbnail-container">
+<div id="main-rss-container">
+	<div data-bind="foreach: feedItems">
+		<div class="rss-item">
 			<a class="rss-item-link" data-bind="attr: { href: link, target: '_blank' }">
-				<img data-bind="attr: {src: thumbnail}" class="thumbnail" />
+				<span class="rss-item-title" data-bind="text: title"></span>
 			</a>
+			<span class="rss-item-pub-date" data-bind="text: moment(pubDate).format('YYYY-MM-DD')"></span>
+			<div data-bind="if: thumbnail" class="thumbnail-container">
+				<a class="rss-item-link" data-bind="attr: { href: link, target: '_blank' }">
+					<img data-bind="attr: {src: thumbnail}" class="thumbnail" />
+				</a>
+			</div>
+			<p class="rss-item-description" data-bind="text: description"></p>
 		</div>
-		<p class="rss-item-description" data-bind="text: description"></p>
+		<hr class="rss-item-spacer" />
 	</div>
-	<hr class="rss-item-spacer" />
 </div>
