@@ -33,16 +33,6 @@
     <Content Include="src\lib\linq.min.js" />
     <Content Include="src\lib\moment.min.js" />
     <Content Include="src\lib\sammy-latest.min.js" />
-    <Content Include="src\scripts\GameOfLife\Drawing\Board.js" />
-    <Content Include="src\scripts\GameOfLife\Drawing\BoardLine.js" />
-    <Content Include="src\scripts\GameOfLife\Drawing\CellButton.js" />
-    <Content Include="src\scripts\GameOfLife\Drawing\IGoLOptions.js" />
-    <Content Include="src\scripts\GameOfLife\Drawing\ParamsForm.js" />
-    <Content Include="src\scripts\GameOfLife\game-of-life-tests.js" />
-    <Content Include="src\scripts\GameOfLife\Logic\Cell.js" />
-    <Content Include="src\scripts\GameOfLife\Logic\CellState.js" />
-    <Content Include="src\scripts\GameOfLife\Logic\Cycle.js" />
-    <Content Include="src\scripts\GameOfLife\Logic\RectangularInfinite2DGrid.js" />
     <Content Include="src\styles\game-of-life.css" />
     <Content Include="src\styles\all-apps.css" />
     <Content Include="src\styles\menu.css" />
