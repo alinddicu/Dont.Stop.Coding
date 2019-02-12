@@ -32,7 +32,7 @@ namespace ViewModel {
 					this.currentChannel(rssFeed.channel.title);
 					this.currentUrl = url;
 				})
-				.fail(() => {
+				.fail((jqXhr: string, textStatus: string, errorThrown: string) => {
 					this.appsRunner.finishWorking(`Error when calling '${url}'`);
 				})
 				.always(() => {

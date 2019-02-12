@@ -63,13 +63,13 @@ div.app-action-bar > button {
 span.global-error-message {
 	border-radius: 5px;
 	display: block;
-	margin: 2px;
+	margin: 20px 2px 2px 2px;
 	border: 1px dotted;
 	border-color: red;
+	color: red;
 	text-align: center;
 	max-width: 500px;
 	height: auto;
 	margin: auto auto;
 	background-color: inherit;
-	z-index: 3;
 }
