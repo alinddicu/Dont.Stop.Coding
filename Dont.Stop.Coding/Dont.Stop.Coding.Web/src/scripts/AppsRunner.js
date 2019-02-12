@@ -8,9 +8,23 @@ function AppsRunner() {
 	self.currentViewModel = ko.observable();
 	self.menuOpen = ko.observable(false);
 	self.working = ko.observable(false);
+	self.errorMessage = ko.observable("");
 
 	//self.api = new ApiTest();
 	self.api = new Api($);
+
+	self.startWorking = function () {
+		self.working(true);
+		self.errorMessage("");
+	}
+
+	self.finishWorking = function (errorMessage) {
+		self.working(false);
+		if (errorMessage)
+		{
+			self.errorMessage(errorMessage);
+		}
+	}
 
 	function closeMenu() {
 		self.menuOpen(false);
@@ -26,7 +40,8 @@ function AppsRunner() {
 
 	self.gotoRssAggregator = function (feedUrl) {
 		var hash = "/rss-aggregator";
-		if (feedUrl) {
+		if (feedUrl)
+		{
 			hash += "/" + encodeURIComponent(feedUrl);
 		}
 

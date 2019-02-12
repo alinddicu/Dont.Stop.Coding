@@ -23,7 +23,7 @@ namespace ViewModel {
 		}
 
 		public getFeed(url: string): void {
-			this.appsRunner.working(true);
+			this.appsRunner.startWorking();
 			this.appsRunner.api.getRss(url)
 				.done((rssItems: RssAggregator.IRss) => {
 					const rssFeed = new RssAggregator.RssFeed(rssItems);
@@ -33,7 +33,7 @@ namespace ViewModel {
 					this.currentUrl = url;
 				})
 				.fail(() => {
-					console.error(`Error when calling '${url}'`);
+					this.appsRunner.finishWorking(`Error when calling '${url}'`);
 				})
 				.always(() => {
 					this.rssFeedsMenuOpen(false);
@@ -41,8 +41,8 @@ namespace ViewModel {
 				});
 		}
 
-		public navigateToFeed(url: string): void {
-			this.appsRunner.gotoRssAggregator(url);
+		public navigateToFeed(feedUrl: string): void {
+			this.appsRunner.gotoRssAggregator(feedUrl);
 		}
 	}
 }
