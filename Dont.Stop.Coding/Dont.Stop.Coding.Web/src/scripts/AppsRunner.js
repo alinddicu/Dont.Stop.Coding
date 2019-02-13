@@ -8,9 +8,23 @@ function AppsRunner() {
 	self.currentViewModel = ko.observable();
 	self.menuOpen = ko.observable(false);
 	self.working = ko.observable(false);
+	self.errorMessage = ko.observable("");
 
 	//self.api = new ApiTest();
 	self.api = new Api($);
+
+	self.startWorking = function () {
+		self.working(true);
+		self.errorMessage("");
+	}
+
+	self.finishWorking = function (errorMessage) {
+		self.working(false);
+		if (errorMessage)
+		{
+			self.errorMessage(errorMessage);
+		}
+	}
 
 	function closeMenu() {
 		self.menuOpen(false);
@@ -24,8 +38,14 @@ function AppsRunner() {
 		location.hash = "/sorting-arrays";
 	};
 
-	self.gotoRssAggregator = function () {
-		location.hash = "/rss-aggregator";
+	self.gotoRssAggregator = function (feedUrl) {
+		var hash = "/rss-aggregator";
+		if (feedUrl)
+		{
+			hash += "/" + encodeURIComponent(feedUrl);
+		}
+
+		location.hash = hash;
 	};
 
 	var changeFavicon = function (faviconName) {
@@ -51,12 +71,12 @@ function AppsRunner() {
 			changePage(new ViewModel.SortingArraysViewModel(self));
 		});
 
-		this.get("#/rss-aggregator", function () {
-			changePage(new ViewModel.RssAggregatorViewModel(self));
+		this.get("#/rss-aggregator/:feedUrl", function () {
+			changePage(new ViewModel.RssAggregatorViewModel(self, this.params.feedUrl));
 		});
 
 		this.get("", function () {
-			changePage(new ViewModel.RssAggregatorViewModel(self));
+			changePage(new ViewModel.RssAggregatorViewModel(self, null));
 		});
 	}).run();
 

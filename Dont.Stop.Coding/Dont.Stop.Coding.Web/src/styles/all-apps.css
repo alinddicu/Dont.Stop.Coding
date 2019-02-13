@@ -59,3 +59,18 @@ div.app-action-bar {
 div.app-action-bar > button {
 	margin: 0 5px 0 15px;
 }
+
+span.global-error-message {
+	border-radius: 5px;
+	display: block;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px dotted;
+	border-color: red;
+	color: red;
+	text-align: center;
+	max-width: 500px;
+	height: auto;
+	background-color: inherit;
+}
