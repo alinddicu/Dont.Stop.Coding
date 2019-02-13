@@ -7,10 +7,6 @@
 	--dark-blue: #24305e;
 }
 
-.material-icons.custom-color {
-	color: var(--dark-blue);
-}
-
 .material-icons.spacer {
 	width: 7px;
 }

@@ -3,38 +3,38 @@
 		<div id="controls-over-container">
 			<div id="controls-container">
 				<button class="control-button" data-bind="click: function() { showParams(); }, enable: !board().isPlaying() && !board().isPausing()" title="Parameters">
-					<i class="material-icons custom-color">settings</i>
+					<i class="material-icons">settings</i>
 				</button>
-				<button class="control-button"><i class="material-icons custom-color spacer"></i></button>
+				<button class="control-button"><i class="material-icons spacer"></i></button>
 				<button class="control-button" data-bind="click: function() { board().fastRewind(); }, enable: !board().isPlaying()" title="Fast rewind">
-					<i class="material-icons custom-color">fast_rewind</i>
+					<i class="material-icons">fast_rewind</i>
 				</button>
 				<button class="control-button" data-bind="click: function() { board().skipToPrevious(); }, enable: !board().isPlaying()" title="Skip to previous">
-					<i class="material-icons custom-color">skip_previous</i>
+					<i class="material-icons">skip_previous</i>
 				</button>
 				<button class="control-button" data-bind="click: function() { board().play(); }" title="Play">
-					<i class="material-icons custom-color" data-bind="visible: isVisibleCanPlay">play_circle_filled</i>
-					<i class="material-icons custom-color" data-bind="visible: isVisibleIsPlaying">play_circle_outline</i>
+					<i class="material-icons" data-bind="visible: isVisibleCanPlay">play_circle_filled</i>
+					<i class="material-icons" data-bind="visible: isVisibleIsPlaying">play_circle_outline</i>
 				</button>
 				<button class="control-button" data-bind="click: function() { board().pause(); }" title="Pause">
-					<i class="material-icons custom-color" data-bind="visible: isVisibleCanPause">pause_circle_filled</i>
-					<i class="material-icons custom-color" data-bind="visible: isVisibleIsPausing">pause_circle_outline</i>
+					<i class="material-icons" data-bind="visible: isVisibleCanPause">pause_circle_filled</i>
+					<i class="material-icons" data-bind="visible: isVisibleIsPausing">pause_circle_outline</i>
 				</button>
 				<button class="control-button" data-bind="click: function() { board().skipToNext(); }, enable: !board().isPlaying()" title="Skip to next">
-					<i class="material-icons custom-color">skip_next</i>
+					<i class="material-icons">skip_next</i>
 				</button>
 				<button class="control-button" data-bind="click: function() { board().fastForward(); }, enable: !board().isPlaying()" title="Fast forward">
-					<i class="material-icons custom-color">fast_forward</i>
+					<i class="material-icons">fast_forward</i>
 				</button>
 				<button class="control-button" data-bind="click: function() { board().reset(); }" title="Reset">
-					<i class="material-icons custom-color">stop</i>
+					<i class="material-icons">stop</i>
 				</button>
-				<button class="control-button"><i class="material-icons custom-color spacer"></i></button>
+				<button class="control-button"><i class="material-icons spacer"></i></button>
 				<button class="control-button" data-bind="click: function() { exportAliveCells(); }, enable: !board().isPlaying() && !board().isPausing()" title="Export alive cells">
-					<i class="material-icons custom-color">publish</i>
+					<i class="material-icons">publish</i>
 				</button>
 				<button class="control-button" data-bind="click: function() { showImportAliveCells(); }, enable: !board().isPlaying() && !board().isPausing()" title="Import alive cells">
-					<i class="material-icons custom-color">save_alt</i>
+					<i class="material-icons">save_alt</i>
 				</button>
 			</div>
 			<div id="export-container" data-bind="visible: isExportVisible()">
@@ -42,7 +42,7 @@
 					<textarea id="exportTextArea" data-bind="textInput: exportedCellsContent, hasFocus: isExportVisible()" rows="5" cols="25" disabled></textarea>
 				</div>
 				<div class="form-line action-button-container">
-					<button data-bind="click: function() { closeExportAliveCells(); }"><i class="material-icons custom-color">close</i></button>
+					<button data-bind="click: function() { closeExportAliveCells(); }"><i class="material-icons">close</i></button>
 				</div>
 			</div>
 			<div id="import-container" data-bind="visible: isImportVisible()">
@@ -50,8 +50,8 @@
 					<textarea id="importTextArea" data-bind="textInput: importedCellsContent, hasFocus: isImportVisible()" rows="5" cols="25"></textarea>
 				</div>
 				<div class="form-line action-button-container">
-					<button data-bind="click: function() { closeImportAliveCells(); }"><i class="material-icons custom-color">close</i></button>
-					<button data-bind="click: function() { importAliveCells(); }"><i class="material-icons custom-color">done_outline</i></button>
+					<button data-bind="click: function() { closeImportAliveCells(); }"><i class="material-icons">close</i></button>
+					<button data-bind="click: function() { importAliveCells(); }"><i class="material-icons">done_outline</i></button>
 				</div>
 			</div>
 			<div id="params-container" data-bind="visible: isParamsVisible()">
@@ -85,8 +85,8 @@
 					<input id="isShowCellsCoordinates" type="checkbox" data-bind="event: { keyup: onParamChanged }" />
 				</div>
 				<div class="form-line action-button-container">
-					<button data-bind="click: function() { closeParams(); }"><i class="material-icons custom-color">close</i></button>
-					<button data-bind="click: function() { reinitBoard(); }"><i class="material-icons custom-color">done_outline</i></button>
+					<button data-bind="click: function() { closeParams(); }"><i class="material-icons">close</i></button>
+					<button data-bind="click: function() { reinitBoard(); }"><i class="material-icons">done_outline</i></button>
 				</div>
 			</div>
 		</div>
