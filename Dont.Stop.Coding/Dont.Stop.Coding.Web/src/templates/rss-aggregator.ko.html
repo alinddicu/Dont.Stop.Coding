@@ -11,7 +11,7 @@
 		</button>
 	</div>
 	<div id="rss-feeds-menu" data-bind="visible: rssFeedsMenuOpen(), foreach: rssFeedsMenuEntries">
-		<a class="rss-feed" href="#" data-bind="click: function() { $parent.navigateToFeed(url); }">
+		<a class="rss-feed" href="#" data-bind="click: function() { $parent.navigateToFeed(feedId); }">
 			<span data-bind="text: channel"></span>
 		</a>
 	</div>

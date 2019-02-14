@@ -38,11 +38,11 @@ function AppsRunner() {
 		location.hash = "/sorting-arrays";
 	};
 
-	self.gotoRssAggregator = function (feedUrl) {
+	self.gotoRssAggregator = function (feedId) {
 		var hash = "/rss-aggregator";
-		if (feedUrl)
+		if (feedId)
 		{
-			hash += "/" + encodeURIComponent(feedUrl);
+			hash += "/feedId/" + feedId;
 		}
 
 		location.hash = hash;
@@ -71,8 +71,8 @@ function AppsRunner() {
 			changePage(new ViewModel.SortingArraysViewModel(self));
 		});
 
-		this.get("#/rss-aggregator/:feedUrl", function () {
-			changePage(new ViewModel.RssAggregatorViewModel(self, this.params.feedUrl));
+		this.get("#/rss-aggregator/feedId/:feedId", function () {
+			changePage(new ViewModel.RssAggregatorViewModel(self, this.params.feedId));
 		});
 
 		this.get("", function () {
