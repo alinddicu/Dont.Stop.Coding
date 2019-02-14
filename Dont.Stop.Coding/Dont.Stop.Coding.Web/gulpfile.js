@@ -13,6 +13,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var csso = require('gulp-csso');
 var hash = require('gulp-hash-filename');
 var newer = require('gulp-newer');
+var browserSync = require('browser-sync').create();
 var cssHash = null;
 var jsHash = null;
 var hashFormula = { "format": "{name}-{hash}-{ext}" };
@@ -125,13 +126,24 @@ gulp.task('dev-inject-all', function () {
 				return injectionTransformation(filepath, '/src/');
 			}
 		}))
-		.pipe(gulp.dest(devDistDest + ''));
+		.pipe(gulp.dest(devDistDest + ''))
+		.pipe(browserSync.stream());
 });
 
 gulp.task('all-dev', gulp.series('dev-clean', 'dev-copy-all', 'dev-inject-all'));
 
 gulp.task('watch-dev', function () {
-	gulp.watch(watchPaths, gulp.series('all-dev'));
+	//browserSync.init({
+	//	server: {
+	//		 baseDir: devDistDest
+	//	},
+	//	open: false,
+	//	startPath: "/index.html"
+	//});
+
+	gulp.watch(watchPaths, gulp.series('all-dev'))
+	//	.on('change', browserSync.reload)
+	;
 });
 
 /*********************************** PROD *******************************************/
