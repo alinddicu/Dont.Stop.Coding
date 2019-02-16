@@ -1,5 +1,4 @@
-﻿
-namespace ViewModel {
+﻿namespace ViewModel {
 	export class GameOfLifeViewModel extends ViewModelBase {
 		private params: GameOfLife.Drawing.ParamsForm;
 

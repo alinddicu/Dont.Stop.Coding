@@ -25,7 +25,7 @@
 
 		private sort(): void {
 			const isKeepSameArray = Tools.InputValueConverter.valueOrDefault<boolean>("isKeepSameArray", false);
-			const startValue = Tools.InputValueConverter.valueOrDefault<number>("startValue", this.startValue);
+			const startValue: number = Tools.InputValueConverter.valueOrDefault<number>("startValue", this.startValue);
 			const drawParams = {
 				step: Tools.InputValueConverter.valueOrDefault<number>("step", 10),
 				delay: Tools.InputValueConverter.valueOrDefault<number>("delay", 50),

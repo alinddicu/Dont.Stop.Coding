@@ -1,7 +1,9 @@
 ﻿/// <reference path="../../../typings/knockout.d.ts"/>
+'use strict';
 
 namespace ViewModel {
 	import RssFeedsMenu = RssAggregator.RssFeedsMenu;
+	import RssFeed = RssAggregator.RssFeed;
 
 	export class RssAggregatorViewModel extends ViewModelBase {
 		public pageName = "rss-aggregator";
@@ -28,7 +30,7 @@ namespace ViewModel {
 			this.appsRunner.startWorking();
 			this.appsRunner.api.getRss(url)
 				.done((rssItems: RssAggregator.IRss) => {
-					const rssFeed = new RssAggregator.RssFeed(rssItems);
+					const rssFeed: RssFeed = new RssAggregator.RssFeed(rssItems);
 					this.feedItems(rssFeed.channel.item);
 
 					this.currentChannel(rssFeed.channel.title);
@@ -44,7 +46,7 @@ namespace ViewModel {
 				});
 		}
 
-		private logFailMessage(jqXhr: any) {
+		private logFailMessage(jqXhr: any): void {
 			if (jqXhr && jqXhr.responseText) {
 				console.error(jqXhr.responseText);
 			}

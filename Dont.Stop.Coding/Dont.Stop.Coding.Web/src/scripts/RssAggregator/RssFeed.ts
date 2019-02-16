@@ -1,4 +1,6 @@
-﻿namespace RssAggregator {
+﻿'use strict';
+
+namespace RssAggregator {
 
 	export class RssFeed {
 		public channel: IRssChannel;
