@@ -13,10 +13,10 @@ function AppsRunner() {
 	//self.api = new ApiTest();
 	self.api = new Api($);
 
-	self.startWorking = function () {
+	self.startWorking = function() {
 		self.working(true);
 		self.errorMessage("");
-	}
+	};
 
 	self.finishWorking = function (errorMessage) {
 		self.working(false);
@@ -63,6 +63,10 @@ function AppsRunner() {
 	};
 
 	Sammy(function () {
+		this.get("#/time", function () {
+			changePage(new ViewModel.TimeViewModel(self));
+		});
+
 		this.get("#/game-of-life", function () {
 			changePage(new ViewModel.GameOfLifeViewModel(self));
 		});

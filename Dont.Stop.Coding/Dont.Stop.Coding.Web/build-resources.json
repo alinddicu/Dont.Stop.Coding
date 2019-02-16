@@ -42,6 +42,7 @@
 			"src/scripts/ViewModel/GameOfLifeViewModel.js",
 			"src/scripts/ViewModel/SortingArraysViewModel.js",
 			"src/scripts/ViewModel/RssAggregatorViewModel.js",
+			"src/scripts/ViewModel/TimeViewModel.js",
 			"src/scripts/Tools/InputValueConverter.js",
 			"src/scripts/ApiTest.js",
 			"src/scripts/Api.js",

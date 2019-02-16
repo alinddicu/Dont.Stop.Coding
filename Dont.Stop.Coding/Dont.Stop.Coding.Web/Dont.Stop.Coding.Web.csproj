@@ -72,6 +72,7 @@
     <TypeScriptCompile Include="src\scripts\RssAggregator\RssFeed.ts" />
     <TypeScriptCompile Include="src\scripts\ViewModel\GameOfLifeViewModel.ts" />
     <TypeScriptCompile Include="src\scripts\ViewModel\RssAggregatorViewModel.ts" />
+    <TypeScriptCompile Include="src\scripts\ViewModel\TimeViewModel.ts" />
     <TypeScriptCompile Include="src\scripts\ViewModel\ViewModelBase.ts" />
     <TypeScriptCompile Include="src\scripts\ViewModel\IAppsRunner.ts" />
     <TypeScriptCompile Include="src\scripts\ViewModel\SortingArraysViewModel.ts" />
@@ -90,6 +91,7 @@
     <Content Include="src\templates\game-of-life.ko.html" />
     <Content Include="src\templates\rss-aggregator.ko.html" />
     <Content Include="src\templates\sorting-arrays.ko.html" />
+    <Content Include="src\templates\time.ko.html" />
     <Content Include="tsconfig.json" />
   </ItemGroup>
   <ItemGroup>
