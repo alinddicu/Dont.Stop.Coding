@@ -9,6 +9,10 @@ namespace ViewModel {
 		constructor(appsRunner: IAppsRunner) {
 			super(appsRunner);
 			this.backgroundColor("#eae7dc");
+
+			setInterval(() => {
+				this.currentTime(new Date());
+			}, 500);
 		}
 	}
 }
