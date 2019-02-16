@@ -88,6 +88,7 @@
     <Folder Include="dist\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="src\styles\time.css" />
     <Content Include="src\templates\game-of-life.ko.html" />
     <Content Include="src\templates\rss-aggregator.ko.html" />
     <Content Include="src\templates\sorting-arrays.ko.html" />

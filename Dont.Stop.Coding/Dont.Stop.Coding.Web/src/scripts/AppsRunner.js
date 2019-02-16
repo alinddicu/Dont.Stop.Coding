@@ -30,6 +30,10 @@ function AppsRunner() {
 		self.menuOpen(false);
 	}
 
+	self.gotoTime = function () {
+		location.hash = "/time";
+	};
+
 	self.gotoGameOfLife = function () {
 		location.hash = "/game-of-life";
 	};

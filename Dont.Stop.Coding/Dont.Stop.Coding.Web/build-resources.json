@@ -4,7 +4,8 @@
 		"src/styles/sorting-arrays.css",
 		"src/styles/game-of-life.css",
 		"src/styles/all-apps.css",
-		"src/styles/rss-aggregator.css"
+		"src/styles/rss-aggregator.css",
+		"src/styles/time.css"
 	],
 	"js": {
 		"libs": [
