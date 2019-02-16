@@ -15,6 +15,7 @@ div#time-container {
 
 span.current-time {
 	color: var(--mild-red);
+	/*https://stackoverflow.com/questions/14431411/pure-css-to-make-font-size-responsive-based-on-dynamic-amount-of-characters*/
 	font-size: 100px;
 	font-size: 10vw;
 }
