@@ -8,7 +8,7 @@ namespace ViewModel {
 
 		constructor(appsRunner: IAppsRunner) {
 			super(appsRunner);
-			this.backgroundColor("white");
+			this.backgroundColor("#eae7dc");
 		}
 	}
 }

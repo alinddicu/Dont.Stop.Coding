@@ -1,1 +1,20 @@
-﻿
+﻿:root {
+	/*color theme "Minimal Yet Warm" from https://visme.co/blog/website-color-schemes/*/
+	--grey: #eae7dc;
+	--brown: #d8c3a5;
+	--dark-grey: #8d8e8a;
+	--light-red: #e98074;
+	--mild-red: #e85a4f;
+}
+
+div#time-container {
+	/*background-color: #999999;*/
+	text-align: center;
+	width: 100%;
+}
+
+span.current-time {
+	color: var(--mild-red);
+	font-size: 100px;
+	font-size: 10vw;
+}

@@ -130,7 +130,7 @@ gulp.task('dev-inject-all', function () {
 		.pipe(browserSync.stream());
 });
 
-gulp.task('all-dev', gulp.series('dev-clean', 'dev-copy-all', 'dev-inject-all'));
+gulp.task('all-dev', gulp.series('dev-copy-all', 'dev-inject-all'));
 
 gulp.task('watch-dev', function () {
 	//browserSync.init({
