@@ -36,6 +36,8 @@ namespace ViewModel {
 			const height = Math.min(canvas.height, canvas.width) * 0.8;
 			canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
 
+			// dev
+
 			const baseRadius = height / 2;
 			const fullArc = 2 * Math.PI;
 			const thickness = 5;

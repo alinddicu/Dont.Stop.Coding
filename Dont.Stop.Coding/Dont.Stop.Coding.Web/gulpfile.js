@@ -14,14 +14,14 @@ var csso = require('gulp-csso');
 var hash = require('gulp-hash-filename');
 var newer = require('gulp-newer');
 var browserSync = require('browser-sync').create();
-var browserSyncTarget = 'localhost:27421';
+var browserSyncTarget = 'localhost:5000';
 var cssHash = null;
 var jsHash = null;
 var hashFormula = { "format": "{name}-{hash}-{ext}" };
 
 var gulpFolder = __dirname;
 var prodDistDest = 'dist';
-var devDistDest = '../Dont.Stop.Coding.WebApi/wwwroot';
+var devDistDest = 'C:\\dontstopcod.in\\wwwroot';
 var koTemplateExtension = '.ko.html';
 var buildResourcesFile = 'build-resources.json';
 var buildResources = JSON.parse(fs.readFileSync(gulpFolder + '\\' + buildResourcesFile, "utf8"));
@@ -138,7 +138,9 @@ gulp.task('watch-dev', function () {
 		proxy: {
 			target: browserSyncTarget,
 			ws: true
-		}
+		},
+		open: false,
+		startPath: "/index.html"
 	});
 
 	gulp.watch(watchPaths, gulp.series('all-dev'))
