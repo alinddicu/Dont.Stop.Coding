@@ -138,9 +138,7 @@ gulp.task('watch-dev', function () {
 		proxy: {
 			target: browserSyncTarget,
 			ws: true
-		},
-		open: false,
-		startPath: "/index.html"
+		}
 	});
 
 	gulp.watch(watchPaths, gulp.series('all-dev'))
