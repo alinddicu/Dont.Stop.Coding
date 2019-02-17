@@ -21,7 +21,8 @@
 		}
 
 		public draw(arrayToSort: number[]): void {
-			for (let sorting of this.sortings) {
+			for (let i = 0; i < this.sortings.length; i++) {
+				const sorting = this.sortings[i];
 				sorting.execute(arrayToSort);
 				new SingleCanvasDrawer(sorting, this.document).draw(this.drawParams);
 			}
