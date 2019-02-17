@@ -144,7 +144,7 @@ gulp.task('watch-dev', function () {
 	});
 
 	gulp.watch(watchPaths, gulp.series('all-dev'))
-		.on('change', browserSync.reload)
+		.on('change', function() { browserSync.reload({stream: true}) })
 	;
 });
 
