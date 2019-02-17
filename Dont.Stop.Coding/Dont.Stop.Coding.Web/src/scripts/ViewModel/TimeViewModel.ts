@@ -37,23 +37,30 @@ namespace ViewModel {
 			canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
 
 			const baseRadius = height / 2;
+			const fullArc = 2 * Math.PI;
+			const thickness = 5;
 
 			const frameRadius = baseRadius - 10;
-			const fullArc = 2 * Math.PI;
 			const threeOClockOffset = fullArc * 0.25;
-			this.drawArc(canvas, canvasCtx, frameRadius, Colors.darkGrey, 0, fullArc);
+			this.drawThickArc(canvas, canvasCtx, frameRadius, Colors.darkGrey, 0, fullArc, thickness);
 
-			const hourRadius = baseRadius - 15;
-			const hoursArc = ((currentDateTime.getHours() - 12) / 12) * (fullArc) - threeOClockOffset;
-			this.drawArc(canvas, canvasCtx, hourRadius, Colors.brown, -threeOClockOffset, hoursArc);
+			const secondsRadius = baseRadius - 15;
+			const secondsArc = ((currentDateTime.getSeconds()) / 60) * (fullArc) - threeOClockOffset;
+			this.drawThickArc(canvas, canvasCtx, secondsRadius, Colors.mildRed, -threeOClockOffset, secondsArc, thickness);
 
 			const minutesRadius = baseRadius - 20;
 			const minutesArc = ((currentDateTime.getMinutes()) / 60) * (fullArc) - threeOClockOffset;
-			this.drawArc(canvas, canvasCtx, minutesRadius, Colors.lightRed, -threeOClockOffset, minutesArc);
+			this.drawThickArc(canvas, canvasCtx, minutesRadius, Colors.lightRed, -threeOClockOffset, minutesArc, thickness);
 
-			const secondsRadius = baseRadius - 25;
-			const secondsArc = ((currentDateTime.getSeconds()) / 60) * (fullArc) - threeOClockOffset;
-			this.drawArc(canvas, canvasCtx, secondsRadius, Colors.mildRed, -threeOClockOffset, secondsArc);
+			const hourRadius = baseRadius - 25;
+			const hoursArc = ((currentDateTime.getHours() - 12) / 12) * (fullArc) - threeOClockOffset;
+			this.drawThickArc(canvas, canvasCtx, hourRadius, Colors.brown, -threeOClockOffset, hoursArc, thickness);
+		}
+
+		private drawThickArc(canvas: HTMLCanvasElement, canvasCtx: CanvasRenderingContext2D, radius: number, color: string, arcStart: number, arcEnd: number, thickness: number): void {
+			for (let i = 0; i < thickness; i++) {
+				this.drawArc(canvas, canvasCtx, radius + i, color, arcStart, arcEnd);
+			}
 		}
 
 		private drawArc(canvas: HTMLCanvasElement, canvasCtx: CanvasRenderingContext2D, radius: number, color: string, arcStart: number, arcEnd: number): void {
