@@ -16,6 +16,8 @@
 			"node_modules/moment/min/moment.min.js"
 		],
 		"app": [
+			"src/scripts/Tools/InputValueConverter.js",
+			"src/scripts/Tools/BrowserHelper.ts",
 			"src/scripts/Sorting/Algorithms/SortBase.js",
 			"src/scripts/Sorting/Algorithms/BubbleSort.js",
 			"src/scripts/Sorting/Algorithms/InsertionSort.js",
@@ -44,7 +46,6 @@
 			"src/scripts/ViewModel/SortingArraysViewModel.js",
 			"src/scripts/ViewModel/RssAggregatorViewModel.js",
 			"src/scripts/ViewModel/TimeViewModel.js",
-			"src/scripts/Tools/InputValueConverter.js",
 			"src/scripts/ApiTest.js",
 			"src/scripts/Api.js",
 			"src/scripts/AppsRunner.js"

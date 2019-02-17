@@ -67,6 +67,7 @@
     <TypeScriptCompile Include="src\scripts\Sorting\Drawing\SingleCanvasDrawer.ts" />
     <TypeScriptCompile Include="src\scripts\Sorting\Tools\RandomArrayGenerator.ts" />
     <TypeScriptCompile Include="src\scripts\Sorting\Tools\RankingSystem.ts" />
+    <TypeScriptCompile Include="src\scripts\Tools\BrowserHelper.ts" />
     <TypeScriptCompile Include="src\scripts\Tools\InputValueConverter.ts" />
     <TypeScriptCompile Include="src\scripts\Api.ts" />
     <TypeScriptCompile Include="src\scripts\RssAggregator\RssFeed.ts" />

@@ -33,7 +33,7 @@ namespace ViewModel {
 			const canvas = document.getElementById("current-analogic-time") as HTMLCanvasElement;
 			const canvasCtx = this.setupSmoothCanvas(canvas);
 
-			const height = canvas.height * 0.8;
+			const height = Math.min(canvas.height, canvas.width) * 0.8;
 			canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
 
 			const baseRadius = height / 2;
@@ -58,7 +58,7 @@ namespace ViewModel {
 		}
 
 		private drawThickArc(canvas: HTMLCanvasElement, canvasCtx: CanvasRenderingContext2D, radius: number, color: string, arcStart: number, arcEnd: number, thickness: number): void {
-			for (let i = 0; i < thickness; i++) {
+			for (let i = 1; i < thickness; i++) {
 				this.drawArc(canvas, canvasCtx, radius + i, color, arcStart, arcEnd);
 			}
 		}
