@@ -13,10 +13,17 @@ div#time-container {
 	width: 100%;
 }
 
-span#current-time {
+canvas#current-analogic-time {
+	display: block;
+	height: 35vh;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+span#current-digital-time {
 	display: block;
 	color: var(--mild-red);
 	/*https://stackoverflow.com/questions/14431411/pure-css-to-make-font-size-responsive-based-on-dynamic-amount-of-characters*/
 	font-size: 25vw;
-	margin-top: 15vh;
 }
