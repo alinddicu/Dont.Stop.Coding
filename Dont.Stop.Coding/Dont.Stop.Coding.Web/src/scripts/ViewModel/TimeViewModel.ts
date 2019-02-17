@@ -23,24 +23,47 @@ namespace ViewModel {
 			this.backgroundColor(Colors.grey);
 
 			setInterval(() => {
-				this.currentTime(new Date());
-				this.drawCurrentAnalogicTime();
+				var currentDateTime = new Date();
+				this.currentTime(currentDateTime);
+				this.drawCurrentAnalogicTime(currentDateTime);
 			}, 500);
 		}
 
-		private drawCurrentAnalogicTime(): void {
+		private drawCurrentAnalogicTime(currentDateTime: Date): void {
 			const canvas = document.getElementById("current-analogic-time") as HTMLCanvasElement;
 			const canvasCtx = this.setupSmoothCanvas(canvas);
 
 			const height = canvas.height * 0.8;
+			canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
+
+			const baseRadius = height / 2;
+
+			const frameRadius = baseRadius - 10;
+			const fullArc = 2 * Math.PI;
+			const threeOClockOffset = fullArc * 0.25;
+			this.drawArc(canvas, canvasCtx, frameRadius, Colors.darkGrey, 0, fullArc);
+
+			const hourRadius = baseRadius - 15;
+			const hoursArc = ((currentDateTime.getHours() - 12) / 12) * (fullArc) - threeOClockOffset;
+			this.drawArc(canvas, canvasCtx, hourRadius, Colors.brown, -threeOClockOffset, hoursArc);
+
+			const minutesRadius = baseRadius - 20;
+			const minutesArc = ((currentDateTime.getMinutes()) / 60) * (fullArc) - threeOClockOffset;
+			this.drawArc(canvas, canvasCtx, minutesRadius, Colors.lightRed, -threeOClockOffset, minutesArc);
+
+			const secondsRadius = baseRadius - 25;
+			const secondsArc = ((currentDateTime.getSeconds()) / 60) * (fullArc) - threeOClockOffset;
+			this.drawArc(canvas, canvasCtx, secondsRadius, Colors.mildRed, -threeOClockOffset, secondsArc);
+		}
+
+		private drawArc(canvas: HTMLCanvasElement, canvasCtx: CanvasRenderingContext2D, radius: number, color: string, arcStart: number, arcEnd: number): void {
+
+			const height = canvas.height * 0.8;
 			const width = canvas.width * 0.8;
 
-			canvasCtx.strokeStyle = Colors.darkGrey;
-			canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
+			canvasCtx.strokeStyle = color;
 			canvasCtx.beginPath();
-			const radius = height / 2 - 10;
-			canvasCtx.arc(width / 2, height / 2, radius, 0, 2 * Math.PI);
-			canvasCtx.closePath();
+			canvasCtx.arc(width / 2, height / 2, radius, arcStart, arcEnd);
 			canvasCtx.stroke();
 		}
 
