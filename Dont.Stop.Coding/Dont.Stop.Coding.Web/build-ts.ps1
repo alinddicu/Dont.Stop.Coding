@@ -1,0 +1,1 @@
+node.exe "C:\Program Files (x86)\Microsoft SDKs\TypeScript\3.2\tsc.js"
