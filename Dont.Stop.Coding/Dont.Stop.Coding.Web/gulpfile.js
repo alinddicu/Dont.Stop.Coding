@@ -1,4 +1,4 @@
-﻿/// <binding AfterBuild='all-dev, all-prod' ProjectOpened='watch-dev, watch-prod' />
+﻿/// <binding AfterBuild='all-dev, all-prod, watch-dev-async' ProjectOpened='watch-dev, watch-prod, watch-dev-async' />
 
 /*********************************** COMMON *******************************************/
 
@@ -14,6 +14,7 @@ var csso = require('gulp-csso');
 var hash = require('gulp-hash-filename');
 var newer = require('gulp-newer');
 var browserSync = require('browser-sync').create();
+var browserSyncTarget = 'localhost:27421';
 var cssHash = null;
 var jsHash = null;
 var hashFormula = { "format": "{name}-{hash}-{ext}" };
@@ -133,16 +134,17 @@ gulp.task('dev-inject-all', function () {
 gulp.task('all-dev', gulp.series('dev-copy-all', 'dev-inject-all'));
 
 gulp.task('watch-dev', function () {
-	//browserSync.init({
-	//	server: {
-	//		 baseDir: devDistDest
-	//	},
-	//	open: false,
-	//	startPath: "/index.html"
-	//});
+	browserSync.init({
+		proxy: {
+			target: browserSyncTarget,
+			ws: true
+		},
+		open: false,
+		startPath: "/index.html"
+	});
 
 	gulp.watch(watchPaths, gulp.series('all-dev'))
-	//	.on('change', browserSync.reload)
+		.on('change', browserSync.reload)
 	;
 });
 
