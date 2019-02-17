@@ -18,7 +18,6 @@
 		"app": [
 			"src/scripts/Tools/BrowserHelper.js",
 			"src/scripts/Tools/InputValueConverter.js",
-			"src/scripts/Tools/BrowserHelper.ts",
 			"src/scripts/Sorting/Algorithms/SortBase.js",
 			"src/scripts/Sorting/Algorithms/BubbleSort.js",
 			"src/scripts/Sorting/Algorithms/InsertionSort.js",
