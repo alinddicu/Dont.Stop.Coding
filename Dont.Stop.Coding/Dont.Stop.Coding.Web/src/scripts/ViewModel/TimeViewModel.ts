@@ -15,6 +15,7 @@ namespace ViewModel {
 
 	export class TimeViewModel extends ViewModelBase {
 
+		private sillyCanvasRatio = 0.8;
 		public pageName = "time";
 		public currentTime: KnockoutObservable<Date> = ko.observable(new Date());
 
@@ -26,6 +27,7 @@ namespace ViewModel {
 				var currentDateTime = new Date();
 				this.currentTime(currentDateTime);
 				this.drawCurrentAnalogicTime(currentDateTime);
+				this.drawCurrentBarTime(currentDateTime);
 			}, 500);
 		}
 
@@ -33,8 +35,7 @@ namespace ViewModel {
 			const canvas = document.getElementById("current-analogic-time") as HTMLCanvasElement;
 			const canvasCtx = this.setupSmoothCanvas(canvas);
 
-			const sillyCanvasRatio = 0.8;
-			const centeredHeight = Math.min(canvas.height, canvas.width) * sillyCanvasRatio;
+			const centeredHeight = Math.min(canvas.height, canvas.width) * this.sillyCanvasRatio;
 			canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
 
 			// dev
@@ -63,11 +64,43 @@ namespace ViewModel {
 			const fontSize = baseRadius / 8;
 			canvasCtx.font = `${fontSize}px Calibri`;
 			canvasCtx.textAlign = "center";
-			const centeredWidth = canvas.width * sillyCanvasRatio;
+			const centeredWidth = canvas.width * this.sillyCanvasRatio;
 			const xAmPm = centeredWidth / 2 - fontSize / 2;
-			const yAmPm = canvas.height * sillyCanvasRatio / 2 + fontSize / 2;
+			const yAmPm = canvas.height * this.sillyCanvasRatio / 2 + fontSize / 2;
 			const amPm = hours < 12 ? "AM" : "PM";
+			//canvasCtx.strokeStyle = Colors.mildRed;
 			canvasCtx.strokeText(amPm, xAmPm, yAmPm);
+		}
+
+		private drawCurrentBarTime(currentDateTime: Date): void {
+			const canvas = document.getElementById("current-bar-time") as HTMLCanvasElement;
+			const canvasCtx = this.setupSmoothCanvas(canvas);
+
+			const height = canvas.height * this.sillyCanvasRatio;
+			const width = canvas.width;
+			const fontSize = height / 8;
+
+			canvasCtx.beginPath();
+			canvasCtx.fillStyle = Colors.brown;
+			const hours = currentDateTime.getHours();
+			canvasCtx.rect(0, 0, width * hours / 24, height / 3);
+			canvasCtx.fill();
+
+			canvasCtx.font = `${fontSize}px Calibri`;
+			canvasCtx.fillStyle = Colors.brown;
+			canvasCtx.fillText(hours + "", 0, 0);
+
+			canvasCtx.beginPath();
+			canvasCtx.fillStyle = Colors.lightRed;
+			const minutes = currentDateTime.getMinutes();
+			canvasCtx.rect(0, height / 3, width * minutes / 60, height / 3);
+			canvasCtx.fill();
+
+			canvasCtx.beginPath();
+			canvasCtx.fillStyle = Colors.mildRed;
+			const seconds = currentDateTime.getSeconds();
+			canvasCtx.rect(0, height * 2 / 3, width * seconds / 60, height / 3);
+			canvasCtx.fill();
 		}
 
 		private drawThickArc(canvas: HTMLCanvasElement, canvasCtx: CanvasRenderingContext2D, radius: number, color: string, arcStart: number, arcEnd: number, thickness: number): void {
@@ -78,8 +111,8 @@ namespace ViewModel {
 
 		private drawArc(canvas: HTMLCanvasElement, canvasCtx: CanvasRenderingContext2D, radius: number, color: string, arcStart: number, arcEnd: number): void {
 
-			const height = canvas.height * 0.8;
-			const width = canvas.width * 0.8;
+			const height = canvas.height * this.sillyCanvasRatio;
+			const width = canvas.width * this.sillyCanvasRatio;
 
 			canvasCtx.strokeStyle = color;
 			canvasCtx.beginPath();
