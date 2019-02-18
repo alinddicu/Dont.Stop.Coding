@@ -33,12 +33,13 @@ namespace ViewModel {
 			const canvas = document.getElementById("current-analogic-time") as HTMLCanvasElement;
 			const canvasCtx = this.setupSmoothCanvas(canvas);
 
-			const height = Math.min(canvas.height, canvas.width) * 0.8;
+			const sillyCanvasRatio = 0.8;
+			const centeredHeight = Math.min(canvas.height, canvas.width) * sillyCanvasRatio;
 			canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
 
 			// dev
 
-			const baseRadius = height / 2;
+			const baseRadius = centeredHeight / 2;
 			const fullArc = 2 * Math.PI;
 			const thickness = 5;
 
@@ -55,8 +56,18 @@ namespace ViewModel {
 			this.drawThickArc(canvas, canvasCtx, minutesRadius, Colors.lightRed, -threeOClockOffset, minutesArc, thickness);
 
 			const hourRadius = baseRadius - 25;
-			const hoursArc = ((currentDateTime.getHours() - 12) / 12) * (fullArc) - threeOClockOffset;
+			const hours = currentDateTime.getHours();
+			const hoursArc = ((hours - 12) / 12) * (fullArc) - threeOClockOffset;
 			this.drawThickArc(canvas, canvasCtx, hourRadius, Colors.brown, -threeOClockOffset, hoursArc, thickness);
+
+			const fontSize = baseRadius / 8;
+			canvasCtx.font = `${fontSize}px Calibri`;
+			canvasCtx.textAlign = "center";
+			const centeredWidth = canvas.width * sillyCanvasRatio;
+			const xAmPm = centeredWidth / 2 - fontSize / 2;
+			const yAmPm = canvas.height * sillyCanvasRatio / 2 + fontSize / 2;
+			const amPm = hours < 12 ? "AM" : "PM";
+			canvasCtx.strokeText(amPm, xAmPm, yAmPm);
 		}
 
 		private drawThickArc(canvas: HTMLCanvasElement, canvasCtx: CanvasRenderingContext2D, radius: number, color: string, arcStart: number, arcEnd: number, thickness: number): void {
