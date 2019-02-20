@@ -79,11 +79,12 @@ namespace ViewModel {
 			const height = canvas.height * this.sillyCanvasRatio;
 			const width = canvas.width * this.sillyCanvasRatio;
 			const fontSize = height / 8;
+			const heightGap = 2;
 
 			canvasCtx.beginPath();
 			canvasCtx.fillStyle = Colors.brown;
 			const hours = currentDateTime.getHours();
-			canvasCtx.rect(0, 0, width * hours / 24, height / 3);
+			canvasCtx.rect(0, 0, width * hours / 24, height / 3 - heightGap);
 			canvasCtx.fill();
 
 			canvasCtx.font = `${fontSize}px Calibri`;
@@ -93,7 +94,7 @@ namespace ViewModel {
 			canvasCtx.beginPath();
 			canvasCtx.fillStyle = Colors.lightRed;
 			const minutes = currentDateTime.getMinutes();
-			canvasCtx.rect(0, height / 3, width * minutes / 60, height / 3);
+			canvasCtx.rect(0, height / 3, width * minutes / 60, height / 3 - heightGap);
 			canvasCtx.fill();
 
 			canvasCtx.font = `${fontSize}px Calibri`;
@@ -103,7 +104,7 @@ namespace ViewModel {
 			canvasCtx.beginPath();
 			canvasCtx.fillStyle = Colors.mildRed;
 			const seconds = currentDateTime.getSeconds();
-			canvasCtx.rect(0, height * 2 / 3, width * seconds / 60, height / 3);
+			canvasCtx.rect(0, height * 2 / 3, width * seconds / 60, height / 3 - heightGap);
 			canvasCtx.fill();
 
 			canvasCtx.font = `${fontSize}px Calibri`;
