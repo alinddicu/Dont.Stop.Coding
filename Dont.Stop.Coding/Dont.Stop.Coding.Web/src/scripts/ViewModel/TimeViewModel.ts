@@ -1,7 +1,4 @@
-﻿/// <reference path="../../../typings/knockout.d.ts"/>
-/// <reference path="C:\\Program Files (x86)\\Microsoft SDKs\\TypeScript\\3.2\\lib.d.ts"/>
-
-'use strict';
+﻿'use strict';
 
 namespace ViewModel
 {
@@ -20,7 +17,6 @@ namespace ViewModel
 
 		private sillyCanvasRatio = 0.8;
 		public pageName = "time";
-		public currentTime: KnockoutObservable<Date> = ko.observable(new Date());
 
 		constructor(appsRunner: IAppsRunner)
 		{
@@ -30,7 +26,6 @@ namespace ViewModel
 			setInterval(() =>
 			{
 				var currentDateTime = new Date();
-				this.currentTime(currentDateTime);
 				this.drawCurrentDigitalTime(currentDateTime);
 				this.drawCurrentAnalogicTime(currentDateTime);
 				this.drawCurrentBarTime(currentDateTime);
