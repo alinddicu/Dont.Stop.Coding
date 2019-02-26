@@ -108,6 +108,8 @@ namespace ViewModel
 			const height = canvas.height * this.sillyCanvasRatio;
 			const width = canvas.width * this.sillyCanvasRatio;
 			const fontSize = height / 8;
+			const fontStyle = `${fontSize}px Calibri`;
+			const fontColor = Colors.darkGrey;
 			const heightGap = 2;
 
 			canvasCtx.beginPath();
@@ -116,9 +118,9 @@ namespace ViewModel
 			canvasCtx.rect(0, 0, width * hours / 24, height / 3 - heightGap);
 			canvasCtx.fill();
 
-			canvasCtx.font = `${fontSize}px Calibri`;
-			canvasCtx.strokeStyle = Colors.darkGrey;
-			canvasCtx.strokeText(hours + "", 5, height / 6);
+			canvasCtx.font = fontStyle;
+			canvasCtx.fillStyle = fontColor;
+			canvasCtx.fillText(hours + "", 5, height / 6);
 
 			canvasCtx.beginPath();
 			canvasCtx.fillStyle = Colors.lightRed;
@@ -126,9 +128,9 @@ namespace ViewModel
 			canvasCtx.rect(0, height / 3, width * minutes / 60, height / 3 - heightGap);
 			canvasCtx.fill();
 
-			canvasCtx.font = `${fontSize}px Calibri`;
-			canvasCtx.strokeStyle = Colors.darkGrey;
-			canvasCtx.strokeText(minutes + "", 5, height / 3 + height / 6);
+			canvasCtx.font = fontStyle;
+			canvasCtx.fillStyle = fontColor;
+			canvasCtx.fillText(minutes + "", 5, height / 3 + height / 6);
 
 			canvasCtx.beginPath();
 			canvasCtx.fillStyle = Colors.mildRed;
@@ -136,9 +138,9 @@ namespace ViewModel
 			canvasCtx.rect(0, height * 2 / 3, width * seconds / 60, height / 3 - heightGap);
 			canvasCtx.fill();
 
-			canvasCtx.font = `${fontSize}px Calibri`;
-			canvasCtx.strokeStyle = Colors.darkGrey;
-			canvasCtx.strokeText(seconds + "", 5, height * 2 / 3 + height / 6);
+			canvasCtx.font = fontStyle;
+			canvasCtx.fillStyle = fontColor;
+			canvasCtx.fillText(seconds + "", 5, height * 2 / 3 + height / 6);
 		}
 
 		private drawThickArc(canvas: HTMLCanvasElement, canvasCtx: CanvasRenderingContext2D, radius: number, color: string, arcStart: number, arcEnd: number, thickness: number): void
