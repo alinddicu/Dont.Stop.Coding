@@ -1,5 +1,4 @@
 ﻿/// <reference path="../../../typings/knockout.d.ts"/>
-/// <reference path="../../../typings/moment.d.ts"/>
 /// <reference path="C:\\Program Files (x86)\\Microsoft SDKs\\TypeScript\\3.2\\lib.d.ts"/>
 
 'use strict';
@@ -61,9 +60,9 @@ namespace ViewModel
 			const textWidth = canvasCtx.measureText(formattedDate).width;
 
 			const centeredWidth = canvas.width * this.sillyCanvasRatio;
-			const x = centeredWidth / 2 - formattedDate.length * fontSize / 2;
+			const x = centeredWidth / 2 - textWidth / 2;
 			const y = centeredHeight * 4 / 5;
-			canvasCtx.fillText(formattedDate, centeredWidth / 2 - textWidth / 2, y);
+			canvasCtx.fillText(formattedDate, x, y);
 		}
 
 		private drawCurrentAnalogicTime(currentDateTime: Date): void
@@ -73,8 +72,6 @@ namespace ViewModel
 
 			const centeredHeight = Math.min(canvas.height, canvas.width) * this.sillyCanvasRatio;
 			canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
-
-			// dev
 
 			const baseRadius = centeredHeight / 2;
 			const fullArc = 2 * Math.PI;
