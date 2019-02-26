@@ -1,11 +1,14 @@
 ﻿/// <reference path="../../../typings/knockout.d.ts"/>
+/// <reference path="../../../typings/moment.d.ts"/>
 /// <reference path="C:\\Program Files (x86)\\Microsoft SDKs\\TypeScript\\3.2\\lib.d.ts"/>
 
 'use strict';
 
-namespace ViewModel {
+namespace ViewModel
+{
 
-	class Colors {
+	class Colors
+	{
 		public static grey = "#eae7dc";
 		public static brown = "#d8c3a5";
 		public static darkGrey = "#8d8e8a";
@@ -13,25 +16,58 @@ namespace ViewModel {
 		public static mildRed = "#e85a4f";
 	}
 
-	export class TimeViewModel extends ViewModelBase {
+	export class TimeViewModel extends ViewModelBase
+	{
 
 		private sillyCanvasRatio = 0.8;
 		public pageName = "time";
 		public currentTime: KnockoutObservable<Date> = ko.observable(new Date());
 
-		constructor(appsRunner: IAppsRunner) {
+		constructor(appsRunner: IAppsRunner)
+		{
 			super(appsRunner);
 			this.backgroundColor(Colors.grey);
 
-			setInterval(() => {
+			setInterval(() =>
+			{
 				var currentDateTime = new Date();
 				this.currentTime(currentDateTime);
+				this.drawCurrentDigitalTime(currentDateTime);
 				this.drawCurrentAnalogicTime(currentDateTime);
 				this.drawCurrentBarTime(currentDateTime);
 			}, 500);
 		}
+		
+		private format2Digits(num: number): string {
+			return (`0${num}`).slice(-2);
+		}
 
-		private drawCurrentAnalogicTime(currentDateTime: Date): void {
+		private drawCurrentDigitalTime(currentDateTime: Date): void
+		{
+			const canvas = document.getElementById("current-digital-time") as HTMLCanvasElement;
+			const canvasCtx = this.setupSmoothCanvas(canvas);
+
+			const centeredHeight = Math.min(canvas.height, canvas.width) * this.sillyCanvasRatio;
+			canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
+
+			const fontSize = centeredHeight;
+			canvasCtx.font = `${fontSize}px Calibri`;
+			canvasCtx.fillStyle = Colors.mildRed;
+
+			const hours = this.format2Digits(currentDateTime.getHours());
+			const minutes = this.format2Digits(currentDateTime.getMinutes());
+			const seconds = this.format2Digits(currentDateTime.getSeconds());
+			const formattedDate = `${hours}:${minutes}:${seconds}`;
+			const textWidth = canvasCtx.measureText(formattedDate).width;
+
+			const centeredWidth = canvas.width * this.sillyCanvasRatio;
+			const x = centeredWidth / 2 - formattedDate.length * fontSize / 2;
+			const y = centeredHeight * 4 / 5;
+			canvasCtx.fillText(formattedDate, centeredWidth / 2 - textWidth / 2, y);
+		}
+
+		private drawCurrentAnalogicTime(currentDateTime: Date): void
+		{
 			const canvas = document.getElementById("current-analogic-time") as HTMLCanvasElement;
 			const canvasCtx = this.setupSmoothCanvas(canvas);
 
@@ -72,7 +108,8 @@ namespace ViewModel {
 			canvasCtx.strokeText(amPm, xAmPm, yAmPm);
 		}
 
-		private drawCurrentBarTime(currentDateTime: Date): void {
+		private drawCurrentBarTime(currentDateTime: Date): void
+		{
 			const canvas = document.getElementById("current-bar-time") as HTMLCanvasElement;
 			const canvasCtx = this.setupSmoothCanvas(canvas);
 
@@ -112,13 +149,15 @@ namespace ViewModel {
 			canvasCtx.strokeText(seconds + "", 5, height * 2 / 3 + height / 6);
 		}
 
-		private drawThickArc(canvas: HTMLCanvasElement, canvasCtx: CanvasRenderingContext2D, radius: number, color: string, arcStart: number, arcEnd: number, thickness: number): void {
+		private drawThickArc(canvas: HTMLCanvasElement, canvasCtx: CanvasRenderingContext2D, radius: number, color: string, arcStart: number, arcEnd: number, thickness: number): void
+		{
 			for (let i = 1; i < thickness; i++) {
 				this.drawArc(canvas, canvasCtx, radius + i, color, arcStart, arcEnd);
 			}
 		}
 
-		private drawArc(canvas: HTMLCanvasElement, canvasCtx: CanvasRenderingContext2D, radius: number, color: string, arcStart: number, arcEnd: number): void {
+		private drawArc(canvas: HTMLCanvasElement, canvasCtx: CanvasRenderingContext2D, radius: number, color: string, arcStart: number, arcEnd: number): void
+		{
 
 			const height = canvas.height * this.sillyCanvasRatio;
 			const width = canvas.width * this.sillyCanvasRatio;
@@ -129,7 +168,8 @@ namespace ViewModel {
 			canvasCtx.stroke();
 		}
 
-		private setupSmoothCanvas(canvas: HTMLCanvasElement): CanvasRenderingContext2D {
+		private setupSmoothCanvas(canvas: HTMLCanvasElement): CanvasRenderingContext2D
+		{
 			// Get the device pixel ratio, falling back to 1.
 			const dpr = window.devicePixelRatio || 1;
 			// Get the size of the canvas in CSS pixels.
