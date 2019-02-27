@@ -118,9 +118,7 @@ namespace ViewModel
 			canvasCtx.rect(0, 0, width * hours / 24, height / 3 - heightGap);
 			canvasCtx.fill();
 
-			canvasCtx.font = fontStyle;
-			canvasCtx.fillStyle = fontColor;
-			canvasCtx.fillText(hours + "", 5, height / 6);
+			this.fillBarText(canvasCtx, fontStyle, fontColor, hours, 5, height / 6);
 
 			canvasCtx.beginPath();
 			canvasCtx.fillStyle = Colors.lightRed;
@@ -128,9 +126,7 @@ namespace ViewModel
 			canvasCtx.rect(0, height / 3, width * minutes / 60, height / 3 - heightGap);
 			canvasCtx.fill();
 
-			canvasCtx.font = fontStyle;
-			canvasCtx.fillStyle = fontColor;
-			canvasCtx.fillText(minutes + "", 5, height / 3 + height / 6);
+			this.fillBarText(canvasCtx, fontStyle, fontColor, minutes, 5, height / 3 + height / 6);
 
 			canvasCtx.beginPath();
 			canvasCtx.fillStyle = Colors.mildRed;
@@ -138,9 +134,14 @@ namespace ViewModel
 			canvasCtx.rect(0, height * 2 / 3, width * seconds / 60, height / 3 - heightGap);
 			canvasCtx.fill();
 
+			this.fillBarText(canvasCtx, fontStyle, fontColor, seconds, 5, height * 2 / 3 + height / 6);
+		}
+
+		private fillBarText(canvasCtx: CanvasRenderingContext2D, fontStyle: string, fontColor: string, timeElement: number, x: number, y: number): void
+		{
 			canvasCtx.font = fontStyle;
 			canvasCtx.fillStyle = fontColor;
-			canvasCtx.fillText(seconds + "", 5, height * 2 / 3 + height / 6);
+			canvasCtx.fillText(timeElement + "", x, y);
 		}
 
 		private drawThickArc(canvas: HTMLCanvasElement, canvasCtx: CanvasRenderingContext2D, radius: number, color: string, arcStart: number, arcEnd: number, thickness: number): void
