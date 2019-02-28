@@ -31,8 +31,9 @@ namespace ViewModel
 				this.drawCurrentBarTime(currentDateTime);
 			}, 500);
 		}
-		
-		private format2Digits(num: number): string {
+
+		private format2Digits(num: number): string
+		{
 			return (`0${num}`).slice(-2);
 		}
 
@@ -112,29 +113,25 @@ namespace ViewModel
 			const fontColor = Colors.darkGrey;
 			const heightGap = 2;
 
-			canvasCtx.beginPath();
-			canvasCtx.fillStyle = Colors.brown;
 			const hours = currentDateTime.getHours();
-			canvasCtx.rect(0, 0, width * hours / 24, height / 3 - heightGap);
-			canvasCtx.fill();
-
+			this.fillBar(canvasCtx, Colors.brown, 0, 0, width * hours / 24, height / 3 - heightGap);
 			this.fillBarText(canvasCtx, fontStyle, fontColor, hours, 5, height / 6);
 
-			canvasCtx.beginPath();
-			canvasCtx.fillStyle = Colors.lightRed;
 			const minutes = currentDateTime.getMinutes();
-			canvasCtx.rect(0, height / 3, width * minutes / 60, height / 3 - heightGap);
-			canvasCtx.fill();
-
+			this.fillBar(canvasCtx, Colors.lightRed, 0, height / 3, width * minutes / 60, height / 3 - heightGap);
 			this.fillBarText(canvasCtx, fontStyle, fontColor, minutes, 5, height / 3 + height / 6);
 
-			canvasCtx.beginPath();
-			canvasCtx.fillStyle = Colors.mildRed;
 			const seconds = currentDateTime.getSeconds();
-			canvasCtx.rect(0, height * 2 / 3, width * seconds / 60, height / 3 - heightGap);
-			canvasCtx.fill();
-
+			this.fillBar(canvasCtx, Colors.mildRed, 0, height * 2 / 3, width * seconds / 60, height / 3 - heightGap);
 			this.fillBarText(canvasCtx, fontStyle, fontColor, seconds, 5, height * 2 / 3 + height / 6);
+		}
+
+		private fillBar(canvasCtx: CanvasRenderingContext2D, fontColor: string, x: number, y: number, width: number, height: number): void
+		{
+			canvasCtx.beginPath();
+			canvasCtx.fillStyle = fontColor;
+			canvasCtx.rect(x, y, width, height);
+			canvasCtx.fill();
 		}
 
 		private fillBarText(canvasCtx: CanvasRenderingContext2D, fontStyle: string, fontColor: string, timeElement: number, x: number, y: number): void
