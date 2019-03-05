@@ -21,9 +21,9 @@ div.clock-container {
 	margin-bottom: 3px;
 }
 
-canvas#current-analogic-time, canvas#current-bar-time, canvas#current-digital-time {
+div.clock-container canvas {
 	display: block;
-	height: 29.5vh;
+	height: 29.5vmin;
 	width: 100%;
 	padding: 0;
 	margin: 0;
